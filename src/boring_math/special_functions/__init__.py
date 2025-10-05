@@ -12,9 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Mathematical special functions, abstract and concrete.
+"""
+Mathematical special functions
+==============================
 
-**boring_math.special_functions.abstract**
+special_functions.abstract
+--------------------------
 
 +-----------+---------------------------+---------------------+
 | Function  | Description               | Type                |
@@ -26,27 +29,29 @@
 
 ----
 
-**boring_math.special_functions.float**
+special_functions.float
+-----------------------
 
-+-------------+----------------------+
-| Function    | Description          |
-+=============+======================+
-| ``exp(x)``  | exponential function |
-+-------------+----------------------+
-| ``sine(x)`` | sine function        |
-+-------------+----------------------+
++-------------+----------------------+--------------------+
+| Function    | Description          | Type               |
++=============+======================+====================+
+| ``exp(x)``  | exponential function | ``float -> float`` |
++-------------+----------------------+--------------------+
+| ``sine(x)`` | sine function        | ``float -> float`` |
++-------------+----------------------+--------------------+
 
 ----
 
-**boring_math.special_functions.complex**
+special_functions.complex
+--------------------------
 
-+------------+----------------------+
-| Function   | Description          |
-+============+======================+
-| ``exp(z)`` | exponential function |
-+------------+----------------------+
-| ``sin(z)`` | sine function        |
-+------------+----------------------+
++------------+----------------------+------------------------+
+| Function   | Description          | Type                   |
++============+======================+========================+
+| ``exp(z)`` | exponential function | ``complex -> complex`` |
++------------+----------------------+------------------------+
+| ``sin(z)`` | sine function        | ``complex -> complex`` |
++------------+----------------------+------------------------+
 
 """
 
