@@ -20,7 +20,7 @@ Documentation
 
 Documentation for this project is hosted on
 `GitHub Pages
-<https://grscheller.github.io/boring-math/special-functions/development/build/html>`_.
+<https://grscheller.github.io/boring-math/special-functions>`_.
 
 Copyright and License
 ---------------------
