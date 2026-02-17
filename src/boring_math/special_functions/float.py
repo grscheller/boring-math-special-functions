@@ -22,37 +22,73 @@ from math import factorial as fac
 
 __all__ = ['sin0', 'cos0', 'tan0']
 
-n = 20
+depth = 20
 
 s: list[float] = list()
 c: list[float] = list()
 
-for ii in range(n):
-    s.append(1/fac(2*ii+1))
-    c.append(1/fac(2*(ii+1)))
+for ii in range(depth):
+    s.append(1 / fac(2 * ii + 1))
+    c.append(1 / fac(2 * (ii + 1)))
 
-def sin0(x: float) -> float:
-    xsqr = x*x
+
+def sin0(x: float, /, n: int = depth) -> float:
+    """Partially factored Taylor expansion of sine about x=0.
+
+    .. note..
+
+        Best if -2π <= x <= 2π.
+
+    :param x: angle in radians
+    :param n: terms in expansion, must have 2<=n<=20
+    :returns: Taylor series expansion of sine(x) centered at x=0
+
+    """
+    xsqr = x * x
     pos = n - 1
-    accum = 1.0*xsqr*s[pos]
+    accum = 1.0 * xsqr * s[pos]
     pos -= 1
     while pos > 0:
-        accum = xsqr*(s[pos] - accum)
+        accum = xsqr * (s[pos] - accum)
         pos -= 1
-    return x*(1 - accum)
+    return x * (1 - accum)
 
-def cos0(x: float) -> float:
-    xsqr = x*x
+
+def cos0(x: float, /, n: int = depth) -> float:
+    """Partially factored Taylor expansion of cosine about x=0.
+
+    .. note..
+
+        Best if -2π <= x <= 2π.
+
+    :param x: angle in radians
+    :param n: terms in expansion, must have 2<=n<=20
+    :returns: Taylor series expansion of cosine(x) centered at x=0
+
+    """
+    xsqr = x * x
     pos = n - 1
-    accum = xsqr*c[pos]
+    accum = xsqr * c[pos]
     pos -= 1
     while pos >= 0:
-        accum = xsqr*(c[pos] - accum)
+        accum = xsqr * (c[pos] - accum)
         pos -= 1
     return 1 - accum
 
-def tan0(x: float) -> float:
+
+def tan0(x: float, /, n: int = depth) -> float:
+    """Tangent centered about x=0.
+
+    .. note..
+
+        Best if -π <= x <= π.
+
+    :param x: angle in radians
+    :param n: terms in expansion, must have 2<=n<=20
+    :returns: tangent(x) = sin(x)/cos(x)
+
+    """
     try:
-        return sin0(x)/cos0(x)
+        return sin0(x, n=depth) / cos0(x, n=depth)
     except ZeroDivisionError:
-        return 1.633123935319537E+16
+        return 1.633123935319537e16
