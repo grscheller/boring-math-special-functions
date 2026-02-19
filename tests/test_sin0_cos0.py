@@ -15,11 +15,11 @@
 from math import sin, cos, tan, pi
 from boring_math.special_functions.float import sin0, cos0, tan0
 
-tolerance = 1.0e-10
+tolerance = 7.0e-16
 
 
 class Test_sin0:
-    def test_triples(self) -> None:
+    def test_sin0(self) -> None:
         assert (sin0(0) - sin(0)) < tolerance
         assert (sin0(0.023) - sin(0.023)) < tolerance
         assert (sin0(0.125) - sin(0.125)) < tolerance
@@ -33,7 +33,7 @@ class Test_sin0:
         assert (sin0(-2.0*pi/3.0) - sin(-2.0*pi/3.0)) < tolerance
 
 class Test_cos0:
-    def test_triples(self) -> None:
+    def test_cos0(self) -> None:
         assert (cos0(0) - cos(0)) < tolerance
         assert (cos0(0.023) - cos(0.023)) < tolerance
         assert (cos0(0.125) - cos(0.125)) < tolerance
@@ -47,7 +47,7 @@ class Test_cos0:
         assert (cos0(-1.0*pi/3) - cos(-1.0*pi/3)) < tolerance
 
 class Test_tan0:
-    def test_triples(self) -> None:
+    def test_cos0(self) -> None:
         assert (tan0(0) - tan(0)) < tolerance
         assert (tan0(0.023) - tan(0.023)) < tolerance
         assert (tan0(0.125) - tan(0.125)) < tolerance

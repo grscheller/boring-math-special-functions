@@ -20,9 +20,10 @@ Real valued special functions.
 
 from math import factorial as fac
 
-__all__ = ['sin0', 'cos0', 'tan0']
+__all__ = ['sin0', 'cos0', 'tan0', 'exp0']
 
 maxdepth = 20
+mindepth = 20
 
 s: list[float] = list()
 c: list[float] = list()
@@ -41,7 +42,7 @@ def sin0(x: float, /, n: int = maxdepth) -> float:
 
     :param x: angle in radians
     :param n: terms in expansion, must have 2 <= n <= 20
-    :returns: Taylor series expansion of sine(x) centered at x=0
+    :returns: Taylor series expansion of sine(x) centered at x = 0
 
     """
     xsqr = x * x
@@ -63,7 +64,7 @@ def cos0(x: float, /, n: int = maxdepth) -> float:
 
     :param x: angle in radians
     :param n: terms in expansion, must have 2 <= n <= 20
-    :returns: Taylor series expansion of cosine(x) centered at x=0
+    :returns: Taylor series expansion of cosine(x) centered at x = 0
 
     """
     xsqr = x * x
@@ -92,3 +93,23 @@ def tan0(x: float, /, n: int = maxdepth) -> float:
         return sin0(x, n=maxdepth)/cos0(x, n=maxdepth)
     except ZeroDivisionError:
         return 1.633123935319537e16
+
+def exp0(x: float, /, n: int = mindepth) -> float:
+    """Partially factored Taylor expansion of exp about x = 0.
+
+    .. note..
+
+        Best if -1 <= x <= 1.
+
+    :param x: angle in radians
+    :param n: terms in expansion, must have n >= 20
+    :returns: Taylor series expansion of eˣ centered at x = 0
+
+    """
+    d = float(max(n, mindepth))
+    accum = x/d
+    d -= 1.0
+    while d >= 0.5:
+        accum = x/d*(1 + accum)
+        d -= 1
+    return 1 + accum
