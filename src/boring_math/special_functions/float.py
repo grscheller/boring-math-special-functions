@@ -101,7 +101,7 @@ def exp0(x: float, /, n: int = mindepth) -> float:
 
         Best if -1 <= x <= 1.
 
-    :param x: angle in radians
+    :param x: independent variable
     :param n: terms in expansion, must have n >= 20
     :returns: Taylor series expansion of eˣ centered at x = 0
 

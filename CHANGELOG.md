@@ -14,7 +14,7 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
-### Update - 2026-02-19
+### PyPI Release 0.2.0 - 2026-02-19
 
 Added exp0 partially factored Taylor expansion about `x = 0.0`.
 
