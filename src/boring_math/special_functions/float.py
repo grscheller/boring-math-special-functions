@@ -22,25 +22,25 @@ from math import factorial as fac
 
 __all__ = ['sin0', 'cos0', 'tan0']
 
-depth = 20
+maxdepth = 20
 
 s: list[float] = list()
 c: list[float] = list()
 
-for ii in range(depth):
-    s.append(1 / fac(2 * ii + 1))
-    c.append(1 / fac(2 * (ii + 1)))
+for ii in range(maxdepth):
+    s.append(1/fac(2*ii + 1))
+    c.append(1/fac(2*(ii + 1)))
 
 
-def sin0(x: float, /, n: int = depth) -> float:
-    """Partially factored Taylor expansion of sine about x=0.
+def sin0(x: float, /, n: int = maxdepth) -> float:
+    """Partially factored Taylor expansion of sine about x = 0.
 
     .. note..
 
         Best if -2π <= x <= 2π.
 
     :param x: angle in radians
-    :param n: terms in expansion, must have 2<=n<=20
+    :param n: terms in expansion, must have 2 <= n <= 20
     :returns: Taylor series expansion of sine(x) centered at x=0
 
     """
@@ -54,15 +54,15 @@ def sin0(x: float, /, n: int = depth) -> float:
     return x * (1 - accum)
 
 
-def cos0(x: float, /, n: int = depth) -> float:
-    """Partially factored Taylor expansion of cosine about x=0.
+def cos0(x: float, /, n: int = maxdepth) -> float:
+    """Partially factored Taylor expansion of cosine about x = 0.
 
     .. note..
 
         Best if -2π <= x <= 2π.
 
     :param x: angle in radians
-    :param n: terms in expansion, must have 2<=n<=20
+    :param n: terms in expansion, must have 2 <= n <= 20
     :returns: Taylor series expansion of cosine(x) centered at x=0
 
     """
@@ -76,19 +76,19 @@ def cos0(x: float, /, n: int = depth) -> float:
     return 1 - accum
 
 
-def tan0(x: float, /, n: int = depth) -> float:
-    """Tangent centered about x=0.
+def tan0(x: float, /, n: int = maxdepth) -> float:
+    """Tangent centered about x = 0.
 
     .. note..
 
         Best if -π <= x <= π.
 
     :param x: angle in radians
-    :param n: terms in expansion, must have 2<=n<=20
-    :returns: tangent(x) = sin(x)/cos(x)
+    :param n: terms in expansion, must have 2 <= n <= 20
+    :returns: sin0(x)/cos0(x)
 
     """
     try:
-        return sin0(x, n=depth) / cos0(x, n=depth)
+        return sin0(x, n=maxdepth)/cos0(x, n=maxdepth)
     except ZeroDivisionError:
         return 1.633123935319537e16
