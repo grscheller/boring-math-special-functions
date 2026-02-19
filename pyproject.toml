@@ -11,7 +11,7 @@ keywords = [
   "exponential",
 ]
 classifiers = [
-  "Development Status :: 2 - Pre-Alpha",
+  "Development Status :: 3 - Alpha",
   "Framework :: Pytest",
   "Intended Audience :: Education",
   "License :: OSI Approved :: Apache Software License",
@@ -23,8 +23,8 @@ dependencies = []
 dynamic = ["description"]
 
 [project.urls]
-Changelog = "https://github.com/grscheller/boring-math-special-functions/blob/main/CHANGELOG.rst"
-Documentation = "https://grscheller.github.io/boring-math/special_functions/development/build/html/"
+Changelog = "https://github.com/grscheller/boring-math-special-functions/blob/main/CHANGELOG.md"
+Documentation = "https://grscheller.github.io/boring-math/special-functions/development/build/html/"
 Homepage = "https://grscheller.github.io/boring-math/homepage/build/html"
 Source = "https://github.com/grscheller/boring-math-special-functions"
 
