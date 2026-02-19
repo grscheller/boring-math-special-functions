@@ -14,6 +14,11 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
+### Update - 2026-02-18
+
+Added sin0, cos0 partially factored Taylor expansion about x = 0.0.
+Also, tan0(x) = sin0(x)/cos0(x)
+
 ### Update - 2025-10-04
 
 Creating Sphinx based documentation for this "stub" project. Converted
