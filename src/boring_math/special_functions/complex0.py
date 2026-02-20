@@ -35,7 +35,7 @@ for ii in range(maxdepth):
 def exp0(z: complex, /, n: int = mindepth) -> complex:
     """Partially factored Taylor expansion of exp about z = 0.
 
-    .. note..
+    .. note::
 
         Best if |z| <= 1.
 
@@ -55,7 +55,7 @@ def exp0(z: complex, /, n: int = mindepth) -> complex:
 def sin0(z: complex, /, n: int = maxdepth) -> complex:
     """Partially factored Taylor expansion of sine about z = 0.
 
-    .. note..
+    .. note::
 
         Best if |z| <= 2π.
 
@@ -77,7 +77,7 @@ def sin0(z: complex, /, n: int = maxdepth) -> complex:
 def cos0(z: complex, /, n: int = maxdepth) -> complex:
     """Partially factored Taylor expansion of cosine about z = 0.
 
-    .. note..
+    .. note::
 
         Best if |z| <= 2π.
 
@@ -99,7 +99,7 @@ def cos0(z: complex, /, n: int = maxdepth) -> complex:
 def tan0(z: complex, /, n: int = maxdepth) -> complex:
     """Tangent centered about z = 0.
 
-    .. note..
+    .. note::
 
         Best if |z| <= π.
 

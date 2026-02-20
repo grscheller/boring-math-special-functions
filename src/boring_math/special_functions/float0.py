@@ -35,7 +35,7 @@ for ii in range(maxdepth):
 def exp0(x: float, /, n: int = mindepth) -> float:
     """Partially factored Taylor expansion of exp about x = 0.
 
-    .. note..
+    .. note::
 
         Best if -1 <= x <= 1.
 
@@ -55,7 +55,7 @@ def exp0(x: float, /, n: int = mindepth) -> float:
 def sin0(x: float, /, n: int = maxdepth) -> float:
     """Partially factored Taylor expansion of sine about x = 0.
 
-    .. note..
+    .. note::
 
         Best if -2π <= x <= 2π.
 
@@ -77,7 +77,7 @@ def sin0(x: float, /, n: int = maxdepth) -> float:
 def cos0(x: float, /, n: int = maxdepth) -> float:
     """Partially factored Taylor expansion of cosine about x = 0.
 
-    .. note..
+    .. note::
 
         Best if -2π <= x <= 2π.
 
@@ -99,7 +99,7 @@ def cos0(x: float, /, n: int = maxdepth) -> float:
 def tan0(x: float, /, n: int = maxdepth) -> float:
     """Tangent centered about x = 0.
 
-    .. note..
+    .. note::
 
         Best if -π <= x <= π.
 
