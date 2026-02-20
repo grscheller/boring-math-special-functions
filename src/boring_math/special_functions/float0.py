@@ -20,7 +20,7 @@ Real valued special functions.
 
 from math import factorial as fac
 
-__all__ = ['sin0', 'cos0', 'tan0', 'exp0']
+__all__ = ['exp0', 'sin0', 'cos0', 'tan0']
 
 maxdepth = 20
 mindepth = 20
@@ -32,6 +32,25 @@ for ii in range(maxdepth):
     s.append(1/fac(2*ii + 1))
     c.append(1/fac(2*(ii + 1)))
 
+def exp0(x: float, /, n: int = mindepth) -> float:
+    """Partially factored Taylor expansion of exp about x = 0.
+
+    .. note..
+
+        Best if -1 <= x <= 1.
+
+    :param x: independent variable
+    :param n: terms in expansion, must have n >= 20
+    :returns: Taylor series expansion of eˣ centered at x = 0
+
+    """
+    d = float(max(n, mindepth))
+    accum = x/d
+    d -= 1.0
+    while d >= 0.5:
+        accum = x/d*(1 + accum)
+        d -= 1
+    return 1 + accum
 
 def sin0(x: float, /, n: int = maxdepth) -> float:
     """Partially factored Taylor expansion of sine about x = 0.
@@ -90,26 +109,12 @@ def tan0(x: float, /, n: int = maxdepth) -> float:
 
     """
     try:
-        return sin0(x, n=maxdepth)/cos0(x, n=maxdepth)
+        return sin0(x, n=n)/cos0(x, n=n)
     except ZeroDivisionError:
-        return 1.633123935319537e16
+        num = sin0(x, n=n)
+        if num >= 0:
+            factor = 1.0
+        else:
+            factor = -1.0
 
-def exp0(x: float, /, n: int = mindepth) -> float:
-    """Partially factored Taylor expansion of exp about x = 0.
-
-    .. note..
-
-        Best if -1 <= x <= 1.
-
-    :param x: independent variable
-    :param n: terms in expansion, must have n >= 20
-    :returns: Taylor series expansion of eˣ centered at x = 0
-
-    """
-    d = float(max(n, mindepth))
-    accum = x/d
-    d -= 1.0
-    while d >= 0.5:
-        accum = x/d*(1 + accum)
-        d -= 1
-    return 1 + accum
+        return factor*1.633123935319537e16

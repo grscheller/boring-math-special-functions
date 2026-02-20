@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from math import exp
-from boring_math.special_functions.float import exp0
+from boring_math.special_functions.float0 import exp0
 
 tolerance = 5.0e-16
 

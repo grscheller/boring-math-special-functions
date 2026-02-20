@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from math import sin, cos, tan, pi
-from boring_math.special_functions.float import sin0, cos0, tan0
+from boring_math.special_functions.float0 import sin0, cos0, tan0
 
 tolerance = 7.0e-16
 
