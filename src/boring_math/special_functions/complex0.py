@@ -37,7 +37,7 @@ def exp0(z: complex, /, n: int = mindepth) -> complex:
 
     .. note::
 
-        Best if |z| <= 1.
+        Best if ``|z| <= 1``.
 
     :param z: independent variable
     :param n: terms in expansion, must have n >= 20
@@ -57,7 +57,7 @@ def sin0(z: complex, /, n: int = maxdepth) -> complex:
 
     .. note::
 
-        Best if |z| <= 2π.
+        Best if ``|z| <= 2π``.
 
     :param z: independent variable
     :param n: terms in expansion, must have 2 <= n <= 20
@@ -79,7 +79,7 @@ def cos0(z: complex, /, n: int = maxdepth) -> complex:
 
     .. note::
 
-        Best if |z| <= 2π.
+        Best if ``|z| <= 2π``.
 
     :param z: independent variable
     :param n: terms in expansion, must have 2 <= n <= 20
@@ -101,7 +101,7 @@ def tan0(z: complex, /, n: int = maxdepth) -> complex:
 
     .. note::
 
-        Best if |z| <= π.
+        Best if ``|z| <= π``.
 
     :param z: independent variable
     :param n: terms in expansion, must have 2 <= n <= 20
