@@ -14,7 +14,7 @@
 
 """Real valued
 
-Real valued special functions.
+Real valued special functions centered at ``x = 0``.
 
 """
 
