@@ -7,7 +7,9 @@ license = { file = "LICENSE" }
 authors = [{ name = "Geoffrey R. Scheller", email = "geoffrey@scheller.com" }]
 keywords = [
   "special functions",
-  "sine",
+  "sin",
+  "cos",
+  "tan",
   "exponential",
 ]
 classifiers = [

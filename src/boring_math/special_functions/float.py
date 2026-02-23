@@ -24,31 +24,32 @@ from .float0 import exp0, sin0, cos0, tan0
 __all__ = ['exp', 'sin', 'cos', 'tan']
 
 maxdepth = 20
-mindepth = 20
+mindepth = 30
 
-two_pi = 2.0*pi
-pi_half = pi/2.0
+two_pi = 2.0 * pi
+pi_half = pi / 2.0
 e = exp0(1)
+
 
 def shift0(x: float) -> float:
     shifted = x % (two_pi)
     if shifted > pi:
-        shifted = -1.0*(shifted - pi)
+        shifted = -1.0 * (shifted - pi)
     return shifted
+
 
 def shift1(x: float) -> float:
     shifted = x % pi
     if shifted > pi_half:
-        shifted = -1.0*(shifted - pi_half)
+        shifted = -1.0 * (shifted - pi_half)
     return shifted
 
+
 def shift2(x: float) -> float:
-    if x > 0:
-        shifted = x % 1.0
-    elif x < 0:
-        shifted = x % -1.0
+    if x >= 0:
+        shifted = x % pi/2.0
     else:
-        shifted = x
+        shifted = x % -pi/2.0
     return shifted
 
 
@@ -60,13 +61,12 @@ def exp(x: float, /, n: int = mindepth) -> float:
     :returns: Value of ``eˣ``
 
     """
-    if x > 0:
-        factor = e**floor(x)
-    elif x < 0:
-        factor = e**ceil(x)
+    if x >= 0:
+        factor = e ** floor(2*x/pi)
     else:
-        factor = 1.0
+        factor = e ** ceil(2*x/pi)
     return exp0(shift2(x), n=n) * factor
+
 
 def sin(x: float, /, n: int = maxdepth) -> float:
     """Partially factored Taylor expansion of sine about x = 0.

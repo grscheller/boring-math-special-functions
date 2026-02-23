@@ -33,15 +33,15 @@ for ii in range(maxdepth):
     c.append(1/fac(2*(ii + 1)))
 
 def exp0(x: float, /, n: int = mindepth) -> float:
-    """Partially factored Taylor expansion of exp about x = 0.
+    """Partially factored Taylor expansion of exp about ``x = 0``.
 
     .. note::
 
-        Best if -1 <= x <= 1.
+        Best if ``-1 <= x <= 1``.
 
     :param x: independent variable
-    :param n: terms in expansion, must have n >= 20
-    :returns: Taylor series expansion of eˣ centered at x = 0
+    :param n: terms in expansion, must have ``n >= 20``
+    :returns: Taylor series expansion of ``eˣ`` centered at ``x = 0``
 
     """
     d = float(max(n, mindepth))
@@ -53,20 +53,20 @@ def exp0(x: float, /, n: int = mindepth) -> float:
     return 1 + accum
 
 def sin0(x: float, /, n: int = maxdepth) -> float:
-    """Partially factored Taylor expansion of sine about x = 0.
+    """Partially factored Taylor expansion of sine about ``x = 0``.
 
     .. note::
 
-        Best if -2π <= x <= 2π.
+        Best if ``-2π <= x <= 2π``.
 
     :param x: angle in radians
-    :param n: terms in expansion, must have 2 <= n <= 20
-    :returns: Taylor series expansion of sine(x) centered at x = 0
+    :param n: terms in expansion, must have ``2 <= n <= 20``
+    :returns: Taylor series expansion of sine(x) centered at ``x = 0``
 
     """
     xsqr = x * x
     pos = n - 1
-    accum = 1.0 * xsqr * s[pos]
+    accum = xsqr * s[pos]
     pos -= 1
     while pos > 0:
         accum = xsqr * (s[pos] - accum)
@@ -75,15 +75,15 @@ def sin0(x: float, /, n: int = maxdepth) -> float:
 
 
 def cos0(x: float, /, n: int = maxdepth) -> float:
-    """Partially factored Taylor expansion of cosine about x = 0.
+    """Partially factored Taylor expansion of cosine about ``x = 0``.
 
     .. note::
 
-        Best if -2π <= x <= 2π.
+        Best if ``-2π <= x <= 2π``.
 
     :param x: angle in radians
-    :param n: terms in expansion, must have 2 <= n <= 20
-    :returns: Taylor series expansion of cosine(x) centered at x = 0
+    :param n: terms in expansion, must have ``2 <= n <= 20``
+    :returns: Taylor series expansion of ``cosine(x)`` centered at ``x = 0``
 
     """
     xsqr = x * x
@@ -101,20 +101,18 @@ def tan0(x: float, /, n: int = maxdepth) -> float:
 
     .. note::
 
-        Best if -π <= x <= π.
+        Best if ``-π <= x <= π``.
 
     :param x: angle in radians
-    :param n: terms in expansion, must have 2 <= n <= 20
-    :returns: sin0(x)/cos0(x)
+    :param n: terms in expansion, must have ``2 <= n <= 20``
+    :returns: ``sin0(x)/cos0(x)``
 
     """
+    factor = 1.0
     try:
         return sin0(x, n=n)/cos0(x, n=n)
     except ZeroDivisionError:
         num = sin0(x, n=n)
-        if num >= 0:
-            factor = 1.0
-        else:
+        if num < 0:
             factor = -1.0
-
         return factor*1.633123935319537e16
