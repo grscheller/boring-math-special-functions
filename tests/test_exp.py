@@ -18,6 +18,7 @@ from boring_math.special_functions.float import exp
 tolerance0 = 5.0e-16
 tolerance1 = 5.0e-15
 tolerance2 = 5.0e-12
+tolerance3 = 5.0e-11
 
 
 class Test_exp:
@@ -38,7 +39,8 @@ class Test_exp:
         assert abs(exp(2.00) - math.exp(2.00)) < tolerance1
         assert abs(exp(2.70) - math.exp(2.70)) < tolerance1
         assert abs(exp(8.00) - math.exp(8.00)) < tolerance2
-        assert abs(exp(8.70) - math.exp(8.70)) < tolerance2
+        assert abs(exp(9.00) - math.exp(9.00)) < tolerance2
+        assert abs(exp(10.50) - math.exp(10.50)) < tolerance3
         assert abs(exp(-0.95) - math.exp(-0.95)) < tolerance0
         assert abs(exp(-1.00) - math.exp(-1.00)) < tolerance0
         assert abs(exp(-1.05) - math.exp(-1.05)) < tolerance0
