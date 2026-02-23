@@ -20,9 +20,14 @@ tolerance1 = 5.0e-15
 tolerance2 = 5.0e-12
 
 
-class Test_exp0:
-    def test_exp0(self) -> None:
+class Test_exp:
+    def test_exp(self) -> None:
         assert abs(exp(0.00) - math.exp(0.00)) < tolerance0
+        assert abs(exp(0.01) - math.exp(0.01)) < tolerance0
+        assert abs(exp(-0.01) - math.exp(-0.01)) < tolerance0
+        assert abs(exp(0.05) - math.exp(0.05)) < tolerance0
+        assert abs(exp(-0.05) - math.exp(-0.05)) < tolerance0
+        assert abs(exp(-0.25) - math.exp(-0.25)) < tolerance0
         assert abs(exp(0.15) - math.exp(0.15)) < tolerance0
         assert abs(exp(0.65) - math.exp(0.65)) < tolerance0
         assert abs(exp(0.95) - math.exp(0.95)) < tolerance0
@@ -34,8 +39,6 @@ class Test_exp0:
         assert abs(exp(2.70) - math.exp(2.70)) < tolerance1
         assert abs(exp(8.00) - math.exp(8.00)) < tolerance2
         assert abs(exp(8.70) - math.exp(8.70)) < tolerance2
-        assert abs(exp(-0.05) - math.exp(-0.05)) < tolerance0
-        assert abs(exp(-0.25) - math.exp(-0.25)) < tolerance0
         assert abs(exp(-0.95) - math.exp(-0.95)) < tolerance0
         assert abs(exp(-1.00) - math.exp(-1.00)) < tolerance0
         assert abs(exp(-1.05) - math.exp(-1.05)) < tolerance0

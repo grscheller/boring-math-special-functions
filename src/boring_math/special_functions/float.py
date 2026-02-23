@@ -23,8 +23,8 @@ from .float0 import exp0, sin0, cos0, tan0
 
 __all__ = ['exp', 'sin', 'cos', 'tan']
 
+mindepth = 50
 maxdepth = 20
-mindepth = 30
 
 two_pi = 2.0 * pi
 pi_half = pi / 2.0
@@ -49,7 +49,7 @@ def shift2(x: float) -> float:
     if x >= 0:
         shifted = x % pi/2.0
     else:
-        shifted = x % -pi/2.0
+        shifted = x % pi/-2.0
     return shifted
 
 
