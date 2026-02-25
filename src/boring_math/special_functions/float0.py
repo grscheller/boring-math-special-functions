@@ -12,11 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Real valued
-
-Real valued special functions centered at ``x = 0``.
-
-"""
+"""Floating point special functions about a point."""
 
 from math import factorial as fac
 

@@ -14,6 +14,13 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
+### PyPI Release 1.0.0 - 2026-02-25
+
+Finished and tested:
+
+- float0.exp0, float0.sin0, complex0.cos0, complex0.tan0
+- float.exp, float.sin, complex.cos, complex.tan
+
 ### PyPI Release 0.2.0 - 2026-02-19
 
 Added exp0 partially factored Taylor expansion about `x = 0.0`.

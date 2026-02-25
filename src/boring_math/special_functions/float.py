@@ -12,11 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Real valued
-
-Real valued special functions.
-
-"""
+"""Floating point special functions."""
 
 from math import pi, floor, ceil
 from .float0 import exp0, sin0, cos0, tan0

@@ -12,11 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Complex valued.
-
-Complex valued special functions centered at ``z = 0``.
-
-"""
+"""Complex valued special functions about a point."""
 
 from math import factorial as fac
 

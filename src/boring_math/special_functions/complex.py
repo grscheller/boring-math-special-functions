@@ -12,11 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Complex valued.
-
-Complex valued special functions.
-
-"""
+"""Complex valued special functions."""
 
 from math import pi
 from .float import exp as expf, sin as sinf, cos as cosf
