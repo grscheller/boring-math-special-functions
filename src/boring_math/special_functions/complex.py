@@ -18,16 +18,30 @@ Complex valued special functions.
 
 """
 
-from .complex0 import exp0
-from .float import exp as expf
+from math import pi
+from .float import exp as expf, sin as sinf, cos as cosf
 
 __all__ = ['exp', 'sin', 'cos', 'tan']
 
-maxdepth = 20
-mindepth = 30
+mindepth = 22
+maxdepth = 22
+
+two_pi = 2.0 * pi
 
 s: list[complex] = list()
 c: list[complex] = list()
+
+jay = 0.0 + 1.0j
+
+
+def shift0(x: float) -> float:
+    shifted = x % (two_pi)
+    if shifted > pi:
+        shifted = -1.0 * (shifted - pi)
+    return shifted
+
+def shift1(x: float) -> float:
+    return x % two_pi
 
 
 def exp(z: complex, /, n: int = mindepth) -> complex:
@@ -38,8 +52,9 @@ def exp(z: complex, /, n: int = mindepth) -> complex:
     :returns: Value of ``eᶻ``
 
     """
-    eye = 0.0+1.0j
-    return complex(expf(z.real), 0)*exp0(eye*z.imag)
+    x = z.real
+    y = z.imag
+    return complex(expf(x), 0)*(cosf(shift1(y)) + jay*sinf(shift0(y)))
 
 
 def sin(z: complex, /, n: int = maxdepth) -> complex:
@@ -52,8 +67,7 @@ def sin(z: complex, /, n: int = maxdepth) -> complex:
     """
     x = z.real
     y = z.imag
-    eye = 0.0+1.0j
-    return 0.5*eye*(exp(y - eye*x) - exp(-y + eye*x))
+    return 0.5 * jay*(exp(y - jay*x) - exp(-y + jay*x))
 
 
 def cos(z: complex, /, n: int = maxdepth) -> complex:
@@ -66,8 +80,7 @@ def cos(z: complex, /, n: int = maxdepth) -> complex:
     """
     x = z.real
     y = z.imag
-    eye = 0.0+1.0j
-    return 0.5*(exp(-y + eye*x) + exp(y - eye*x))
+    return 0.5 * (exp(-y + jay*x) + exp(y - jay*x))
 
 
 def tan(z: complex, /, n: int = maxdepth) -> complex:
@@ -79,6 +92,6 @@ def tan(z: complex, /, n: int = maxdepth) -> complex:
 
     """
     try:
-        return sin(z)/cos(z)
+        return sin(z) / cos(z)
     except ZeroDivisionError:
-        return complex(0, 0)
+        return 1.633123935319537e16 + 0j

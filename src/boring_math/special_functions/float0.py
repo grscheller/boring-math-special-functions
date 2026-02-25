@@ -23,7 +23,7 @@ from math import factorial as fac
 __all__ = ['exp0', 'sin0', 'cos0', 'tan0']
 
 mindepth = 22
-maxdepth = 20
+maxdepth = 22
 
 s: list[float] = list()
 c: list[float] = list()

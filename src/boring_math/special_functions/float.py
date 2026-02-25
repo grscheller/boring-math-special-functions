@@ -23,8 +23,8 @@ from .float0 import exp0, sin0, cos0, tan0
 
 __all__ = ['exp', 'sin', 'cos', 'tan']
 
-mindepth = 20
-maxdepth = 20
+mindepth = 22
+maxdepth = 22
 
 two_pi = 2.0 * pi
 pi_half = pi / 2.0
@@ -38,14 +38,14 @@ def shift0(x: float) -> float:
     return shifted
 
 
-def shift1(x: float) -> float:
+def shift2(x: float) -> float:
     shifted = x % pi
     if shifted > pi_half:
         shifted = -1.0 * (shifted - pi_half)
     return shifted
 
 
-def shift2(x: float) -> float:
+def shift3(x: float) -> float:
     if x >= 0:
         shifted = x % 1.0
     else:
@@ -65,7 +65,7 @@ def exp(x: float, /, n: int = mindepth) -> float:
         factor = e ** floor(x)
     else:
         factor = e ** ceil(x)
-    return exp0(shift2(x), n=n) * factor
+    return exp0(shift3(x), n=n) * factor
 
 
 def sin(x: float, /, n: int = maxdepth) -> float:
@@ -98,4 +98,4 @@ def tan(x: float, /, n: int = maxdepth) -> float:
     :returns: sin0(x)/cos0(x)
 
     """
-    return tan0(shift1(x), n=n)
+    return tan0(shift2(x), n=n)
