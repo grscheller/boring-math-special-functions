@@ -25,5 +25,5 @@ Documentation for this project is hosted on
 Copyright and License
 ---------------------
 
-Copyright (c) 2023-2025 Geoffrey R. Scheller. Licensed under the Apache
+Copyright (c) 2023-2026 Geoffrey R. Scheller. Licensed under the Apache
 License, Version 2.0. See the LICENSE file for details.

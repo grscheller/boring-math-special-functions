@@ -29,7 +29,7 @@ for ii in range(maxdepth):
     c.append(1 / fac(2 * (ii + 1)))
 
 
-def exp0(z: complex, /, n: int = mindepth) -> complex:
+def exp(z: complex, /, n: int = mindepth) -> complex:
     """Partially factored Taylor expansion of exp about z = 0.
 
     .. note::
