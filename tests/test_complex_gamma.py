@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from math import pi
-from boring_math.special_functions.complex import gamma
+from boring_math.special_functions.trig_complex import gamma
 
 sqrt_pi = pi**(0.5)
 jay = 0.0+1.0j

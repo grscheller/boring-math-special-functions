@@ -15,7 +15,7 @@
 """Floating point special functions."""
 
 from math import pi, floor, ceil
-from .float0 import exp0, sin0, cos0, tan0
+from .trig0_float import exp0, sin0, cos0, tan0
 
 __all__ = ['exp', 'sin', 'cos', 'tan']
 

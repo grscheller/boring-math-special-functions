@@ -14,8 +14,8 @@
 
 from cmath import exp as cexp
 from math import pi
-from boring_math.special_functions.complex import exp
-from boring_math.special_functions.float0 import sin0, cos0
+from boring_math.special_functions.trig_complex import exp
+from boring_math.special_functions.trig0_float import sin0, cos0
 
 tolerance0 = 5.0e-16
 tolerance1 = 5.0e-15
