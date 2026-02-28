@@ -15,7 +15,7 @@
 """Complex valued special functions."""
 
 from math import pi
-from .trig_float import exp as expf, sin as sinf, cos as cosf
+from .trig import exp as expf, sin as sinf, cos as cosf
 
 __all__ = ['exp', 'sin', 'cos', 'tan', 'gamma']
 

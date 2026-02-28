@@ -12,67 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-Mathematical special functions
-------------------------------
-
-..admonition:: Module special_functions.float0
-
-    +-------------+--------------------------------+--------------------+
-    | Function    | Description                    | Type               |
-    +=============+================================+====================+
-    | ``exp0(x)`` | exponential function about x=0 | ``float -> float`` |
-    +-------------+--------------------------------+--------------------+
-    | ``sin0(x)`` | sine function about x=0        | ``float -> float`` |
-    +-------------+--------------------------------+--------------------+
-    | ``cos0(x)`` | cosine function about x=0      | ``float -> float`` |
-    +-------------+--------------------------------+--------------------+
-    | ``tan0(x)`` | tangent function about x=0     | ``float -> float`` |
-    +-------------+--------------------------------+--------------------+
-
-..admonition:: Module special_functions.complex0
-
-    +-------------+--------------------------------+------------------------+
-    | Function    | Description                    | Type                   |
-    +=============+================================+========================+
-    | ``exp0(z)`` | exponential function about z=0 | ``complex -> complex`` |
-    +-------------+--------------------------------+------------------------+
-    | ``sin0(z)`` | sine function about z=0        | ``complex -> complex`` |
-    +-------------+--------------------------------+------------------------+
-    | ``sin0(z)`` | cosine function about z=0      | ``complex -> complex`` |
-    +-------------+--------------------------------+------------------------+
-    | ``tan0(z)`` | tangent function about z=0     | ``complex -> complex`` |
-    +-------------+--------------------------------+------------------------+
-
-..admonition:: Module special_functions.float
-
-    +------------+----------------------+--------------------+
-    | Function   | Description          | Type               |
-    +============+======================+====================+
-    | ``exp(x)`` | exponential function | ``float -> float`` |
-    +------------+----------------------+--------------------+
-    | ``sin(x)`` | sine function        | ``float -> float`` |
-    +------------+----------------------+--------------------+
-    | ``cos(x)`` | cosine function      | ``float -> float`` |
-    +------------+----------------------+--------------------+
-    | ``tan(x)`` | tangent function     | ``float -> float`` |
-    +------------+----------------------+--------------------+
-
-..admonition:: Module special_functions.complex
-
-    +------------+----------------------+------------------------+
-    | Function   | Description          | Type                   |
-    +============+======================+========================+
-    | ``exp(z)`` | exponential function | ``complex -> complex`` |
-    +------------+----------------------+------------------------+
-    | ``sin(z)`` | sine function        | ``complex -> complex`` |
-    +------------+----------------------+------------------------+
-    | ``sin(z)`` | cosine function      | ``complex -> complex`` |
-    +------------+----------------------+------------------------+
-    | ``tan(z)`` | tangent function     | ``complex -> complex`` |
-    +------------+----------------------+------------------------+
-
-"""
+"""Mathematical special functions"""
 
 __author__ = 'Geoffrey R. Scheller'
 __copyright__ = 'Copyright (c) 2025-2026 Geoffrey R. Scheller'

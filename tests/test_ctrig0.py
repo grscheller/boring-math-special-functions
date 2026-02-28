@@ -14,7 +14,7 @@
 
 from math import pi
 from cmath import sin as csin, cos as ccos, tan as ctan
-from boring_math.special_functions.trig0_complex import sin0, cos0, tan0
+from boring_math.special_functions.ctrig0 import sin0, cos0, tan0
 
 tolerance0 = 5.0e-16
 tolerance1 = 5.0e-15
