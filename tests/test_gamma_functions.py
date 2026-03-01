@@ -36,6 +36,8 @@ class Test_gamma:
         assert abs(gamma_real(6.0) - float(fac(5))) < tolerance3
         assert abs(gamma_real(21.0) - float(fac(20)))/fac(20) < tolerance1
         assert abs(gamma_real(0.5) - sqrt_pi) < tolerance0
+        assert abs(gamma_real(1.5) - sqrt_pi/2) < tolerance1
+        assert abs(gamma_real(2.5) - 3*sqrt_pi/4) < tolerance1
 
     def test_gamma_complex(self) -> None:
         assert abs(gamma(1.0+0.0j) - complex(fac(0), 0)) < tolerance0
@@ -46,3 +48,7 @@ class Test_gamma:
         assert abs(gamma(6.0+0.0j) - complex(fac(5), 0)) < tolerance3
         assert abs(gamma(21.0+0.0j) - complex(fac(20), 0))/fac(20) < tolerance1
         assert abs(gamma(0.5+0.0j) - sqrt_pi) < tolerance0
+        assert abs(gamma(1.5+0.0j) - sqrt_pi/2) < tolerance1
+        assert abs(gamma(2.5+0.0j) - 3*sqrt_pi/4) < tolerance1
+        assert abs(gamma(0.0+1.0j) - (-0.1549498283018106-0.4980156681183560j)) < tolerance0
+        assert abs(gamma(1.0+1.0j) - (0.4980156681183560-0.1549498283018106j)) < tolerance0
