@@ -14,6 +14,13 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
+### PyPI Release 2.0.0 - TBD
+
+Breaking API changes.
+
+- broke out exponential functions to their own module
+- added gamma function module
+
 ### PyPI Release 1.0.0 - 2026-02-25
 
 Finished and tested:

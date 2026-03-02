@@ -11,6 +11,7 @@ keywords = [
   "cos",
   "tan",
   "exponential",
+  "gamma",
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",
