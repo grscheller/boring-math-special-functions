@@ -14,7 +14,7 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
-### PyPI Release 2.0.0 - TBD
+### PyPI Release 2.0.0 - 2026-03-02
 
 Breaking API changes.
 
