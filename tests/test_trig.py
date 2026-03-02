@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import sin as csin, cos as ccos, tan as ctan
-from math import pi
+import math
+from math import inf, pi
 from boring_math.special_functions.trig import sin, cos, tan
 
 tolerance0 = 5.0e-16
@@ -23,42 +23,42 @@ tolerance2 = 5.0e-14
 
 class Test_sin0:
     def test_sin0(self) -> None:
-        assert abs(sin(0) - csin(0)) < tolerance0
-        assert abs(sin(0.023) - csin(0.023)) < tolerance0
-        assert abs(sin(0.125) - csin(0.125)) < tolerance0
-        assert abs(sin(0.35) - csin(0.35)) < tolerance0
-        assert abs(sin(pi/4.0) - csin(pi/4.0)) < tolerance0
-        assert abs(sin(pi/2.0) - csin(pi/2.0)) < tolerance0
-        assert abs(sin(pi) - csin(pi)) < tolerance0
-        assert abs(sin(4.0) - csin(4.0)) < tolerance0
-        assert abs(sin(42.0) - csin(42.0)) < tolerance1
-        assert abs(sin(2.0*pi) - csin(2.0*pi)) < tolerance0
-        assert abs(sin(-1.5*pi) - csin(-1.5*pi)) < tolerance0
-        assert abs(sin(-2.0*pi/3.0) - csin(-2.0*pi/3.0)) < tolerance0
+        assert abs(sin(0) - math.sin(0)) < tolerance0
+        assert abs(sin(0.023) - math.sin(0.023)) < tolerance0
+        assert abs(sin(0.125) - math.sin(0.125)) < tolerance0
+        assert abs(sin(0.35) - math.sin(0.35)) < tolerance0
+        assert abs(sin(pi/4.0) - math.sin(pi/4.0)) < tolerance0
+        assert abs(sin(pi/2.0) - math.sin(pi/2.0)) < tolerance0
+        assert abs(sin(pi) - math.sin(pi)) < tolerance0
+        assert abs(sin(4.0) - math.sin(4.0)) < tolerance0
+        assert abs(sin(42.0) - math.sin(42.0)) < tolerance1
+        assert abs(sin(2.0*pi) - math.sin(2.0*pi)) < tolerance0
+        assert abs(sin(-1.5*pi) - math.sin(-1.5*pi)) < tolerance0
+        assert abs(sin(-2.0*pi/3.0) - math.sin(-2.0*pi/3.0)) < tolerance0
 
 class Test_cos0:
     def test_cos0(self) -> None:
-        assert abs(cos(0) - ccos(0)) < tolerance0
-        assert abs(cos(0.023) - ccos(0.023)) < tolerance0
-        assert abs(cos(0.125) - ccos(0.125)) < tolerance0
-        assert abs(cos(0.35) - ccos(0.35)) < tolerance0
-        assert abs(cos(pi/4.0) - ccos(pi/4.0)) < tolerance0
-        assert abs(cos(pi/2.0) - ccos(pi/2.0)) < tolerance0
-        assert abs(cos(pi) - ccos(pi)) < tolerance0
-        assert abs(cos(4.0) - ccos(4.0)) < tolerance1
-        assert abs(cos(42.0) - ccos(42.0)) < tolerance1
-        assert abs(cos(1.5*pi) - ccos(1.5*pi)) < tolerance0
-        assert abs(cos(2.0*pi) - ccos(2.0*pi)) < tolerance0
-        assert abs(cos(-1.0*pi/3) - ccos(-1.0*pi/3)) < tolerance1
+        assert abs(cos(0) - math.cos(0)) < tolerance0
+        assert abs(cos(0.023) - math.cos(0.023)) < tolerance0
+        assert abs(cos(0.125) - math.cos(0.125)) < tolerance0
+        assert abs(cos(0.35) - math.cos(0.35)) < tolerance0
+        assert abs(cos(pi/4.0) - math.cos(pi/4.0)) < tolerance0
+        assert abs(cos(pi/2.0) - math.cos(pi/2.0)) < tolerance0
+        assert abs(cos(pi) - math.cos(pi)) < tolerance0
+        assert abs(cos(4.0) - math.cos(4.0)) < tolerance1
+        assert abs(cos(42.0) - math.cos(42.0)) < tolerance1
+        assert abs(cos(1.5*pi) - math.cos(1.5*pi)) < tolerance0
+        assert abs(cos(2.0*pi) - math.cos(2.0*pi)) < tolerance0
+        assert abs(cos(-1.0*pi/3) - math.cos(-1.0*pi/3)) < tolerance1
 
 class Test_tan0:
     def test_cos0(self) -> None:
-        assert abs(tan(0) - ctan(0)) < tolerance0
-        assert abs(tan(0.023) - ctan(0.023)) < tolerance0
-        assert abs(tan(0.125) - ctan(0.125)) < tolerance0
-        assert abs(tan(0.35) - ctan(0.35)) < tolerance0
-        assert abs(tan(42.0) - ctan(42.0)) < tolerance2
-        assert abs(tan(pi/4.0) - ctan(pi/4.0)) < tolerance0
-        assert abs(tan(pi/2.0) - ctan(pi/2.0)) < tolerance0
-        assert abs(tan(pi/3.0) - ctan(pi/3.0)) < tolerance0
-        assert abs(tan(2.0*pi/5.0) - ctan(2.0*pi/5.0)) < tolerance1
+        assert abs(tan(0) - math.tan(0)) < tolerance0
+        assert abs(tan(0.023) - math.tan(0.023)) < tolerance0
+        assert abs(tan(0.125) - math.tan(0.125)) < tolerance0
+        assert abs(tan(0.35) - math.tan(0.35)) < tolerance0
+        assert abs(tan(42.0) - math.tan(42.0)) < tolerance2
+        assert abs(tan(pi/4.0) - math.tan(pi/4.0)) < tolerance0
+        assert inf <= tan(pi/2.0) <= inf
+        assert abs(tan(pi/3.0) - math.tan(pi/3.0)) < tolerance0
+        assert abs(tan(2.0*pi/5.0) - math.tan(2.0*pi/5.0)) < tolerance1

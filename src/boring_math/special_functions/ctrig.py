@@ -15,9 +15,9 @@
 """Complex valued special functions."""
 
 from math import pi
-from .trig import exp as expf, sin as sinf, cos as cosf
+from .exponential import cexp as exp
 
-__all__ = ['exp', 'sin', 'cos', 'tan']
+__all__ = ['sin', 'cos', 'tan']
 
 mindepth = 22
 maxdepth = 22
@@ -31,23 +31,6 @@ def shift0(x: float) -> float:
     if shifted > pi:
         shifted = -1.0 * (shifted - pi)
     return shifted
-
-
-def shift1(x: float) -> float:
-    return x % two_pi
-
-
-def exp(z: complex, /, n: int = mindepth) -> complex:
-    """Partially factored Taylor expansion of exp about z = 0.
-
-    :param z: independent variable
-    :param n: terms in expansion, must have n >= 20
-    :returns: Value of ``eᶻ``
-
-    """
-    x = z.real
-    y = z.imag
-    return complex(expf(x), 0) * (cosf(shift1(y)) + jay * sinf(shift0(y)))
 
 
 def sin(z: complex, /, n: int = maxdepth) -> complex:

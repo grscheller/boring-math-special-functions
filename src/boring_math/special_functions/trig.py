@@ -14,17 +14,16 @@
 
 """Floating point special functions."""
 
-from math import pi, floor, ceil
-from .trig0 import exp0, sin0, cos0, tan0
+from math import pi
+from .trig0 import sin0, cos0, tan0
 
-__all__ = ['exp', 'sin', 'cos', 'tan']
+__all__ = ['sin', 'cos', 'tan']
 
 mindepth = 22
 maxdepth = 22
 
 two_pi = 2.0 * pi
 pi_half = pi / 2.0
-e = exp0(1)
 
 
 def shift0(x: float) -> float:
@@ -32,36 +31,6 @@ def shift0(x: float) -> float:
     if shifted > pi:
         shifted = -1.0 * (shifted - pi)
     return shifted
-
-
-def shift2(x: float) -> float:
-    shifted = x % pi
-    if shifted > pi_half:
-        shifted = -1.0 * (shifted - pi_half)
-    return shifted
-
-
-def shift3(x: float) -> float:
-    if x >= 0:
-        shifted = x % 1.0
-    else:
-        shifted = x % -1.0
-    return shifted
-
-
-def exp(x: float, /, n: int = mindepth) -> float:
-    """Partially factored Taylor expansion of exp about x = 0.
-
-    :param x: independent variable
-    :param n: terms in expansion, must have ``n >= 20``
-    :returns: Value of ``eˣ``
-
-    """
-    if x >= 0:
-        factor = e ** floor(x)
-    else:
-        factor = e ** ceil(x)
-    return exp0(shift3(x), n=n) * factor
 
 
 def sin(x: float, /, n: int = maxdepth) -> float:
@@ -75,6 +44,10 @@ def sin(x: float, /, n: int = maxdepth) -> float:
     return sin0(shift0(x), n=n)
 
 
+def shift1(x: float) -> float:
+    return x % two_pi
+
+
 def cos(x: float, /, n: int = maxdepth) -> float:
     """Partially factored Taylor expansion of cosine about x = 0.
 
@@ -83,7 +56,14 @@ def cos(x: float, /, n: int = maxdepth) -> float:
     :returns: Taylor series expansion of cosine(x) centered at x = 0
 
     """
-    return cos0(x % (two_pi), n=n)
+    return cos0(shift1(x), n=n)
+
+
+def shift2(x: float) -> float:
+    shifted = x % pi
+    if shifted > pi_half:
+        shifted = -1.0 * (shifted - pi_half)
+    return shifted
 
 
 def tan(x: float, /, n: int = maxdepth) -> float:

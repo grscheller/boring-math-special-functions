@@ -14,40 +14,18 @@
 
 """Complex valued special functions about a point."""
 
-from math import factorial as fac
+from math import factorial as factorial
 
-__all__ = ['exp0', 'sin0', 'cos0', 'tan0']
+__all__ = ['sin0', 'cos0', 'tan0']
 
-mindepth = 22
 maxdepth = 22
 
 s: list[complex] = list()
 c: list[complex] = list()
 
 for ii in range(maxdepth):
-    s.append(1 / fac(2 * ii + 1))
-    c.append(1 / fac(2 * (ii + 1)))
-
-
-def exp0(z: complex, /, n: int = mindepth) -> complex:
-    """Partially factored Taylor expansion of exp about z = 0.
-
-    .. note::
-
-        Best if ``|z| <= 1``.
-
-    :param z: independent variable
-    :param n: terms in expansion, must have n >= 20
-    :returns: Taylor series expansion of eᶻ centered at z = 0
-
-    """
-    d = float(max(n, mindepth))
-    accum = z / d
-    d -= 1.0
-    while d >= 0.5:
-        accum = z / d * (1 + accum)
-        d -= 1
-    return 1 + accum
+    s.append(1 / factorial(2 * ii + 1))
+    c.append(1 / factorial(2 * (ii + 1)))
 
 
 def sin0(z: complex, /, n: int = maxdepth) -> complex:

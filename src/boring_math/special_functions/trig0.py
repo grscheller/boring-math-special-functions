@@ -14,9 +14,9 @@
 
 """Floating point special functions about a point."""
 
-from math import factorial as fac
+from math import factorial, inf
 
-__all__ = ['exp0', 'sin0', 'cos0', 'tan0']
+__all__ = ['sin0', 'cos0', 'tan0']
 
 mindepth = 22
 maxdepth = 22
@@ -25,28 +25,9 @@ s: list[float] = list()
 c: list[float] = list()
 
 for ii in range(maxdepth):
-    s.append(1/fac(2*ii + 1))
-    c.append(1/fac(2*(ii + 1)))
+    s.append(1 / factorial(2 * ii + 1))
+    c.append(1 / factorial(2 * (ii + 1)))
 
-def exp0(x: float, /, n: int = mindepth) -> float:
-    """Partially factored Taylor expansion of exp about ``x = 0``.
-
-    .. note::
-
-        Best if ``-1 <= x <= 1``.
-
-    :param x: independent variable
-    :param n: terms in expansion, must have ``n >= 20``
-    :returns: Taylor series expansion of ``eˣ`` centered at ``x = 0``
-
-    """
-    d = float(max(n, mindepth))
-    accum = x/d
-    d -= 1.0
-    while d >= 0.5:
-        accum = x/d*(1 + accum)
-        d -= 1
-    return 1 + accum
 
 def sin0(x: float, /, n: int = maxdepth) -> float:
     """Partially factored Taylor expansion of sine about ``x = 0``.
@@ -104,11 +85,10 @@ def tan0(x: float, /, n: int = maxdepth) -> float:
     :returns: ``sin0(x)/cos0(x)``
 
     """
-    factor = 1.0
     try:
-        return sin0(x, n=n)/cos0(x, n=n)
+        return sin0(x, n=n) / cos0(x, n=n)
     except ZeroDivisionError:
-        num = sin0(x, n=n)
-        if num < 0:
-            factor = -1.0
-        return factor*1.633123935319537e16
+        if sin0(x, n=n) >= 0:
+            return inf
+        else:
+            return -inf

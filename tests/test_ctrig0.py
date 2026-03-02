@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from math import pi
-from cmath import sin as csin, cos as ccos, tan as ctan
+from cmath import sin as std_csin, cos as std_ccos, tan as std_ctan
 from boring_math.special_functions.ctrig0 import sin0, cos0, tan0
 
 tolerance0 = 5.0e-16
@@ -23,27 +23,27 @@ tolerance2 = 5.0e-14
 
 class Test_sin0:
     def test_sin0(self) -> None:
-        assert abs((sin0(0) - csin(0))) < tolerance0
-        assert abs((sin0(0.023+0j) - csin(0.023+0j))) < tolerance0
-        assert abs((sin0(0.35) - csin(0.35))) < tolerance0
-        assert abs((sin0(pi/4.0) - csin(pi/4.0))) < tolerance0
-        assert abs((sin0(-2.0*pi/3.0) - csin(-2.0*pi/3.0))) < tolerance0
+        assert abs((sin0(0) - std_csin(0))) < tolerance0
+        assert abs((sin0(0.023+0j) - std_csin(0.023+0j))) < tolerance0
+        assert abs((sin0(0.35) - std_csin(0.35))) < tolerance0
+        assert abs((sin0(pi/4.0) - std_csin(pi/4.0))) < tolerance0
+        assert abs((sin0(-2.0*pi/3.0) - std_csin(-2.0*pi/3.0))) < tolerance0
 
 class Test_cos0:
     def test_cos0(self) -> None:
-        assert abs((cos0(0) - ccos(0))) < tolerance0
-        assert abs((cos0(0.125+0j) - ccos(0.125+0j))) < tolerance0
-        assert abs((cos0(0.125) - ccos(0.125))) < tolerance0
-        assert abs((cos0(0.35) - ccos(0.35))) < tolerance0
-        assert abs((cos0(pi/2.0) - ccos(pi/2.0))) < tolerance0
-        assert abs((cos0(pi) - ccos(pi))) < tolerance0
-        assert abs((cos0(1.5*pi) - ccos(1.5*pi))) < tolerance0
+        assert abs((cos0(0) - std_ccos(0))) < tolerance0
+        assert abs((cos0(0.125+0j) - std_ccos(0.125+0j))) < tolerance0
+        assert abs((cos0(0.125) - std_ccos(0.125))) < tolerance0
+        assert abs((cos0(0.35) - std_ccos(0.35))) < tolerance0
+        assert abs((cos0(pi/2.0) - std_ccos(pi/2.0))) < tolerance0
+        assert abs((cos0(pi) - std_ccos(pi))) < tolerance0
+        assert abs((cos0(1.5*pi) - std_ccos(1.5*pi))) < tolerance0
 
 class Test_tan0:
     def test_cos0(self) -> None:
-        assert abs(tan0(0) - ctan(0)) < tolerance0
-        assert abs(tan0(0.023) - ctan(0.023)) < tolerance0
-        assert abs(tan0(0.35) - ctan(0.35)) < tolerance0
-        assert abs(tan0(pi/3.0) - ctan(pi/3.0)) < tolerance0
-        assert abs(tan0(pi/5.0) - ctan(pi/5.0)) < tolerance0
-        assert abs(tan0(3.0*pi/5.0) - ctan(3.0*pi/5.0)) < tolerance1
+        assert abs(tan0(0) - std_ctan(0)) < tolerance0
+        assert abs(tan0(0.023) - std_ctan(0.023)) < tolerance0
+        assert abs(tan0(0.35) - std_ctan(0.35)) < tolerance0
+        assert abs(tan0(pi/3.0) - std_ctan(pi/3.0)) < tolerance0
+        assert abs(tan0(pi/5.0) - std_ctan(pi/5.0)) < tolerance0
+        assert abs(tan0(3.0*pi/5.0) - std_ctan(3.0*pi/5.0)) < tolerance1

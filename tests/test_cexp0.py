@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import exp as cexp
+from cmath import exp as std_cexp
 from math import pi
-from boring_math.special_functions.ctrig0 import exp0
+from boring_math.special_functions.exponential import cexp0
 from boring_math.special_functions.trig0 import sin0, cos0
 
-tolerance = 5.0e-16
+tolerance0 = 5.0e-16
 
 zero = complex(0, 0)
 one = complex(1, 0)
@@ -34,19 +34,19 @@ c3 = complex(cos0(0.613*pi), sin0(0.613*pi))
 c4 = complex(cos0(-0.244*pi), sin0(-0.244*pi))
 
 
-class Test_exp0:
-    def test_exp0(self) -> None:
-        assert abs(exp0(zero) - cexp(zero)) < tolerance
-        assert abs(exp0(one) - cexp(one)) < tolerance
-        assert abs(exp0(neg_one) - cexp(neg_one)) < tolerance
-        assert abs(exp0(eye) - cexp(eye)) < tolerance
-        assert abs(exp0(neg_eye) - cexp(neg_eye)) < tolerance
-        assert abs(exp0(eye_pi_div_2) - cexp(eye_pi_div_2)) < tolerance
-        assert abs(exp0(neg_eye_pi_div_2) - cexp(neg_eye_pi_div_2)) < tolerance
-        assert abs(exp0(eye_pi_div_4) - cexp(eye_pi_div_4)) < tolerance
-        assert abs(exp0(neg_eye_pi_div_4) - cexp(neg_eye_pi_div_4)) < tolerance
-        assert abs(exp0(neg_eye_pi_div_4) - cexp(neg_eye_pi_div_4)) < tolerance
-        assert abs(exp0(c1) - cexp(c1)) < tolerance
-        assert abs(exp0(c2) - cexp(c2)) < tolerance
-        assert abs(exp0(c3) - cexp(c3)) < tolerance
-        assert abs(exp0(c4) - cexp(c4)) < tolerance
+class Test_cexp0:
+    def test_cexp0(self) -> None:
+        assert abs(cexp0(zero) - std_cexp(zero)) < tolerance0
+        assert abs(cexp0(one) - std_cexp(one)) < tolerance0
+        assert abs(cexp0(neg_one) - std_cexp(neg_one)) < tolerance0
+        assert abs(cexp0(eye) - std_cexp(eye)) < tolerance0
+        assert abs(cexp0(neg_eye) - std_cexp(neg_eye)) < tolerance0
+        assert abs(cexp0(eye_pi_div_2) - std_cexp(eye_pi_div_2)) < tolerance0
+        assert abs(cexp0(neg_eye_pi_div_2) - std_cexp(neg_eye_pi_div_2)) < tolerance0
+        assert abs(cexp0(eye_pi_div_4) - std_cexp(eye_pi_div_4)) < tolerance0
+        assert abs(cexp0(neg_eye_pi_div_4) - std_cexp(neg_eye_pi_div_4)) < tolerance0
+        assert abs(cexp0(neg_eye_pi_div_4) - std_cexp(neg_eye_pi_div_4)) < tolerance0
+        assert abs(cexp0(c1) - std_cexp(c1)) < tolerance0
+        assert abs(cexp0(c2) - std_cexp(c2)) < tolerance0
+        assert abs(cexp0(c3) - std_cexp(c3)) < tolerance0
+        assert abs(cexp0(c4) - std_cexp(c4)) < tolerance0
