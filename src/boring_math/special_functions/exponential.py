@@ -33,7 +33,7 @@ def exp0(x: float, /, n: int = mindepth) -> float:
         Best if ``-1 <= x <= 1``.
 
     :param x: independent variable
-    :param n: terms in expansion, must have ``n >= 20``
+    :param n: terms in expansion, must have ``n >= 22``
     :returns: Taylor series expansion of ``eˣ`` centered at ``x = 0``
 
     """
@@ -58,7 +58,7 @@ def shift0(x: float) -> float:
 
 
 def exp(x: float, /, n: int = mindepth) -> float:
-    """Partially factored Taylor expansion of exp about x = 0.
+    """Exponential function good for all floating point x.
 
     :param x: independent variable
     :param n: terms in expansion, must have ``n >= 20``
@@ -98,7 +98,7 @@ def shift1(x: float) -> float:
 
 
 def cexp(z: complex, /, n: int = mindepth) -> complex:
-    """Partially factored Taylor expansion of exp about z = 0.
+    """Exponential function good for all complex z.
 
     :param z: independent variable
     :param n: terms in expansion, must have n >= 20
