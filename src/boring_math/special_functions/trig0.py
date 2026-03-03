@@ -74,7 +74,7 @@ def cos0(x: float, /, n: int = maxdepth) -> float:
 
 
 def tan0(x: float, /, n: int = maxdepth) -> float:
-    """Tangent centered about x = 0.
+    """Tangent centered about ``x = 0``.
 
     .. note::
 

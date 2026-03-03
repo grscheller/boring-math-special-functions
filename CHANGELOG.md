@@ -14,6 +14,12 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
+### PyPI Release 3.0.0 - 2026-03-03
+
+Breaking API changes.
+
+- improved trig function names leading to better docs
+
 ### PyPI Release 2.0.0 - 2026-03-02
 
 Breaking API changes.

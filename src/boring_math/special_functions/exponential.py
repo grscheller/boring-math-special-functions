@@ -15,7 +15,7 @@
 """Floating point special functions about a point."""
 
 from math import ceil, floor, pi
-from .trig import sin as sinf, cos as cosf
+from .trig import sin, cos
 
 __all__ = ['exp0', 'exp', 'cexp0', 'cexp']
 
@@ -61,7 +61,7 @@ def exp(x: float, /, n: int = mindepth) -> float:
     """Exponential function good for all floating point x.
 
     :param x: independent variable
-    :param n: terms in expansion, must have ``n >= 20``
+    :param n: terms in expansion, must have ``n >= 22``
     :returns: Value of ``eˣ``
 
     """
@@ -80,7 +80,7 @@ def cexp0(z: complex, /, n: int = mindepth) -> complex:
         Best if ``|z| <= 1``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have n >= 20
+    :param n: terms in expansion, must have n >= 22
     :returns: Taylor series expansion of eᶻ centered at z = 0
 
     """
@@ -107,4 +107,4 @@ def cexp(z: complex, /, n: int = mindepth) -> complex:
     """
     x = z.real
     y = z.imag
-    return complex(exp(x), 0) * (cosf(shift1(y)) + jay * sinf(shift1(y)))
+    return complex(exp(x), 0) * (cos(shift1(y)) + jay * sin(shift1(y)))

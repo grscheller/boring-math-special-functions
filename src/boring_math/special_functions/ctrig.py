@@ -15,9 +15,9 @@
 """Complex valued special functions."""
 
 from math import pi
-from .exponential import cexp as exp
+from .exponential import cexp
 
-__all__ = ['sin', 'cos', 'tan']
+__all__ = ['csin', 'ccos', 'ctan']
 
 mindepth = 22
 maxdepth = 22
@@ -33,7 +33,7 @@ def shift0(x: float) -> float:
     return shifted
 
 
-def sin(z: complex, /, n: int = maxdepth) -> complex:
+def csin(z: complex, /, n: int = maxdepth) -> complex:
     """Partially factored Taylor expansion of sine about z = 0.
 
     :param z: independent variable
@@ -43,10 +43,10 @@ def sin(z: complex, /, n: int = maxdepth) -> complex:
     """
     x = z.real
     y = z.imag
-    return 0.5 * jay * (exp(y - jay * x) - exp(-y + jay * x))
+    return 0.5 * jay * (cexp(y - jay * x) - cexp(-y + jay * x))
 
 
-def cos(z: complex, /, n: int = maxdepth) -> complex:
+def ccos(z: complex, /, n: int = maxdepth) -> complex:
     """Partially factored Taylor expansion of cosine about z = 0.
 
     :param z: independent variable
@@ -56,10 +56,10 @@ def cos(z: complex, /, n: int = maxdepth) -> complex:
     """
     x = z.real
     y = z.imag
-    return 0.5 * (exp(-y + jay * x) + exp(y - jay * x))
+    return 0.5 * (cexp(-y + jay * x) + cexp(y - jay * x))
 
 
-def tan(z: complex, /, n: int = maxdepth) -> complex:
+def ctan(z: complex, /, n: int = maxdepth) -> complex:
     """Tangent centered about z = 0.
 
     :param z: independent variable
@@ -68,6 +68,6 @@ def tan(z: complex, /, n: int = maxdepth) -> complex:
 
     """
     try:
-        return sin(z) / cos(z)
+        return csin(z) / ccos(z)
     except ZeroDivisionError:
         return 1.633123935319537e16 + 0j

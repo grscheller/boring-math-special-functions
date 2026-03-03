@@ -15,14 +15,14 @@
 """Complex valued special functions."""
 
 from math import pi
-from .exponential import exp as rexp, cexp as exp
-from .ctrig import sin
+from .exponential import exp, cexp
+from .ctrig import csin
 from .trig import sin as rsin
 
 __all__ = ['gamma', 'gamma_real']
 
 two_pi = 2.0*pi
-sqrt_two_pi = two_pi**0.5
+sqrt_two_pi = float(two_pi**0.5)
 comp_sqrt_two_pi = complex(sqrt_two_pi)
 jay = 0.0 + 1.0j
 
@@ -55,7 +55,7 @@ def gamma(z: complex) -> complex:
     ]
 
     if z.real < 0.5:
-        return pi / (sin(pi * z) * gamma(1.0 - z))  # Reflection formula
+        return pi / (csin(pi * z) * gamma(1.0 - z))  # Reflection formula
     else:
         z -= 1.0+0.0j
         y = p[0]
@@ -63,7 +63,7 @@ def gamma(z: complex) -> complex:
             y += p[ii] / (z + ii)
         t = z + g7
         z += 0.5+0.0j
-        return complex(sqrt_two_pi) * t**z * exp(-t) * y
+        return comp_sqrt_two_pi * t**z * cexp(-t) * y
 
 
 def gamma_real(x: float) -> float:
@@ -91,4 +91,5 @@ def gamma_real(x: float) -> float:
             y += p[ii] / (x + ii)
         t = x + g7
         x += 0.5
-        return sqrt_two_pi * (t**x) * rexp(-t) * y
+        t_to_x = float(t**x)
+        return sqrt_two_pi * t_to_x * exp(-t) * y

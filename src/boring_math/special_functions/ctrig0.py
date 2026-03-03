@@ -14,9 +14,9 @@
 
 """Complex valued special functions about a point."""
 
-from math import factorial as factorial
+from math import factorial, inf
 
-__all__ = ['sin0', 'cos0', 'tan0']
+__all__ = ['csin0', 'ccos0', 'ctan0']
 
 maxdepth = 22
 
@@ -28,7 +28,7 @@ for ii in range(maxdepth):
     c.append(1 / factorial(2 * (ii + 1)))
 
 
-def sin0(z: complex, /, n: int = maxdepth) -> complex:
+def csin0(z: complex, /, n: int = maxdepth) -> complex:
     """Partially factored Taylor expansion of sine about z = 0.
 
     .. note::
@@ -36,7 +36,7 @@ def sin0(z: complex, /, n: int = maxdepth) -> complex:
         Best if ``|z| <= 2π``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have ``2 <= n <= 20``
+    :param n: terms in expansion, must have ``2 <= n <= 22``
     :returns: Taylor series expansion of sine(x) centered at ``z = 0``
 
     """
@@ -50,7 +50,7 @@ def sin0(z: complex, /, n: int = maxdepth) -> complex:
     return z * (1 - accum)
 
 
-def cos0(z: complex, /, n: int = maxdepth) -> complex:
+def ccos0(z: complex, /, n: int = maxdepth) -> complex:
     """Partially factored Taylor expansion of cosine about ``z = 0``.
 
     .. note::
@@ -58,7 +58,7 @@ def cos0(z: complex, /, n: int = maxdepth) -> complex:
         Best if ``|z| <= 2π``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have ``2 <= n <= 20``
+    :param n: terms in expansion, must have ``2 <= n <= 22``
     :returns: Taylor series expansion of cosine(z) centered at ``z = 0``
 
     """
@@ -72,7 +72,7 @@ def cos0(z: complex, /, n: int = maxdepth) -> complex:
     return 1 - accum
 
 
-def tan0(z: complex, /, n: int = maxdepth) -> complex:
+def ctan0(z: complex, /, n: int = maxdepth) -> complex:
     """Tangent centered about ``z = 0``.
 
     .. note::
@@ -80,18 +80,18 @@ def tan0(z: complex, /, n: int = maxdepth) -> complex:
         Best if ``|z| <= π``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have ``2 <= n <= 20``
-    :returns: ``sin0(z)/cos0(z)``
+    :param n: terms in expansion, must have ``2 <= n <= 22``
+    :returns: ``csin0(z)/ccos0(z)``
 
     """
     try:
-        return sin0(z, n=n) / cos0(z, n=n)
+        return csin0(z, n=n) / ccos0(z, n=n)
     except ZeroDivisionError:
-        absnum = abs(num := sin0(z, n=n))
+        absnum = abs(num := csin0(z, n=n))
         if absnum > 0:
             factor = num / absnum
         elif num.real >= 0:
             factor = complex(1.0, 0.0)
         else:
             factor = complex(-1.0, 0.0)
-        return factor * 1.633123935319537e16
+        return factor * inf
