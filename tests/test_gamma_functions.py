@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from math import pi, factorial as factorial
+from math import pi, factorial as fac
 from boring_math.special_functions.gamma import gamma, gamma_real
 
 tolerance0 = 5.0e-16
@@ -23,32 +23,38 @@ tolerance4 = 5.0e-12
 tolerance5 = 5.0e-11
 
 sqrt_pi = pi**0.5
-jay = 0.0 + 1.0j
+jay = 0.0+1.0j
+one = 1.0+0.0j
+two = 2.0+0.0j
+three = 3.0+0.0j
+four = 4.0+0.0j
+five = 5.0+0.0j
+six = 6.0+0.0j
 
 
 class Test_gamma:
     def test_gamma_real(self) -> None:
-        assert abs(gamma_real(1.0) - float(factorial(0))) < tolerance0
-        assert abs(gamma_real(2.0) - float(factorial(1))) < tolerance0
-        assert abs(gamma_real(3.0) - float(factorial(2))) < tolerance1
-        assert abs(gamma_real(4.0) - float(factorial(3))) < tolerance2
-        assert abs(gamma_real(5.0) - float(factorial(4))) < tolerance2
-        assert abs(gamma_real(6.0) - float(factorial(5))) < tolerance3
-        assert abs(gamma_real(21.0) - float(factorial(20)))/factorial(20) < tolerance1
+        assert abs(gamma_real(1.0) - float(fac(0))) < tolerance0
+        assert abs(gamma_real(2.0) - float(fac(1))) < tolerance0
+        assert abs(gamma_real(3.0) - float(fac(2))) < tolerance1
+        assert abs(gamma_real(4.0) - float(fac(3))) < tolerance2
+        assert abs(gamma_real(5.0) - float(fac(4))) < tolerance2
+        assert abs(gamma_real(6.0) - float(fac(5))) < tolerance3
+        assert abs(gamma_real(21.0) - float(fac(20)))/fac(20) < tolerance1
         assert abs(gamma_real(0.5) - sqrt_pi) < tolerance0
         assert abs(gamma_real(1.5) - sqrt_pi/2) < tolerance1
         assert abs(gamma_real(2.5) - 3*sqrt_pi/4) < tolerance1
 
     def test_gamma_complex(self) -> None:
-        assert abs(gamma(1.0+0.0j) - complex(factorial(0), 0)) < tolerance0
-        assert abs(gamma(2.0+0.0j) - complex(factorial(1), 0)) < tolerance0
-        assert abs(gamma(3.0+0.0j) - complex(factorial(2), 0)) < tolerance1
-        assert abs(gamma(4.0+0.0j) - complex(factorial(3), 0)) < tolerance2
-        assert abs(gamma(5.0+0.0j) - complex(factorial(4), 0)) < tolerance2
-        assert abs(gamma(6.0+0.0j) - complex(factorial(5), 0)) < tolerance3
-        assert abs(gamma(21.0+0.0j) - complex(factorial(20), 0))/factorial(20) < tolerance1
+        assert abs(gamma(one) - complex(fac(0))) < tolerance0
+        assert abs(gamma(two) - complex(fac(1))) < tolerance0
+        assert abs(gamma(three) - complex(fac(2))) < tolerance1
+        assert abs(gamma(four) - complex(fac(3))) < tolerance2
+        assert abs(gamma(five) - complex(fac(4))) < tolerance2
+        assert abs(gamma(six) - complex(fac(5))) < tolerance3
+        assert abs(gamma(21.0+0.0j) - complex(fac(20))) / fac(20) < tolerance1
         assert abs(gamma(0.5+0.0j) - sqrt_pi) < tolerance0
         assert abs(gamma(1.5+0.0j) - sqrt_pi/2) < tolerance1
         assert abs(gamma(2.5+0.0j) - 3*sqrt_pi/4) < tolerance1
-        assert abs(gamma(0.0+1.0j) - (-0.1549498283018106-0.4980156681183560j)) < tolerance0
-        assert abs(gamma(1.0+1.0j) - (0.4980156681183560-0.1549498283018106j)) < tolerance0
+        assert abs(gamma(jay) - (-0.1549498283018106-0.4980156681183560j)) < tolerance0
+        assert abs(gamma(one + jay) - (0.4980156681183560-0.1549498283018106j)) < tolerance0

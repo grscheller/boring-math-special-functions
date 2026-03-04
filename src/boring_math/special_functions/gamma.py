@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Complex valued special functions."""
+"""Gamma function."""
 
 from math import pi
 from .exponential import exp, cexp
