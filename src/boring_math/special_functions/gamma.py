@@ -77,7 +77,7 @@ def gamma_real(x: float) -> float:
     """Gamma function valid for all real values of x.
 
     :param x: Floating point argument.
-    :returns: Value of analytic continuation of ``gamma(z)``.
+    :returns: Value of ``gamma(x)``.
 
     """
     g7 = 7.5
