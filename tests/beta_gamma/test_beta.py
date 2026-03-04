@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from math import pi, factorial as fac
+from math import pi
 from boring_math.special_functions.beta import beta, beta_real
 
 tolerance0 = 5.0e-16
@@ -22,14 +22,22 @@ tolerance3 = 5.0e-13
 tolerance4 = 5.0e-12
 tolerance5 = 5.0e-11
 
-sqrt_pi = pi**0.5
 jay = 0.0+1.0j
+zero = 0.0+0.0j
 one = 1.0+0.0j
+two = 2.0+0.0j
+three = 3.0+0.0j
+four = 4.0+0.0j
+five = 5.0+0.0j
 
 
 class Test_gamma:
     def test_beta_real(self) -> None:
-        assert abs(beta_real(1.0, 1.0) - float(fac(0)*fac(0)/fac(1))) < tolerance0
+        assert abs(beta_real(1.0, 1.0) - 1.0) < tolerance0
+        assert abs(beta_real(2.0, 3.0) - 1.0/12.0) < tolerance0
+        assert abs(beta_real(2.5, 3.5) - 3.0*pi/256) < tolerance0
 
-    def test_gamma_complex(self) -> None:
-        assert abs(beta(one, one) - complex(fac(0)*fac(0)/fac(1))) < tolerance0
+    def test_beta_complex(self) -> None:
+        assert abs(beta(one, one) - 1.0+0.0j) < tolerance0
+        assert abs(beta(one, two) - 0.5+0.0j) < tolerance0
+        assert abs(beta(five, four) - 0.0035714285714285713+0.0j) < tolerance0

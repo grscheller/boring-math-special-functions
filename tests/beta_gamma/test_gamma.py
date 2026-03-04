@@ -23,6 +23,7 @@ tolerance4 = 5.0e-12
 tolerance5 = 5.0e-11
 
 sqrt_pi = pi**0.5
+euler = 0.57721566490153286060
 jay = 0.0+1.0j
 one = 1.0+0.0j
 two = 2.0+0.0j
@@ -44,6 +45,10 @@ class Test_gamma:
         assert abs(gamma_real(0.5) - sqrt_pi) < tolerance0
         assert abs(gamma_real(1.5) - sqrt_pi/2) < tolerance1
         assert abs(gamma_real(2.5) - 3*sqrt_pi/4) < tolerance1
+        assert abs(gamma_real(1.0/3.0) - 2.67893853470774763365) < tolerance0
+        assert abs(gamma_real(2.0/3.0) - 1.35411793942640041694) < tolerance0
+        assert abs(gamma_real(0.75) - 1.22541670246517764512) < tolerance1
+        assert abs(gamma_real(0.25) - 3.62560990822190831193) < tolerance1
 
     def test_gamma_complex(self) -> None:
         assert abs(gamma(one) - complex(fac(0))) < tolerance0
@@ -58,3 +63,5 @@ class Test_gamma:
         assert abs(gamma(2.5+0.0j) - 3*sqrt_pi/4) < tolerance1
         assert abs(gamma(jay) - (-0.1549498283018106-0.4980156681183560j)) < tolerance0
         assert abs(gamma(one + jay) - (0.4980156681183560-0.1549498283018106j)) < tolerance0
+        assert abs(gamma(0.75+0.0j) - 1.22541670246517764512+0.0j) < tolerance1
+        assert abs(gamma(0.25+0.0j) - 3.62560990822190831193+0.0j) < tolerance2
