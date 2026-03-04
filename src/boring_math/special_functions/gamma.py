@@ -14,7 +14,7 @@
 
 """Gamma function."""
 
-from math import pi
+from math import pi, inf
 from .exponential import exp, cexp
 from .ctrig import csin
 from .trig import sin as rsin
@@ -39,6 +39,10 @@ def gamma(z: complex) -> complex:
         Code modified from the `Wikipedia Lanczos appoximation article
         <https://en.wikipedia.org/wiki/Lanczos_approximation>`_.
 
+    :param z: Complex argument.
+    :returns: Value of analytic continuation of ``gamma(z)``. Uses
+              positive inf to represent represent complex infinity.
+
     """
     g7 = 7.5 + 0.0j
     n = 9
@@ -55,7 +59,10 @@ def gamma(z: complex) -> complex:
     ]
 
     if z.real < 0.5:
-        return pi / (csin(pi * z) * gamma(1.0 - z))  # Reflection formula
+        try:
+            return pi / (csin(pi * z) * gamma(1.0 - z))  # Reflection formula
+        except ZeroDivisionError:
+            return inf
     else:
         z -= 1.0+0.0j
         y = p[0]
@@ -67,7 +74,12 @@ def gamma(z: complex) -> complex:
 
 
 def gamma_real(x: float) -> float:
-    """Gamma function valid for all real values of x."""
+    """Gamma function valid for all real values of x.
+
+    :param x: Floating point argument.
+    :returns: Value of analytic continuation of ``gamma(z)``.
+
+    """
     g7 = 7.5
     n = 9
     p = [
@@ -83,7 +95,10 @@ def gamma_real(x: float) -> float:
     ]
 
     if x < 0.5:
-        return pi / (rsin(pi*x) * gamma_real(1.0 - x))  # Reflection formula
+        try:
+            return pi / (rsin(pi*x) * gamma_real(1.0 - x))  # Reflection formula
+        except ZeroDivisionError:
+            return inf
     else:
         x -= 1.0
         y = p[0]
