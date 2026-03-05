@@ -69,7 +69,7 @@ class Test_gamma_shift_explore:
         assert abs(gamma(9.75)/(0.75*1.75*2.75*3.75*4.75*5.75*6.75*7.75*8.75) - 1.22541670246517764512) < tolerance2
 
         assert abs(gamma(0.25) - 3.62560990822190831193) < tolerance4
-        assert abs(gamma(1.25)/(0.25) - 3.62560990822190831193) < tolerance2
+        assert abs(gamma(1.25) - 0.25*gamma(0.25)) < tolerance2
         assert abs(gamma(2.25)/(0.25*1.25) - 3.62560990822190831193) < tolerance2
         assert abs(gamma(3.25)/(0.25*1.25*2.25) - 3.62560990822190831193) < tolerance2
         assert abs(gamma(4.25)/(0.25*1.25*2.25*3.25) - 3.62560990822190831193) < tolerance3
@@ -125,3 +125,72 @@ class Test_gamma_shift_explore:
          assert 49.4422101631956 < gamma(0.02).real < 49.4422101631957
          assert 99.4325851191506 < gamma(0.01).real < 99.4325851191507
          assert 199.427707050202 < gamma(0.005).real < 199.427707050203
+
+    def test_gamma_step_down_0_5(self) -> None:
+        assert abs(gamma(0.5+1.0j) - (0.3006946172606561-0.42496787943312364j)) <= tolerance2
+        assert abs(gamma(0.5+0.9j) - (0.3569971977013909-0.49294814036733847j)) <= tolerance2
+        assert abs(gamma(0.5+0.8j) - (0.4306297031135052-0.56585745696284240j)) <= tolerance2
+        assert abs(gamma(0.5+0.7j) - (0.5274198573183648-0.64044947484521810j)) <= tolerance2
+        assert abs(gamma(0.5+0.6j) - (0.6542928765318525-0.71022181485669000j)) <= tolerance2
+        assert abs(gamma(0.5+0.5j) - (0.8181639995417405-0.76331382871398120j)) <= tolerance2
+        assert abs(gamma(0.5+0.4j) - (1.0226690032213737-0.78000232430956540j)) <= tolerance2
+        assert abs(gamma(0.5+0.3j) - (1.2609927863965710-0.73175950569183290j)) <= tolerance2
+        assert abs(gamma(0.5+0.2j) - (1.5047979605685253-0.58731576760504370j)) <= tolerance2
+        assert abs(gamma(0.5+0.1j) - (1.6976178263828794-0.33284283907262086j)) <= tolerance2
+        assert abs(gamma(0.5+0.0j) - (pi**0.5)) <= tolerance2
+        assert abs(gamma(0.5-0.1j) - (1.6976178263828856+0.33284283907262147j)) <= tolerance2
+        assert abs(gamma(0.5-0.2j) - (1.5047979605685264+0.5873157676050431j)) <= tolerance2
+        assert abs(gamma(0.5-0.3j) - (1.2609927863965775+0.7317595056918342j)) <= tolerance2
+        assert abs(gamma(0.5-0.4j) - (1.0226690032213754+0.7800023243095655j)) <= tolerance2
+        assert abs(gamma(0.5-0.5j) - (0.8181639995417473+0.7633138287139827j)) <= tolerance2
+        assert abs(gamma(0.5-0.6j) - (0.6542928765318525+0.7102218148566902j)) <= tolerance2
+        assert abs(gamma(0.5-0.7j) - (0.5274198573183714+0.640449474845219j)) <= tolerance2
+        assert abs(gamma(0.5-0.8j) - (0.4306297031135083+0.5658574569628427j)) <= tolerance2
+        assert abs(gamma(0.5-0.9j) - (0.35699719770139293+0.4929481403673382j)) <= tolerance2
+        assert abs(gamma(0.5-1.0j) - (0.3006946172606562+0.42496787943312364j)) <= tolerance2
+
+    def test_gamma_step_down_1_0(self) -> None:
+        assert abs(gamma(1.0+1.0j) - (0.4980156681183563-0.15494982830181075j)) <= tolerance2
+        assert abs(gamma(1.0+0.9j) - (0.5523283329225556-0.17514590718657191j)) <= tolerance2
+        assert abs(gamma(1.0+0.8j) - (0.6107989880679575-0.19177395301476516j)) <= tolerance2
+        assert abs(gamma(1.0+0.7j) - (0.6728253931632413-0.20285243648300230j)) <= tolerance2
+        assert abs(gamma(1.0+0.6j) - (0.7371564227998941-0.20619323776345633j)) <= tolerance2
+        assert abs(gamma(1.0+0.5j) - (0.8016940970697127-0.19963973816459790j)) <= tolerance2
+        assert abs(gamma(1.0+0.4j) - (0.8633791138852640-0.18145712581519724j)) <= tolerance2
+        assert abs(gamma(1.0+0.3j) - (0.9182730233911345-0.15084922588288902j)) <= tolerance2
+        assert abs(gamma(1.0+0.2j) - (0.9619474203206209-0.10848528178474010j)) <= tolerance2
+        assert abs(gamma(1.0+0.1j) - (0.9902066295883810-0.05682380875371226j)) <= tolerance2
+        assert abs(gamma(1.0+0.0j) - (1.0+0.0j)) <= tolerance2
+        assert abs(gamma(1.0-0.1j) - (0.9902066295883846+0.05682380875371215j)) <= tolerance2
+        assert abs(gamma(1.0-0.2j) - (0.9619474203206217+0.10848528178473960j)) <= tolerance2
+        assert abs(gamma(1.0-0.3j) - (0.9182730233911386+0.15084922588288846j)) <= tolerance2
+        assert abs(gamma(1.0-0.4j) - (0.8633791138852651+0.18145712581519668j)) <= tolerance2
+        assert abs(gamma(1.0-0.5j) - (0.8016940970697176+0.19963973816459646j)) <= tolerance2
+        assert abs(gamma(1.0-0.6j) - (0.7371564227998941+0.20619323776345650j)) <= tolerance2
+        assert abs(gamma(1.0-0.7j) - (0.6728253931632462+0.20285243648299994j)) <= tolerance2
+        assert abs(gamma(1.0-0.8j) - (0.6107989880679598+0.19177395301476366j)) <= tolerance2
+        assert abs(gamma(1.0-0.9j) - (0.5523283329225570+0.17514590718657067j)) <= tolerance2
+        assert abs(gamma(1.0-1.0j) - (0.4980156681183564+0.15494982830181060j)) <= tolerance2
+
+    def test_gamma_step_down_1_5(self) -> None:
+        assert abs(gamma(1.5+1.0j) - (0.5753151880634519+0.08821067754409376j)) <= tolerance2
+        assert abs(gamma(1.5+0.9j) - (0.6221519251813004+0.07482340774758209j)) <= tolerance2
+        assert abs(gamma(1.5+0.8j) - (0.6680008171270273+0.06157503400938330j)) <= tolerance2
+        assert abs(gamma(1.5+0.7j) - (0.7120245610508359+0.04896916270024659j)) <= tolerance2
+        assert abs(gamma(1.5+0.6j) - (0.7532795271799406+0.03746481849076683j)) <= tolerance2
+        assert abs(gamma(1.5+0.5j) - (0.7907389141278611+0.027425085413879724j)) <= tolerance2
+        assert abs(gamma(1.5+0.4j) - (0.8233354313345141+0.019066439133767377j)) <= tolerance2
+        assert abs(gamma(1.5+0.3j) - (0.8500242449058351+0.012418083073055253j)) <= tolerance2
+        assert abs(gamma(1.5+0.2j) - (0.8698621338052719+0.0073017083111836245j)) <= tolerance2
+        assert abs(gamma(1.5+0.1j) - (0.8820931970987023+0.0033403631019776198j)) <= tolerance2
+        assert abs(gamma(1.5+0.0j) - (pi**0.5 * 0.5)) <= tolerance2
+        assert abs(gamma(1.5-0.1j) - (0.8820931970987054-0.003340363101977925j)) <= tolerance2
+        assert abs(gamma(1.5-0.2j) - (0.8698621338052726-0.007301708311184041j)) <= tolerance2
+        assert abs(gamma(1.5-0.3j) - (0.8500242449058388-0.012418083073056474j)) <= tolerance2
+        assert abs(gamma(1.5-0.4j) - (0.8233354313345149-0.019066439133767932j)) <= tolerance2
+        assert abs(gamma(1.5-0.5j) - (0.7907389141278653-0.0274250854138825j)) <= tolerance2
+        assert abs(gamma(1.5-0.6j) - (0.7532795271799407-0.037464818490766716j)) <= tolerance2
+        assert abs(gamma(1.5-0.7j) - (0.7120245610508398-0.0489691627002507j)) <= tolerance2
+        assert abs(gamma(1.5-0.8j) - (0.6680008171270291-0.061575034009385576j)) <= tolerance2
+        assert abs(gamma(1.5-0.9j) - (0.6221519251813011-0.07482340774758398j)) <= tolerance2
+        assert abs(gamma(1.5-1.0j) - (0.5753151880634522-0.0882106775440939j)) <= tolerance2
