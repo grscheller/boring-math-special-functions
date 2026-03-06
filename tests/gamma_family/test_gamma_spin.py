@@ -16,324 +16,412 @@ from math import pi, inf
 from boring_math.special_functions.trig import cos, sin
 from boring_math.special_functions.gamma import gamma
 
-tolerance = 5.0e-14
-
 jay = 0.0+1.0j
 infinity = inf + jay*inf
 o_pt5 = 0.5+0.0j
 o_one = 1.0+0.0j
+o_zero = 0.0+0.0j
 o_1_j = 1.0+1.0j
 o_1_nj = 1.0-1.0j
-r = 0.25
-r1 = 1.0
+r0_25 = 0.25
+r0_50 = 0.5
+r1_00 = 1.0
 w = 2.0*pi/24.0
+
+tolerance = 2.0e-14
 
 class Test_gamma_shift_explore:
     def test_gamma_spin_pt5(self) -> None:
         assert abs(
-            gamma(o_pt5 + r*(cos(0.0*w) + jay*sin(0.0*w))) - (1.22541670246517764512+0.0j) # exact value
+            gamma(o_pt5 + r0_25*(cos(0.0*w) + jay*sin(0.0*w))) - (1.22541670246518+0.0j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(1.0*w) + jay*sin(1.0*w))) - (1.2271181171726913-0.08779977180512569j)
+            gamma(o_pt5 + r0_25*(cos(1.0*w) + jay*sin(1.0*w))) - (1.22711811717269-0.08779977180513j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(2.0*w) + jay*sin(2.0*w))) - (1.2330405110561171-0.1798441336242378j)
+            gamma(o_pt5 + r0_25*(cos(2.0*w) + jay*sin(2.0*w))) - (1.23304051105612-0.17984413362424j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(3.0*w) + jay*sin(3.0*w))) - (1.2457025092574627-0.2803188749547032j)
+            gamma(o_pt5 + r0_25*(cos(3.0*w) + jay*sin(3.0*w))) - (1.24570250925746-0.28031887495470j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(4.0*w) + jay*sin(4.0*w))) - (1.2696159881039049-0.3933623260432612j)
+            gamma(o_pt5 + r0_25*(cos(4.0*w) + jay*sin(4.0*w))) - (1.26961598810390-0.39336232604326j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(5.0*w) + jay*sin(6.0*w))) - (1.2963437653395615-0.5344343939266745j)
+            gamma(o_pt5 + r0_25*(cos(5.0*w) + jay*sin(6.0*w))) - (1.29634376533956-0.53443439392667j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(6.0*w) + jay*sin(6.0*w))) - (1.3851135919886597-0.6731815357596991j)
+            gamma(o_pt5 + r0_25*(cos(6.0*w) + jay*sin(6.0*w))) - (1.38511359198866-0.67318153575970j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(7.0*w) + jay*sin(7.0*w))) - (1.5088081612741266-0.8450869801594573j)
+            gamma(o_pt5 + r0_25*(cos(7.0*w) + jay*sin(7.0*w))) - (1.50880816127413-0.84508698015946j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(8.0*w) + jay*sin(8.0*w))) - (1.7174283214367463-1.0312868278533385j)
+            gamma(o_pt5 + r0_25*(cos(8.0*w) + jay*sin(8.0*w))) - (1.71742832143675-1.03128682785334j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(9.0*w) + jay*sin(9.0*w))) - (2.064856967154628-1.1952844351348146j)
+            gamma(o_pt5 + r0_25*(cos(9.0*w) + jay*sin(9.0*w))) - (2.06485696715463-1.19528443513481j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(10.0*w) + jay*sin(10.0*w))) - (2.6069417885981414-1.2221788440291996j)
+            gamma(o_pt5 + r0_25*(cos(10.0*w) + jay*sin(10.0*w))) - (2.60694178859814-1.22217884402920j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(11.0*w) + jay*sin(11.0*w))) - (3.273207606004141-0.8681289535631749j)
+            gamma(o_pt5 + r0_25*(cos(11.0*w) + jay*sin(11.0*w))) - (3.27320760600414-0.86812895356317j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(12.0*w) + jay*sin(12.0*w))) - (3.62560990822190831193+0.0j) # exact value
+            gamma(o_pt5 + r0_25*(cos(12.0*w) + jay*sin(12.0*w))) - (3.62560990822191+0.0j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(12.0*w) + jay*sin(12.0*w))) - (3.6256099082219064+1.0757172979564068e-14j)
+            gamma(o_pt5 + r0_25*(cos(12.0*w) + jay*sin(12.0*w))) - (3.62560990822191+1.07571729795641e-14j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(13.0*w) + jay*sin(13.0*w))) - (3.273207606004129+0.8681289535631883j)
+            gamma(o_pt5 + r0_25*(cos(13.0*w) + jay*sin(13.0*w))) - (3.27320760600413+0.86812895356319j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(14.0*w) + jay*sin(14.0*w))) - (2.6069417885981445+1.2221788440292174j)
+            gamma(o_pt5 + r0_25*(cos(14.0*w) + jay*sin(14.0*w))) - (2.60694178859814+1.22217884402922j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(15.0*w) + jay*sin(15.0*w))) - (2.06485696715464+1.1952844351348377j)
+            gamma(o_pt5 + r0_25*(cos(15.0*w) + jay*sin(15.0*w))) - (2.06485696715464+1.19528443513484j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(16.0*w) + jay*sin(16.0*w))) - (1.717428321436748+1.0312868278533498j)
+            gamma(o_pt5 + r0_25*(cos(16.0*w) + jay*sin(16.0*w))) - (1.71742832143675+1.03128682785335j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(17.0*w) + jay*sin(17.0*w))) - (1.508808161274129+0.8450869801594673j)
+            gamma(o_pt5 + r0_25*(cos(17.0*w) + jay*sin(17.0*w))) - (1.50880816127413+0.84508698015947j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(18.0*w) + jay*sin(18.0*w))) - (1.3851135919886712+0.6731815357597052j)
+            gamma(o_pt5 + r0_25*(cos(18.0*w) + jay*sin(18.0*w))) - (1.38511359198867+0.67318153575971j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(19.0*w) + jay*sin(19.0*w))) - (1.3121007739875803+0.5230804312358839j)
+            gamma(o_pt5 + r0_25*(cos(19.0*w) + jay*sin(19.0*w))) - (1.31210077398758+0.52308043123588j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(20.0*w) + jay*sin(20.0*w))) - (1.2696159881039117+0.3933623260432626j)
+            gamma(o_pt5 + r0_25*(cos(20.0*w) + jay*sin(20.0*w))) - (1.26961598810391+0.39336232604326j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(21.0*w) + jay*sin(21.0*w))) - (1.2457025092574734+0.2803188749547047j)
+            gamma(o_pt5 + r0_25*(cos(21.0*w) + jay*sin(21.0*w))) - (1.24570250925747+0.28031887495470j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(22.0*w) + jay*sin(22.0*w))) - (1.2330405110561218+0.17984413362423818j)
+            gamma(o_pt5 + r0_25*(cos(22.0*w) + jay*sin(22.0*w))) - (1.23304051105612+0.17984413362424j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(23.0*w) + jay*sin(23.0*w))) - (1.2271181171726906+0.08779977180512617j)
+            gamma(o_pt5 + r0_25*(cos(23.0*w) + jay*sin(23.0*w))) - (1.22711811717269+0.08779977180513j)
         ) < tolerance
         assert abs(
-            gamma(o_pt5 + r*(cos(24.0*w) + jay*sin(24.0*w))) - (1.22541670246517764512+0.0j) # exact value
+            gamma(o_pt5 + r0_25*(cos(24.0*w) + jay*sin(24.0*w))) - (1.225416702465182+0.0j)
+        ) < tolerance
+
+    def test_gamma_spin_zero(self) -> None:
+        assert abs(
+            gamma(o_zero + r0_50*(cos(0.0*w) + jay*sin(0.0*w))) - pi**(0.5) # exact value
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(0.0*w) + jay*sin(0.0*w))) - (1.77245385090552)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(1.0*w) + jay*sin(1.0*w))) - (1.69904697012812-0.44988584324344j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(2.0*w) + jay*sin(2.0*w))) - (1.48401359389367-0.86597022187927j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(3.0*w) + jay*sin(3.0*w))) - (1.14215304043747-1.21581769241446j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(4.0*w) + jay*sin(4.0*w))) - (0.69586577337200-1.47012131722367j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(5.0*w) + jay*sin(6.0*w))) - (0.14678861522090-1.5394571214677j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(6.0*w) + jay*sin(6.0*w))) - (-0.39927947632919-1.60338819413943j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(7.0*w) + jay*sin(7.0*w))) - (-0.99266636075522-1.45897058446985j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(8.0*w) + jay*sin(8.0*w))) - (-1.58871742812200-1.17832670664320j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(9.0*w) + jay*sin(9.0*w))) - (-2.18118034234529-0.79136544763522j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(10.0*w) + jay*sin(10.0*w))) - (-2.77041463897469-0.37503633321176j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(11.0*w) + jay*sin(11.0*w))) - (-3.30160176216280-0.07794834036828j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(12.0*w) + jay*sin(12.0*w))) - (pi**(0.5)/(-0.5)) # exact value
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(12.0*w) + jay*sin(12.0*w))) - (-3.54490770181103)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(13.0*w) + jay*sin(13.0*w))) - (-3.30160176216282+0.07794834036828j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(14.0*w) + jay*sin(14.0*w))) - (-2.77041463897471+0.37503633321174j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(15.0*w) + jay*sin(15.0*w))) - (-2.18118034234531+0.79136544763521j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(16.0*w) + jay*sin(16.0*w))) - (-1.58871742812202+1.17832670664320j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(17.0*w) + jay*sin(17.0*w))) - (-0.99266636075523+1.45897058446985j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(18.0*w) + jay*sin(18.0*w))) - (-0.39927947632920+1.60338819413944j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(19.0*w) + jay*sin(19.0*w))) - (0.17241886223654+1.60483760884022j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(20.0*w) + jay*sin(20.0*w))) - (0.69586577337199+1.47012131722368j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(21.0*w) + jay*sin(21.0*w))) - (1.14215304043747+1.21581769241448j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(22.0*w) + jay*sin(22.0*w))) - (1.48401359389368+0.86597022187930j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(23.0*w) + jay*sin(23.0*w))) - (1.69904697012813+0.44988584324345j)
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(24.0*w) + jay*sin(24.0*w))) - pi**(0.5) # exact value
+        ) < tolerance
+        assert abs(
+            gamma(o_zero + r0_50*(cos(24.0*w) + jay*sin(24.0*w))) - (1.77245385090552)
         ) < tolerance
 
     def test_gamma_spin_1(self) -> None:
         assert abs(
-            gamma(o_one + r1*(cos(0.0*w) + jay*sin(0.0*w))) - (1.0+0.0j) # exact value
+            gamma(o_one + r1_00*(cos(0.0*w) + jay*sin(0.0*w))) - (1.0+0.0j) # exact value
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(1.0*w) + jay*sin(1.0*w))) - (0.9593356187292527+0.100989596571918j)
+            gamma(o_one + r1_00*(cos(1.0*w) + jay*sin(1.0*w))) - (0.95933561872925+0.1009895965719j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(2.0*w) + jay*sin(2.0*w))) - (0.8584348870350261+0.15261804612128704j)
+            gamma(o_one + r1_00*(cos(2.0*w) + jay*sin(2.0*w))) - (0.85843488703503+0.15261804612129j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(3.0*w) + jay*sin(3.0*w))) - (0.7406061548328244+0.13797234921244877j)
+            gamma(o_one + r1_00*(cos(3.0*w) + jay*sin(3.0*w))) - (0.74060615483282+0.13797234921245j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(4.0*w) + jay*sin(4.0*w))) - (0.6378792868876431+0.07028113503552197j)
+            gamma(o_one + r1_00*(cos(4.0*w) + jay*sin(4.0*w))) - (0.63787928688764+0.07028113503552j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(5.0*w) + jay*sin(6.0*w))) - (0.5426813021403584-0.025765192834020706j)
+            gamma(o_one + r1_00*(cos(5.0*w) + jay*sin(6.0*w))) - (0.54268130214036-0.02576519283402j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(6.0*w) + jay*sin(6.0*w))) - (0.4980156681183563-0.15494982830181075j)
+            gamma(o_one + r1_00*(cos(6.0*w) + jay*sin(6.0*w))) - (0.49801566811836-0.15494982830181j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(7.0*w) + jay*sin(7.0*w))) - (0.44281828265598744-0.3083746180817264j)
+            gamma(o_one + r1_00*(cos(7.0*w) + jay*sin(7.0*w))) - (0.44281828265599-0.30837461808173j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(8.0*w) + jay*sin(8.0*w))) - (0.3798048917913885-0.51727909947484j)
+            gamma(o_one + r1_00*(cos(8.0*w) + jay*sin(8.0*w))) - (0.37980489179139-0.51727909947484j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(9.0*w) + jay*sin(9.0*w))) - (0.2923781628739807-0.8529300993652641j)
+            gamma(o_one + r1_00*(cos(9.0*w) + jay*sin(9.0*w))) - (0.29237816287398-0.85293009936526j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(10.0*w) + jay*sin(10.0*w))) - (0.16374254765509025-1.5328842621021321j)
+            gamma(o_one + r1_00*(cos(10.0*w) + jay*sin(10.0*w))) - (0.16374254765509-1.53288426210213j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(11.0*w) + jay*sin(11.0*w))) - (0.006473232712530961-3.5710506121287473j)
+            gamma(o_one + r1_00*(cos(11.0*w) + jay*sin(11.0*w))) - (0.00647323271253-3.57105061212875j)
         ) < tolerance
-        assert abs(gamma(o_one + r1*(cos(12.0*w) + jay*sin(12.0*w)))) > 1.0e+14
+        assert abs(gamma(o_one + r1_00*(cos(12.0*w) + jay*sin(12.0*w)))) > 1.0e+14
         assert abs(
-            gamma(o_one + r1*(cos(13.0*w) + jay*sin(13.0*w))) - (0.006473232712523238+3.5710506121287615j)
-        ) < tolerance
-        assert abs(
-            gamma(o_one + r1*(cos(14.0*w) + jay*sin(14.0*w))) - (0.16374254765507829+1.532884262102134j)
+            gamma(o_one + r1_00*(cos(13.0*w) + jay*sin(13.0*w))) - (0.00647323271252+3.57105061212876j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(15.0*w) + jay*sin(15.0*w))) - (0.29237816287397383+0.8529300993652651j)
+            gamma(o_one + r1_00*(cos(14.0*w) + jay*sin(14.0*w))) - (0.16374254765508+1.53288426210213j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(16.0*w) + jay*sin(16.0*w))) - (0.3798048917913894+0.5172790994748437j)
+            gamma(o_one + r1_00*(cos(15.0*w) + jay*sin(15.0*w))) - (0.29237816287397+0.85293009936527j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(17.0*w) + jay*sin(17.0*w))) - (0.44281828265598894+0.30837461808172656j)
+            gamma(o_one + r1_00*(cos(16.0*w) + jay*sin(16.0*w))) - (0.37980489179139+0.51727909947484j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(18.0*w) + jay*sin(18.0*w))) - (0.49801566811835635+0.15494982830181075j)
+            gamma(o_one + r1_00*(cos(17.0*w) + jay*sin(17.0*w))) - (0.44281828265599+0.30837461808173j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(19.0*w) + jay*sin(19.0*w))) - (0.5591187415378688+0.030606251757081843j)
+            gamma(o_one + r1_00*(cos(18.0*w) + jay*sin(18.0*w))) - (0.49801566811836+0.15494982830181j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(20.0*w) + jay*sin(20.0*w))) - (0.6378792868876437-0.07028113503552219j)
+            gamma(o_one + r1_00*(cos(19.0*w) + jay*sin(19.0*w))) - (0.55911874153787+0.03060625175708j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(21.0*w) + jay*sin(21.0*w))) - (0.740606154832826-0.13797234921244983j)
+            gamma(o_one + r1_00*(cos(20.0*w) + jay*sin(20.0*w))) - (0.63787928688764-0.07028113503552j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(22.0*w) + jay*sin(22.0*w))) - (0.8584348870350293-0.15261804612128943j)
+            gamma(o_one + r1_00*(cos(21.0*w) + jay*sin(21.0*w))) - (0.74060615483283-0.13797234921245j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(23.0*w) + jay*sin(23.0*w))) - (0.9593356187292551-0.10098959657191953j)
+            gamma(o_one + r1_00*(cos(22.0*w) + jay*sin(22.0*w))) - (0.85843488703503-0.15261804612129j)
         ) < tolerance
         assert abs(
-            gamma(o_one + r1*(cos(24.0*w) + jay*sin(24.0*w))) - (1.0) # exact value
+            gamma(o_one + r1_00*(cos(23.0*w) + jay*sin(23.0*w))) - (0.95933561872926-0.10098959657192j)
+        ) < tolerance
+        assert abs(
+            gamma(o_one + r1_00*(cos(24.0*w) + jay*sin(24.0*w))) - (1.0) # exact value
         ) < tolerance
 
     def test_gamma_spin_1_J(self) -> None:
         assert abs(
-            gamma(o_1_j + r*(cos(0.0*w) + jay*sin(0.0*w))) - (0.5414051834837496-0.03000467718476757j)
+            gamma(o_1_j + r0_25*(cos(0.0*w) + jay*sin(0.0*w))) - (0.54140518348375-0.03000467718477j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(1.0*w) + jay*sin(1.0*w))) - (0.5092938355505581-0.024418800986080264j)
+            gamma(o_1_j + r0_25*(cos(1.0*w) + jay*sin(1.0*w))) - (0.50929383555056-0.02441880098608j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(2.0*w) + jay*sin(2.0*w))) - (0.4772652647116792-0.026651256691286804j)
+            gamma(o_1_j + r0_25*(cos(2.0*w) + jay*sin(2.0*w))) - (0.47726526471168-0.02665125669129j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(3.0*w) + jay*sin(3.0*w))) - (0.447158719329485-0.03620650021808021j)
+            gamma(o_1_j + r0_25*(cos(3.0*w) + jay*sin(3.0*w))) - (0.44715871932949-0.03620650021808j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(4.0*w) + jay*sin(4.0*w))) - (0.4204379770772642-0.05215076121259929j)
+            gamma(o_1_j + r0_25*(cos(4.0*w) + jay*sin(4.0*w))) - (0.42043797707726-0.05215076121260j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(5.0*w) + jay*sin(5.0*w))) - (0.3981067599211152-0.07339134160164619j)
+            gamma(o_1_j + r0_25*(cos(5.0*w) + jay*sin(5.0*w))) - (0.39810675992112-0.07339134160165j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(6.0*w) + jay*sin(6.0*w))) - (0.38081556472957556-0.09892221417183164j)
+            gamma(o_1_j + r0_25*(cos(6.0*w) + jay*sin(6.0*w))) - (0.38081556472958-0.09892221417183j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(7.0*w) + jay*sin(7.0*w))) - (0.3690874005681015-0.12793708659712544j)
+            gamma(o_1_j + r0_25*(cos(7.0*w) + jay*sin(7.0*w))) - (0.36908740056810-0.12793708659713j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(8.0*w) + jay*sin(8.0*w))) - (0.3635711332716032-0.1597743239922937j)
+            gamma(o_1_j + r0_25*(cos(8.0*w) + jay*sin(8.0*w))) - (0.36357113327160-0.15977432399229j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(9.0*w) + jay*sin(9.0*w))) - (0.3652398793897562-0.1936897459193419j)
+            gamma(o_1_j + r0_25*(cos(9.0*w) + jay*sin(9.0*w))) - (0.36523987938976-0.19368974591934j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(10.0*w) + jay*sin(10.0*w))) - (0.3754384315354163-0.2284643465572309j)
+            gamma(o_1_j + r0_25*(cos(10.0*w) + jay*sin(10.0*w))) - (0.37543843153542-0.22846434655723j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(11.0*w) + jay*sin(11.0*w))) - (0.3956321084757357-0.26190295364203714j)
+            gamma(o_1_j + r0_25*(cos(11.0*w) + jay*sin(11.0*w))) - (0.39563210847574-0.26190295364204j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(12.0*w) + jay*sin(12.0*w))) - (0.42668350976193165-0.290440432211691j)
+            gamma(o_1_j + r0_25*(cos(12.0*w) + jay*sin(12.0*w))) - (0.42668350976193-0.29044043221169j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(13.0*w) + jay*sin(13.0*w))) - (0.4676644198181886-0.3093301474115857j)
+            gamma(o_1_j + r0_25*(cos(13.0*w) + jay*sin(13.0*w))) - (0.46766441981819-0.30933014741159j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(14.0*w) + jay*sin(14.0*w))) - (0.5147689472159721-0.3139411600874066j)
+            gamma(o_1_j + r0_25*(cos(14.0*w) + jay*sin(14.0*w))) - (0.51476894721597-0.31394116008741j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(15.0*w) + jay*sin(15.0*w))) - (0.5614918921216788-0.3019826164627133j)
+            gamma(o_1_j + r0_25*(cos(15.0*w) + jay*sin(15.0*w))) - (0.56149189212168-0.30198261646271j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(16.0*w) + jay*sin(16.0*w))) - (0.6007579287730999-0.2751570530155896j)
+            gamma(o_1_j + r0_25*(cos(16.0*w) + jay*sin(16.0*w))) - (0.60075792877310-0.27515705301559j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(17.0*w) + jay*sin(17.0*w))) - (0.6277910177326999-0.23855686371283677j)
+            gamma(o_1_j + r0_25*(cos(17.0*w) + jay*sin(17.0*w))) - (0.62779101773270-0.23855686371284j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(18.0*w) + jay*sin(18.0*w))) - (0.6414282163127023-0.19814088308428426j)
+            gamma(o_1_j + r0_25*(cos(18.0*w) + jay*sin(18.0*w))) - (0.64142821631270-0.19814088308428j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(19.0*w) + jay*sin(19.0*w))) - (0.6431658367896469-0.15846417860535536j)
+            gamma(o_1_j + r0_25*(cos(19.0*w) + jay*sin(19.0*w))) - (0.64316583678965-0.15846417860536j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(20.0*w) + jay*sin(20.0*w))) - (0.6353349031720246-0.12207985729384158j)
+            gamma(o_1_j + r0_25*(cos(20.0*w) + jay*sin(20.0*w))) - (0.63533490317202-0.12207985729384j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(21.0*w) + jay*sin(21.0*w))) - (0.6199062369928965-0.09021544333720546j)
+            gamma(o_1_j + r0_25*(cos(21.0*w) + jay*sin(21.0*w))) - (0.61990623699290-0.09021544333721j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(22.0*w) + jay*sin(22.0*w))) - (0.598280951767445-0.06367096853604087j)
+            gamma(o_1_j + r0_25*(cos(22.0*w) + jay*sin(22.0*w))) - (0.59828095176745-0.06367096853604j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(23.0*w) + jay*sin(23.0*w))) - (0.5716499163382027-0.0433022667106068j)
+            gamma(o_1_j + r0_25*(cos(23.0*w) + jay*sin(23.0*w))) - (0.57164991633820-0.04330226671061j)
         ) < tolerance
         assert abs(
-            gamma(o_1_j + r*(cos(24.0*w) + jay*sin(24.0*w))) - (0.5414051834837496-0.03000467718476757j)
+            gamma(o_1_j + r0_25*(cos(24.0*w) + jay*sin(24.0*w))) - (0.54140518348375-0.03000467718477j)
         ) < tolerance
 
     def test_gamma_spin_1_negJ(self) -> None:
         assert abs(
-            gamma(o_1_nj + r*(cos(0.0*w) + jay*sin(0.0*w))) - (0.5414051834837496+0.030004677184767486j)
+            gamma(o_1_nj + r0_25*(cos(0.0*w) + jay*sin(0.0*w))) - (0.54140518348375+0.03000467718477j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-1.0*w) + jay*sin(-1.0*w))) - (0.5092938355505584+0.024418800986078876j)
+            gamma(o_1_nj + r0_25*(cos(-1.0*w) + jay*sin(-1.0*w))) - (0.50929383555056+0.02441880098608j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-2.0*w) + jay*sin(-2.0*w))) - (0.47726526471167957+0.026651256691286j)
+            gamma(o_1_nj + r0_25*(cos(-2.0*w) + jay*sin(-2.0*w))) - (0.47726526471168+0.02665125669129j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-3.0*w) + jay*sin(-3.0*w))) - (0.44715871932948537+0.03620650021807981j)
+            gamma(o_1_nj + r0_25*(cos(-3.0*w) + jay*sin(-3.0*w))) - (0.44715871932949+0.03620650021808j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-4.0*w) + jay*sin(-4.0*w))) - (0.4204379770772649+0.052150761212598484j)
+            gamma(o_1_nj + r0_25*(cos(-4.0*w) + jay*sin(-4.0*w))) - (0.42043797707726+0.05215076121260j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-5.0*w) + jay*sin(-5.0*w))) - (0.3981067599211154+0.07339134160164563j)
+            gamma(o_1_nj + r0_25*(cos(-5.0*w) + jay*sin(-5.0*w))) - (0.39810675992112+0.07339134160165j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-6.0*w) + jay*sin(-6.0*w))) - (0.3808155647295759+0.09892221417183107j)
+            gamma(o_1_nj + r0_25*(cos(-6.0*w) + jay*sin(-6.0*w))) - (0.38081556472958+0.09892221417183j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-7.0*w) + jay*sin(-7.0*w))) - (0.3690874005681027+0.12793708659712444j)
+            gamma(o_1_nj + r0_25*(cos(-7.0*w) + jay*sin(-7.0*w))) - (0.36908740056810+0.12793708659712j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-8.0*w) + jay*sin(-8.0*w))) - (0.3635711332716044+0.1597743239922923j)
+            gamma(o_1_nj + r0_25*(cos(-8.0*w) + jay*sin(-8.0*w))) - (0.36357113327160+0.15977432399229j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-9.0*w) + jay*sin(-9.0*w))) - (.3652398793897574+0.19368974591934138j)
+            gamma(o_1_nj + r0_25*(cos(-9.0*w) + jay*sin(-9.0*w))) - (.36523987938976+0.19368974591934j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-10.0*w) + jay*sin(-10.0*w))) - (0.37543843153541806+0.22846434655723047j)
+            gamma(o_1_nj + r0_25*(cos(-10.0*w) + jay*sin(-10.0*w))) - (0.37543843153542+0.22846434655723j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-11.0*w) + jay*sin(-11.0*w))) - (0.39563210847573776+0.26190295364203614j)
+            gamma(o_1_nj + r0_25*(cos(-11.0*w) + jay*sin(-11.0*w))) - (0.39563210847574+0.26190295364204j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-12.0*w) + jay*sin(-12.0*w))) - (0.42668350976193176+0.29044043221169097j)
+            gamma(o_1_nj + r0_25*(cos(-12.0*w) + jay*sin(-12.0*w))) - (0.42668350976193+0.29044043221169j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-13.0*w) + jay*sin(-13.0*w))) - (0.46766441981818957+0.3093301474115855j)
+            gamma(o_1_nj + r0_25*(cos(-13.0*w) + jay*sin(-13.0*w))) - (0.46766441981819+0.30933014741159j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-14.0*w) + jay*sin(-14.0*w))) - (0.5147689472159731+0.31394116008740586j)
+            gamma(o_1_nj + r0_25*(cos(-14.0*w) + jay*sin(-14.0*w))) - (0.51476894721597+0.31394116008741j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-15.0*w) + jay*sin(-15.0*w))) - (0.56149189212168+0.3019826164627124j)
+            gamma(o_1_nj + r0_25*(cos(-15.0*w) + jay*sin(-15.0*w))) - (0.56149189212168+0.30198261646271j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-16.0*w) + jay*sin(-16.0*w))) - (0.6007579287731007+0.2751570530155888j)
+            gamma(o_1_nj + r0_25*(cos(-16.0*w) + jay*sin(-16.0*w))) - (0.60075792877310+0.27515705301559j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-17.0*w) + jay*sin(-17.0*w))) - (0.6277910177327026+0.23855686371283522j)
+            gamma(o_1_nj + r0_25*(cos(-17.0*w) + jay*sin(-17.0*w))) - (0.62779101773270+0.23855686371284j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-18.0*w) + jay*sin(-18.0*w))) - (0.6414282163127025+0.1981408830842841j)
+            gamma(o_1_nj + r0_25*(cos(-18.0*w) + jay*sin(-18.0*w))) - (0.64142821631270+0.19814088308428j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-19.0*w) + jay*sin(-19.0*w))) - (0.6431658367896502+0.15846417860535345j)
+            gamma(o_1_nj + r0_25*(cos(-19.0*w) + jay*sin(-19.0*w))) - (0.64316583678965+0.15846417860535j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-20.0*w) + jay*sin(-20.0*w))) - (0.6353349031720252+0.12207985729384013j)
+            gamma(o_1_nj + r0_25*(cos(-20.0*w) + jay*sin(-20.0*w))) - (0.63533490317203+0.12207985729384j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-21.0*w) + jay*sin(-21.0*w))) - (0.6199062369928978+0.09021544333720322j)
+            gamma(o_1_nj + r0_25*(cos(-21.0*w) + jay*sin(-21.0*w))) - (0.61990623699290+0.09021544333720j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-22.0*w) + jay*sin(-22.0*w))) - (0.5982809517674468+0.06367096853603893j)
+            gamma(o_1_nj + r0_25*(cos(-22.0*w) + jay*sin(-22.0*w))) - (0.59828095176745+0.06367096853604j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-23.0*w) + jay*sin(-23.0*w))) - (0.5716499163382038+0.043302266710605414j)
+            gamma(o_1_nj + r0_25*(cos(-23.0*w) + jay*sin(-23.0*w))) - (0.57164991633820+0.04330226671061j)
         ) < tolerance
         assert abs(
-            gamma(o_1_nj + r*(cos(-24.0*w) + jay*sin(-24.0*w))) - (0.5414051834837496+0.030004677184767486j)
+            gamma(o_1_nj + r0_25*(cos(-24.0*w) + jay*sin(-24.0*w))) - (0.54140518348375+0.03000467718477j)
         ) < tolerance
