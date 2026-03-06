@@ -15,13 +15,6 @@
 from math import pi, factorial as fac
 from boring_math.special_functions.gamma import gamma, gamma_real
 
-tolerance0 = 5.0e-16
-tolerance1 = 5.0e-15
-tolerance2 = 5.0e-14
-tolerance3 = 5.0e-13
-tolerance4 = 5.0e-12
-tolerance5 = 5.0e-11
-
 sqrt_pi = pi**0.5
 euler = 0.57721566490153286060
 jay = 0.0+1.0j
@@ -31,6 +24,13 @@ three = 3.0+0.0j
 four = 4.0+0.0j
 five = 5.0+0.0j
 six = 6.0+0.0j
+
+tolerance0 = 5.0e-16
+tolerance1 = 5.0e-15
+tolerance2 = 5.0e-14
+tolerance3 = 5.0e-13
+tolerance4 = 5.0e-12
+tolerance5 = 5.0e-11
 
 
 class Test_gamma:
