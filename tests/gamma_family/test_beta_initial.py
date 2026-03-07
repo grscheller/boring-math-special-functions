@@ -15,15 +15,13 @@
 from math import pi
 from boring_math.special_functions.beta import beta, beta_real
 
-tolerance0 = 5.0e-16
-tolerance1 = 5.0e-15
-tolerance2 = 5.0e-14
-tolerance3 = 5.0e-13
-tolerance4 = 5.0e-12
-tolerance5 = 5.0e-11
+tolerance1 = 1.0e-14
+tolerance2 = 2.0e-14
+tolerance3 = 3.0e-14
 
 jay = 0.0+1.0j
 zero = 0.0+0.0j
+half = 0.5+0.0j
 one = 1.0+0.0j
 two = 2.0+0.0j
 three = 3.0+0.0j
@@ -33,11 +31,16 @@ five = 5.0+0.0j
 
 class Test_gamma:
     def test_beta_real(self) -> None:
-        assert abs(beta_real(1.0, 1.0) - 1.0) < tolerance0
-        assert abs(beta_real(2.0, 3.0) - 1.0/12.0) < tolerance0
-        assert abs(beta_real(2.5, 3.5) - 3.0*pi/256) < tolerance0
+        assert abs(beta_real(1.0, 1.0) - 1.0) < tolerance1
+        assert abs(beta_real(2.0, 3.0) - 1.0/12.0) < tolerance1
+        assert abs(beta_real(4.0, 4.0) - 1.0/140) < tolerance1
+        assert abs(beta_real(0.5, 0.5) - pi) < tolerance1
+        assert abs(beta_real(2.5, 3.5) - 3.0*pi/256) < tolerance1
+        assert abs(beta_real(1.5, 0.5) - pi/2.0) < tolerance1
 
     def test_beta_complex(self) -> None:
-        assert abs(beta(one, one) - 1.0+0.0j) < tolerance0
-        assert abs(beta(one, two) - 0.5+0.0j) < tolerance0
-        assert abs(beta(five, four) - 0.0035714285714285713+0.0j) < tolerance0
+        assert abs(beta(one, one) - 1.0+0.0j) < tolerance1
+        assert abs(beta(one, two) - 0.5+0.0j) < tolerance1
+        assert abs(beta(five, four) - 0.0035714285714286+0.0j) < tolerance1
+        assert abs(beta(two+half, one+half) - 1.5*0.5*0.5*pi/6.0) < tolerance1
+        assert abs(beta(jay, one) - (-jay)) <tolerance1
