@@ -14,6 +14,9 @@
 
 """Beta function."""
 
+from math import log
+from cmath import log as clog
+from .exponential import exp, cexp
 from .gamma import gamma, gamma_real as rgamma
 
 __all__ = ['beta', 'beta_real']
@@ -24,10 +27,10 @@ def beta(u: complex, v: complex) -> complex:
 
     .. note::
 
-        Initial naive implementation.
+        Using natural logs for more numerical stability.
 
     """
-    return gamma(u)*gamma(v)/gamma(u + v)
+    return cexp(clog(gamma(u)) + clog(gamma(v)) - clog (gamma(u + v)))
 
 
 def beta_real(x: float, y: float) -> float:
@@ -35,7 +38,7 @@ def beta_real(x: float, y: float) -> float:
 
     .. note::
 
-        Initial naive implementation.
+        Using natural logs for more numerical stability.
 
     """
-    return rgamma(x)*rgamma(y)/rgamma(x + y)
+    return exp(log(rgamma(x)) + log(rgamma(y)) - log (rgamma(x + y)))
