@@ -14,12 +14,11 @@
 
 """Beta function."""
 
-from math import log
-from cmath import log as clog
-from .exponential import exp, cexp
-from .gamma import gamma, gamma_real as rgamma
+from cmath import log as clog, nan, nanj
+from .exponential import cexp
+from .gamma import gamma
 
-__all__ = ['beta', 'beta_real']
+__all__ = ['beta']
 
 
 def beta(u: complex, v: complex) -> complex:
@@ -29,16 +28,18 @@ def beta(u: complex, v: complex) -> complex:
 
         Using natural logs for more numerical stability.
 
-    """
-    return cexp(clog(gamma(u)) + clog(gamma(v)) - clog (gamma(u + v)))
-
-
-def beta_real(x: float, y: float) -> float:
-    """Beta function valid for all real values of x.
-
     .. note::
 
-        Using natural logs for more numerical stability.
+        - beta(u, v) = beta(v, u)
+        - beta(0, z) = gamma(0) = ∞ ∀(z ∈ ℂ)
+        - beta(-n, k) = 0 when k > n > 0
+        - claim: beta(u. v) = 0 if it has a removable singularity,
+
 
     """
-    return exp(log(rgamma(x)) + log(rgamma(y)) - log (rgamma(x + y)))
+    if (naive := cexp(clog(gamma(u)) + clog(gamma(v)) - clog (gamma(u + v)))) == nan+nanj:
+        if u == 0 or v == 0 or u == -v:
+            return gamma(0)
+        assert False # Need to consider other  cases with removable singularities.
+    else:
+        return naive

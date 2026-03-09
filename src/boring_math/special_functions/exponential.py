@@ -14,7 +14,7 @@
 
 """Floating point special functions about a point."""
 
-from math import ceil, floor, pi, inf
+from math import ceil, floor, pi, inf, nan
 from .trig import sin, cos
 
 __all__ = ['exp0', 'exp', 'cexp0', 'cexp']
@@ -71,7 +71,9 @@ def exp(x: float, /, n: int = mindepth) -> float:
         else:
             factor = e ** ceil(x)
     except OverflowError:
-        return inf if x > 0.0 else -inf
+        return inf if x >= 0.0 else -inf
+    except ValueError:
+        return nan
     else:
         return exp0(shift0(x), n=n) * factor
 
