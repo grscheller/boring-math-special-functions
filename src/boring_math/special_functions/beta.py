@@ -14,11 +14,14 @@
 
 """Beta function."""
 
-from cmath import log as clog, nan, nanj
+from math import factorial as fac
+from cmath import log as clog, inf, infj, nan, isnan
 from .exponential import cexp
 from .gamma import gamma
 
 __all__ = ['beta']
+
+infinity = inf + infj
 
 
 def beta(u: complex, v: complex) -> complex:
@@ -30,14 +33,30 @@ def beta(u: complex, v: complex) -> complex:
 
     .. note::
 
-        - beta(u, v) = beta(v, u)
-        - beta(0, z) = gamma(0) = ∞ ∀(z ∈ ℂ)
-        - beta(-n, k) = 0 when k > n > 0
-        - claim: beta(u. v) = 0 if it has a removable singularity,
+        - B(u, v) = B(v, u) for ∀(u, v ∈ ℂ)
+        - B(0, v) = Γ(0) = ∞ for ∀(v ∈ ℂ)
+        - B(m, -n) = 0 ∀(m, n ∈ ℕ) where m > n > 0
+        - B(m, -n) = Γ(m) * (Res[Γ, -n]/Res[Γ, m-n])
 
+          - where ∀(n>=0) Res[Γ(z), z = -n] = (-1)**(n)/(n)!
+
+    :param u: First argument to analytically continued beta function.
+    :param v: Second argument to analytically continued beta function.
+    :returns: Value of beta(u,v) where inf + infj is used to represent
+              a single complex infinity.
 
     """
-    if (naive := cexp(clog(gamma(u)) + clog(gamma(v)) - clog (gamma(u + v)))) == nan+nanj:
+    u1 = int(u.real)
+    v1 = int(v.real)
+    if u1 == u and v1 == v:
+        if u1 > 0 and v1 > 0:
+            return complex(fac(u1-1) / fac(u1+v1 - 1) * fac(v1-1))
+    else:
+        if (int(sum := (u + v).real)) == u + v:
+            if sum <= 0:
+                return infinity
+
+    if not isnan(abs((naive := cexp(clog(gamma(u)) + clog(gamma(v)) - clog (gamma(u + v)))))):
         if u == 0 or v == 0 or u == -v:
             return gamma(0)
         assert False # Need to consider other  cases with removable singularities.

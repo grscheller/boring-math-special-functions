@@ -14,7 +14,7 @@
 
 from cmath import inf, infj
 from math import pi, sinh, cosh
-from boring_math.special_functions.beta import beta
+from boring_math.special_functions.beta import beta, gamma
 
 jay = 0.0+1.0j
 
@@ -53,10 +53,11 @@ class Test_gamma:
         assert abs(beta(1+42j, 1-42j) - (pi/sinh(pi*42))) < tolerance1
 
     def test_beta_with_singular_values(self) -> None:
-        assert beta(5/2, -7/2) == -inf-infj
+        assert abs(gamma(0+0j)) == inf
+        assert beta(5/2, -7/2) == inf+infj
         assert beta(-3, 1) == inf+infj
         assert beta(-2, -7) == inf+infj
         assert beta(0, 0) == inf+infj
 
     def test_beta_with_removable_singular_values(self) -> None:
-        assert beta(1, -1) == 0
+        assert beta(1, -1) == inf

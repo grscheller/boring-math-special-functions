@@ -1,4 +1,4 @@
-# Copyright 2016-2025 Geoffrey R. Scheller
+# Copyright 2016-2026 Geoffrey R. Scheller
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 """Gamma function."""
 
-from math import pi, inf
+from cmath import pi, inf, infj
 from .exponential import exp, cexp
 from .ctrig import csin
 from .trig import sin as rsin
@@ -25,6 +25,7 @@ two_pi = 2.0*pi
 sqrt_two_pi = float(two_pi**0.5)
 comp_sqrt_two_pi = complex(sqrt_two_pi)
 jay = 0.0 + 1.0j
+infinity = inf + infj
 
 
 def gamma(z: complex) -> complex:
@@ -41,7 +42,7 @@ def gamma(z: complex) -> complex:
 
     :param z: Complex argument.
     :returns: Value of analytic continuation of ``gamma(z)``. Uses
-              positive inf to represent represent complex infinity.
+              ``inf + infj`` to represent a single complex infinity.
 
     """
     g7 = 7.5 + 0.0j
@@ -62,7 +63,7 @@ def gamma(z: complex) -> complex:
         try:
             return pi / (csin(pi * z) * gamma(1.0 - z))  # Reflection formula
         except ZeroDivisionError:
-            return inf
+            return infinity
     else:
         z -= 1.0+0.0j
         y = p[0]
@@ -70,6 +71,8 @@ def gamma(z: complex) -> complex:
             y += p[ii] / (z + ii)
         t = z + g7
         z += 0.5+0.0j
+        if abs(y) == inf:
+            y = infinity
         return comp_sqrt_two_pi * t**z * cexp(-t) * y
 
 
