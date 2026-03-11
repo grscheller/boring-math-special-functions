@@ -50,15 +50,17 @@ def beta(u: complex, v: complex) -> complex:
     v1 = int(v.real)
     if u1 == u and v1 == v:
         if u1 > 0 and v1 > 0:
-            return complex(fac(u1-1) / fac(u1+v1 - 1) * fac(v1-1))
+            return complex(fac(u1 - 1) / fac(u1 + v1 - 1) * fac(v1 - 1))
     else:
         if (int(sum := (u + v).real)) == u + v:
             if sum <= 0:
                 return infinity
 
-    if not isnan(abs((naive := cexp(clog(gamma(u)) + clog(gamma(v)) - clog (gamma(u + v)))))):
+    if isnan(
+        abs(naive := cexp(clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))))
+    ):
         if u == 0 or v == 0 or u == -v:
             return gamma(0)
-        assert False # Need to consider other  cases with removable singularities.
+        assert False  # Need to consider other  cases with removable singularities.
     else:
         return naive

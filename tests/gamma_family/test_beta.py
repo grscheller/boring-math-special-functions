@@ -60,4 +60,4 @@ class Test_gamma:
         assert beta(0, 0) == inf+infj
 
     def test_beta_with_removable_singular_values(self) -> None:
-        assert beta(1, -1) == inf
+        assert beta(1, -1) == inf + infj
