@@ -14,7 +14,8 @@
 
 from cmath import inf, infj
 from math import pi, sinh, cosh
-from boring_math.special_functions.beta import beta, gamma
+from boring_math.special_functions.beta import beta
+from boring_math.special_functions.gamma import gamma
 
 jay = 0.0+1.0j
 
