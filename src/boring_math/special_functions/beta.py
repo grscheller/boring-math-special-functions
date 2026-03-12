@@ -15,7 +15,7 @@
 """Beta function."""
 
 from math import factorial as fac
-from cmath import log as clog, inf, infj, nan, isnan
+from cmath import log as clog, inf, infj, isnan, isinf
 from .exponential import cexp
 from .gamma import gamma
 
@@ -35,10 +35,10 @@ def beta(u: complex, v: complex) -> complex:
 
         - B(u, v) = B(v, u) for ∀(u, v ∈ ℂ)
         - B(0, v) = Γ(0) = ∞ for ∀(v ∈ ℂ)
-        - B(m, -n) = 0 ∀(m, n ∈ ℕ) where m > n > 0
-        - B(m, -n) = Γ(m) * (Res[Γ, -n]/Res[Γ, m-n])
+        - B(m, -n) = 0 ∀(m, n ∈ ℕ) when m > n > 0
+        - B(m, -n) = Γ(m) * (Res[Γ, -n]/Res[Γ, m-n]) when m <= n
 
-          - where ∀(n>=0) Res[Γ(z), z = -n] = (-1)**(n)/(n)!
+          - where ∀(n>=0) Res[Γ(z), z = -n] = (-1)**(n)/(n!)
 
     :param u: First argument to analytically continued beta function.
     :param v: Second argument to analytically continued beta function.
@@ -46,21 +46,24 @@ def beta(u: complex, v: complex) -> complex:
               a single complex infinity.
 
     """
-    u1 = int(u.real)
-    v1 = int(v.real)
-    if u1 == u and v1 == v:
-        if u1 > 0 and v1 > 0:
-            return complex(fac(u1 - 1) / fac(u1 + v1 - 1) * fac(v1 - 1))
-    else:
-        if (int(sum := (u + v).real)) == u + v:
-            if sum <= 0:
-                return infinity
+    if isnan(naive := cexp(clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v)))):
+        u1 = int(u.real)
+        v1 = int(v.real)
 
-    if isnan(
-        abs(naive := cexp(clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))))
-    ):
-        if u == 0 or v == 0 or u == -v:
-            return gamma(0)
-        assert False  # Need to consider other  cases with removable singularities.
+        if u1 > 0 and v1 > 0:
+            return complex(fac(u1-1) / fac(u1+v1-1) * fac(v1-1))
+        if u1 <= 0 and v1 <= 0:
+            return ((-1.0)**(-u1)/fac(-u1)) / ((-1.0)**(-u1-v1)/fac(-u1-v1)) * ((-1.0)**(-v1)/fac(-v1))
+        if u1 > 0 and u1 > -v1 > 0:
+            return 0+0j
+        if u1 > 0 and u1 <= -v1:
+            return (fac(u1-1)) / ((-1.0)**(u1-v1)/fac(u1-v1)) * ((-1.0)**(-v1)/fac(-v1))
+        if v1 > 0 and v1 > -u1 > 0:
+            return 0+0j
+        if v1 > 0 and v1 <= -u1:
+            return ((-1.0)**(-u1)/fac(v1)) / ((-1.0)**(v1-u1)/fac(v1-u1)) * (fac(v1-1))
+        assert False
     else:
+        if isinf(naive):
+            return infinity
         return naive

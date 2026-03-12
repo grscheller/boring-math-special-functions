@@ -45,6 +45,7 @@ class Test_gamma:
         assert abs(beta(3/2, 1/2) - (pi/2)) < tolerance1
         assert abs(beta(3/2, -1/2) - (-pi)) < tolerance1
         assert abs(beta(-5/2, 7/2) - (-pi)) < tolerance1
+        assert beta(5/2, -7/2) == inf+infj
         assert abs(beta(1.0/6.0, 5.0/6.0).real - (2*pi)) < tolerance1
         assert abs(beta(0+1j, 1) - (0-1j)) < tolerance1
         assert abs(beta(1, 0+1j) - (0-1j)) < tolerance1
@@ -54,10 +55,9 @@ class Test_gamma:
 
     def test_beta_with_singular_values(self) -> None:
         assert abs(gamma(0+0j)) == inf
-        assert beta(5/2, -7/2) == inf+infj
-        assert beta(-3, 1) == inf+infj
+        assert beta(-3, 1) == 0
         assert beta(-2, -7) == inf+infj
         assert beta(0, 0) == inf+infj
 
     def test_beta_with_removable_singular_values(self) -> None:
-        assert beta(1, -1) == inf + infj
+        assert beta(1, -1) == -0.5+0.0j
