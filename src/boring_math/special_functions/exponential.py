@@ -14,7 +14,7 @@
 
 """Floating point special functions about a point."""
 
-from math import ceil, floor, pi, inf, nan
+from math import ceil, floor, pi, inf, nan, isinf
 from .trig import sin, cos
 
 __all__ = ['exp0', 'exp', 'cexp0', 'cexp']
@@ -99,8 +99,8 @@ def cexp0(z: complex, /, n: int = mindepth) -> complex:
     return 1 + accum
 
 
-def shift1(x: float) -> float:
-    return x % two_pi
+def shift1(y: float) -> float:
+    return 0 if isinf(y) else y % two_pi
 
 
 def cexp(z: complex, /, n: int = mindepth) -> complex:
@@ -113,4 +113,4 @@ def cexp(z: complex, /, n: int = mindepth) -> complex:
     """
     x = z.real
     y = z.imag
-    return complex(exp(x), 0) * (cos(shift1(y)) + jay * sin(shift1(y)))
+    return exp(x) * (cos(shift1(y)) + jay * sin(shift1(y)))

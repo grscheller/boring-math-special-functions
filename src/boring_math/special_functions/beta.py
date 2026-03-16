@@ -46,7 +46,7 @@ def beta(u: complex, v: complex) -> complex:
               a single complex infinity.
 
     """
-    if isnan(naive := cexp(clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v)))):
+    if isnan(naive := clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))):
         u1 = int(u.real)
         v1 = int(v.real)
 
@@ -64,6 +64,4 @@ def beta(u: complex, v: complex) -> complex:
             return ((-1.0)**(-u1)/fac(v1)) / ((-1.0)**(v1-u1)/fac(v1-u1)) * (fac(v1-1))
         assert False
     else:
-        if isinf(naive):
-            return infinity
-        return naive
+        return cexp(naive)
