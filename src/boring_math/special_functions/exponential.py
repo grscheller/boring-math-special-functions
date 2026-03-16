@@ -14,18 +14,15 @@
 
 """Floating point special functions about a point."""
 
-from math import ceil, floor, pi, inf, nan, isinf
+from math import ceil, floor, pi, inf, isinf, isnan
 from .trig import sin, cos
 
 __all__ = ['exp0', 'exp', 'cexp0', 'cexp']
 
-mindepth = 22
-
 two_pi = 2.0 * pi
-jay = 0.0 + 1.0j
 
 
-def exp0(x: float, /, n: int = mindepth) -> float:
+def exp0(x: float, /, n: int = 22) -> float:
     """Partially factored Taylor expansion of exp about ``x = 0``.
 
     .. note::
@@ -37,7 +34,7 @@ def exp0(x: float, /, n: int = mindepth) -> float:
     :returns: Taylor series expansion of ``eˣ`` centered at ``x = 0``
 
     """
-    d = float(max(n, mindepth))
+    d = float(n)
     accum = x / d
     d -= 1.0
     while d >= 0.5:
@@ -57,7 +54,7 @@ def shift0(x: float) -> float:
     return shifted
 
 
-def exp(x: float, /, n: int = mindepth) -> float:
+def exp(x: float, /, n: int = 22) -> float:
     """Exponential function good for all floating point x.
 
     :param x: independent variable
@@ -71,14 +68,12 @@ def exp(x: float, /, n: int = mindepth) -> float:
         else:
             factor = e ** ceil(x)
     except OverflowError:
-        return inf if x >= 0.0 else -inf
-    except ValueError:
-        return nan
+        return inf if x >= 0.0 else 0.0
     else:
         return exp0(shift0(x), n=n) * factor
 
 
-def cexp0(z: complex, /, n: int = mindepth) -> complex:
+def cexp0(z: complex, /, n: int = 22) -> complex:
     """Partially factored Taylor expansion of exp about z = 0.
 
     .. note::
@@ -90,7 +85,7 @@ def cexp0(z: complex, /, n: int = mindepth) -> complex:
     :returns: Taylor series expansion of eᶻ centered at z = 0
 
     """
-    d = float(max(n, mindepth))
+    d = float(n)
     accum = z / d
     d -= 1.0
     while d >= 0.5:
@@ -99,18 +94,20 @@ def cexp0(z: complex, /, n: int = mindepth) -> complex:
     return 1 + accum
 
 
-def shift1(y: float) -> float:
-    return 0 if isinf(y) else y % two_pi
-
-
-def cexp(z: complex, /, n: int = mindepth) -> complex:
+def cexp(z: complex, /, n: int = 22) -> complex:
     """Exponential function good for all complex z.
 
     :param z: independent variable
-    :param n: terms in expansion, must have n >= 20
+    :param n: terms in expansion, must have n >= 22
     :returns: Value of ``eᶻ``
 
     """
     x = z.real
     y = z.imag
-    return exp(x) * (cos(shift1(y)) + jay * sin(shift1(y)))
+
+    if isinf(y) or isnan(y):
+        y = 0
+    else:
+        y %= two_pi
+
+    return exp(x) * (cos(y) + 1j * sin(y))

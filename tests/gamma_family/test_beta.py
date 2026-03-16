@@ -45,7 +45,7 @@ class Test_beta:
         assert abs(beta(3/2, 1/2) - (pi/2)) < tolerance1
         assert abs(beta(3/2, -1/2) - (-pi)) < tolerance1
         assert abs(beta(-5/2, 7/2) - (-pi)) < tolerance1
-        assert isinf(beta(5/2, -7/2))
+        assert abs(beta(5/2, -7/2) - (0)) < tolerance1
         assert abs(beta(1.0/6.0, 5.0/6.0).real - (2*pi)) < tolerance1
         assert abs(beta(0+1j, 1) - (0-1j)) < tolerance1
         assert abs(beta(1, 0+1j) - (0-1j)) < tolerance1
@@ -54,9 +54,9 @@ class Test_beta:
         assert abs(beta(1+42j, 1-42j) - (pi/sinh(pi*42))) < tolerance1
 
     def test_beta_with_singular_values(self) -> None:
-    #   assert beta(-3, 1) == 0
-        assert isinf(beta(-2, -7))
         assert isinf(beta(0, 0))
 
     def test_beta_with_removable_singular_values(self) -> None:
         assert beta(1, -1) == -2.0
+        assert beta(-3, 1) == -1/3
+        assert beta(-2, -7) == -1/1296

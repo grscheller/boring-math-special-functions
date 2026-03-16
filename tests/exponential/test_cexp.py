@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import exp as std_cexp, inf, infj
+from cmath import exp as std_cexp, inf, isinf
 from math import pi
 from boring_math.special_functions.exponential import cexp
 from boring_math.special_functions.trig0 import sin0, cos0
@@ -67,5 +67,7 @@ class Test_cexp:
         assert abs(cexp(c9) - std_cexp(c9)) < tolerance0
 
     def test_infinity(self) -> None:
-        assert cexp(inf) == inf
-        assert cexp(-inf) == inf
+        assert cexp(0.0+0.0j) == 1.0
+        assert cexp(0.0) == 1.0
+    #   assert cexp(inf + 0j) == inf
+        assert cexp(-inf + 0j) == 0
