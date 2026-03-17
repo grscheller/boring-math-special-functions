@@ -99,12 +99,12 @@ class Test_beta_pos1_neg1:
 class Test_beta_neg2_neg7:
     def test_beta_right_to_left(self) -> None:
         assert abs(beta(-2 + 1/2, -7 + 1/2) - (0)) < tolerance1
-        assert abs(beta(-2 + 1/3, -7 + 1/3) - (77.00466552714815)) < tolerance1
-        assert abs(beta(-2 + 1/4, -7 + 1/4) - (152.4043862453268)) < tolerance2
-        assert abs(beta(-2 + 1/8, -7 + 1/8) - (448.66095912879945)) < tolerance4
-        assert abs(beta(-2 + 1/16, -7 + 1/16) - (1030.9708744364345)) < tolerance5
-        assert abs(beta(-2 + 1/256, -7 + 1/256) - (18318.72337056851)) < tolerance10
-    #   assert abs(beta(-2, -7) - (1/1296)) < tolerance1
+        assert abs(beta(-2 + 1/3, -7 + 1/3) - (77.004665527148142)) < tolerance1
+        assert abs(beta(-2 + 1/4, -7 + 1/4) - (152.404386245326966)) < tolerance2
+        assert abs(beta(-2 + 1/8, -7 + 1/8) - (448.66095912879820)) < tolerance4
+        assert abs(beta(-2 + 1/16, -7 + 1/16) - (1030.9708744364408)) < tolerance5
+        assert abs(beta(-2 + 1/256, -7 + 1/256) - (18318.72337057219)) < tolerance10
+        assert isinf(beta(-2, -7))
         assert abs(beta(-2 - 1/256, -7 - 1/256) - (-18544.08473523671)) < tolerance10
         assert abs(beta(-2 - 1/16, -7 - 1/16) - (-1253.7545201376347)) < tolerance6
         assert abs(beta(-2 - 1/8, -7 - 1/8) - (-663.5417040997653)) < tolerance4
@@ -119,7 +119,7 @@ class Test_beta_neg2_neg7:
         assert abs(beta(-2 + (1+1j)/8, -7 + (1+1j)/8) - (157.55893367001724-298.36213298053826j)) < tolerance1
         assert abs(beta(-2 + (1+1j)/16, -7 + (1+1j)/16) - (453.96247669782167-583.1615282660869j)) < tolerance1
         assert abs(beta(-2 + (1+1j)/256, -7 + (1+1j)/256) - (9102.718413120123-9216.585908309606j)) < tolerance1
-    #   assert abs(beta(-2, -7) - (1/1296)) < tolerance1
+        assert isinf(beta(-2, -7))
         assert abs(beta(-2 - (1+1j)/256, -7 - (1+1j)/256) - (-9328.089842389212+9216.606035767285j)) < tolerance1
         assert abs(beta(-2 - (1+1j)/16, -7 - (1+1j)/16) - (-679.379617403794+588.3138413834292j)) < tolerance1
         assert abs(beta(-2 - (1+1j)/8, -7 - (1+1j)/8) - (-383.6611860983296+318.9524400831555j)) < tolerance1
@@ -136,7 +136,7 @@ class Test_beta_neg3_pos1:
         assert abs(beta(-3 - 1/20, 1 - 1/20) - (-0.7006018748883518)) < tolerance1
         assert abs(beta(-3 - 1/100, 1 - 1/100) - (-0.6742564516000351)) < tolerance1
         assert abs(beta(-3 - 1/256, 1 - 1/256) - (-0.6696764002044514)) < tolerance1
-    #   assert abs(beta(-3, 1) - (-1/3)) < tolerance1
+        assert abs(beta(-3, 1) - (-1/3)) < tolerance1
         assert abs(beta(-3 + 1/256, 1 + 1/256) - (-0.6636002949244252)) < tolerance1
         assert abs(beta(-3 + 1/100, 1 + 1/100) - (-0.6587056545925919)) < tolerance1
         assert abs(beta(-3 + 1/20, 1 + 1/20) - (-0.6234202673370612)) < tolerance1
@@ -145,19 +145,19 @@ class Test_beta_neg3_pos1:
         assert abs(beta(-3 + 1/3, 1 + 1/3) - (-0.2649958125428176)) < tolerance1
 
     def test_beta_one_side_left_to_right(self) -> None:
-        assert abs(beta(-3 - 1/3, 1) - (-0.30000000000000016)) < tolerance1
+        assert abs(beta(-3 - 1/3, 1) - (-3/10)) < tolerance1
         assert abs(beta(-3 - 1/4, 1) - (-0.30769230769230704)) < tolerance1
         assert abs(beta(-3 - 1/8, 1) - (-0.31999999999999995)) < tolerance1
         assert abs(beta(-3 - 1/20, 1) - (-0.32786885245901715)) < tolerance1
         assert abs(beta(-3 - 1/100, 1) - (-0.33222591362125625)) < tolerance1
         assert abs(beta(-3 - 1/256, 1) - (-0.3328998699610047)) < tolerance1
-    #   assert abs(beta(-3, 1) - (-1/3)) < tolerance1
+        assert abs(beta(-3, 1) - (-1/3)) < tolerance1
         assert abs(beta(-3 + 1/256, 1) - (-0.33376792698828256)) < tolerance1
         assert abs(beta(-3 + 1/100, 1) - (-0.334448160535111)) < tolerance1
         assert abs(beta(-3 + 1/20, 1) - (-0.3389830508474576)) < tolerance1
         assert abs(beta(-3 + 1/8, 1) - (-0.3478260869565217)) < tolerance1
         assert abs(beta(-3 + 1/4, 1) - (-0.36363636363636354)) < tolerance1
-        assert abs(beta(-3 + 1/3, 1) - (-0.3750000000000005)) < tolerance1
+        assert abs(beta(-3 + 1/3, 1) - (-3/8)) < tolerance1
 
 
     def test_beta_other_side_left_to_right(self) -> None:
@@ -167,7 +167,7 @@ class Test_beta_neg3_pos1:
     #   assert abs(beta(-3, 1 - 1/20) - (42)) < tolerance1
     #   assert abs(beta(-3, 1 - 1/100) - (42)) < tolerance1
     #   assert abs(beta(-3, 1 - 1/256) - (42)) < tolerance1
-    #   assert abs(beta(-3, 1) - (-1/3)) < tolerance1
+        assert abs(beta(-3, 1) - (-1/3)) < tolerance1
         assert abs(beta(-3, 1 + 1/256) - (42)) < tolerance1
         assert abs(beta(-3, 1 + 1/100) - (42)) < tolerance1
         assert abs(beta(-3, 1 + 1/20) - (42)) < tolerance1
