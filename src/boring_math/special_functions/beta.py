@@ -15,13 +15,13 @@
 """Beta function."""
 
 from math import factorial as fac
-from cmath import log as clog, inf, infj, isnan, isinf
+from cmath import log as clog, isnan, nan, nanj
 from .exponential import cexp
 from .gamma import gamma
 
 __all__ = ['beta']
 
-infinity = inf + infj
+infinity = nan + nanj # represents complex infinity
 
 
 def beta(u: complex, v: complex) -> complex:
@@ -47,21 +47,26 @@ def beta(u: complex, v: complex) -> complex:
 
     """
     if isnan(naive := clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))):
-        u1 = int(u.real)
-        v1 = int(v.real)
+        if isnan(u) or isnan(v):
+            return infinity
+        ui, vi = int(u.real), int(v.real)
+        umax = max(ui, vi)
+        vmin = min(ui, vi)
 
-        if u1 > 0 and v1 > 0:
-            return complex(fac(u1-1) / fac(u1+v1-1) * fac(v1-1))
-        if u1 <= 0 and v1 <= 0:
-            return ((-1.0)**(-u1)/fac(-u1)) / ((-1.0)**(-u1-v1)/fac(-u1-v1)) * ((-1.0)**(-v1)/fac(-v1))
-        if u1 > 0 and u1 > -v1 > 0:
-            return 0+0j
-        if u1 > 0 and u1 <= -v1:
-            return (fac(u1-1)) / ((-1.0)**(u1-v1)/fac(u1-v1)) * ((-1.0)**(-v1)/fac(-v1))
-        if v1 > 0 and v1 > -u1 > 0:
-            return 0+0j
-        if v1 > 0 and v1 <= -u1:
-            return ((-1.0)**(-u1)/fac(v1)) / ((-1.0)**(v1-u1)/fac(v1-u1)) * (fac(v1-1))
+        if vmin <= umax <= 0:
+            return infinity
+
+        if umax > 0 >= vmin:
+            if umax < abs(vmin):
+                return infinity
+            elif umax == abs(vmin):
+                return (fac(umax-1)) / ((-1.0)**(umax-vmin)/fac(umax-vmin)) * ((-1.0)**(-vmin)/fac(-vmin))
+            else:
+                assert False
+
+        if umax >= vmin > 0:
+            assert False
+
         assert False
     else:
         return cexp(naive)

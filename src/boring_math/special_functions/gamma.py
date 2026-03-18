@@ -14,7 +14,7 @@
 
 """Gamma function."""
 
-from cmath import pi, inf, infj
+from cmath import pi, inf, nan, nanj
 from .exponential import exp, cexp
 from .ctrig import csin
 from .trig import sin as rsin
@@ -24,8 +24,7 @@ __all__ = ['gamma', 'gamma_real']
 two_pi = 2.0*pi
 sqrt_two_pi = float(two_pi**0.5)
 comp_sqrt_two_pi = complex(sqrt_two_pi)
-jay = 0.0 + 1.0j
-infinity = inf + infj
+infinity = nan + nanj
 
 
 def gamma(z: complex) -> complex:
@@ -42,21 +41,21 @@ def gamma(z: complex) -> complex:
 
     :param z: Complex argument.
     :returns: Value of analytic continuation of ``gamma(z)``. Uses
-              ``inf + infj`` to represent a single complex infinity.
+              ``nan + nanj`` to represent a single complex infinity.
 
     """
     g7 = 7.5 + 0.0j
     n = 9
     p = [
-        0.99999999999980993 + 0.0j,
-        676.5203681218851 + 0.0j,
-        -1259.1392167224028 + 0.0j,
-        771.32342877765313 + 0.0j,
-        -176.61502916214059 + 0.0j,
-        12.507343278686905 + 0.0j,
-        -0.13857109526572012 + 0.0j,
-        9.9843695780195716e-6 + 0.0j,
-        1.5056327351493116e-7 + 0.0j,
+        0.99999999999980993+0.0j,
+        676.5203681218851+0.0j,
+        -1259.1392167224028+0.0j,
+        771.32342877765313+0.0j,
+        -176.61502916214059+0.0j,
+        12.507343278686905+0.0j,
+        -0.13857109526572012+0.0j,
+        9.9843695780195716e-6+0.0j,
+        1.5056327351493116e-7+0.0j,
     ]
 
     if z.real < 0.5:
