@@ -27,10 +27,10 @@ def exp0(x: float, /, n: int = 22) -> float:
 
     .. note::
 
-        Best if ``-1 <= x <= 1``.
+        Best if ``-1 <= x <= 1`` for ``n >= 22``.
 
     :param x: independent variable
-    :param n: terms in expansion, must have ``n >= 22``
+    :param n: terms in expansion, must have ``n >= 2``
     :returns: Taylor series expansion of ``eˣ`` centered at ``x = 0``
 
     """
@@ -39,8 +39,8 @@ def exp0(x: float, /, n: int = 22) -> float:
     d -= 1.0
     while d >= 0.5:
         accum = x / d * (1 + accum)
-        d -= 1
-    return 1 + accum
+        d -= 1.0
+    return 1.0 + accum
 
 
 e = exp0(1.0)
@@ -58,7 +58,7 @@ def exp(x: float, /, n: int = 22) -> float:
     """Exponential function good for all floating point x.
 
     :param x: independent variable
-    :param n: terms in expansion, must have ``n >= 22``
+    :param n: terms in expansion, must have ``n >= 2``
     :returns: Value of ``eˣ``
 
     """
@@ -78,10 +78,10 @@ def cexp0(z: complex, /, n: int = 22) -> complex:
 
     .. note::
 
-        Best if ``|z| <= 1``.
+        Best if ``|z| <= 1`` and ``n >= 22``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have n >= 22
+    :param n: terms in expansion, must have ``n >= 2``
     :returns: Taylor series expansion of eᶻ centered at z = 0
 
     """
@@ -90,15 +90,15 @@ def cexp0(z: complex, /, n: int = 22) -> complex:
     d -= 1.0
     while d >= 0.5:
         accum = z / d * (1 + accum)
-        d -= 1
-    return 1 + accum
+        d -= 1.0
+    return 1.0 + accum
 
 
 def cexp(z: complex, /, n: int = 22) -> complex:
     """Exponential function good for all complex z.
 
     :param z: independent variable
-    :param n: terms in expansion, must have n >= 22
+    :param n: terms in expansion, must have ``n >= 2``
     :returns: Value of ``eᶻ``
 
     """
@@ -110,4 +110,4 @@ def cexp(z: complex, /, n: int = 22) -> complex:
     else:
         y %= two_pi
 
-    return exp(x) * (cos(y) + 1j * sin(y))
+    return exp(x) * (cos(y) + 1j*sin(y))

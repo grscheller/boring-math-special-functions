@@ -18,8 +18,9 @@ from math import factorial, inf
 
 __all__ = ['sin0', 'cos0', 'tan0']
 
-mindepth = 22
-maxdepth = 22
+maxdepth = 84
+mindepth = 2
+depth = 22
 
 s: list[float] = list()
 c: list[float] = list()
@@ -29,15 +30,15 @@ for ii in range(maxdepth):
     c.append(1 / factorial(2 * (ii + 1)))
 
 
-def sin0(x: float, /, n: int = maxdepth) -> float:
+def sin0(x: float, /, n: int = depth) -> float:
     """Partially factored Taylor expansion of sine about ``x = 0``.
 
     .. note::
 
-        Best if ``-2π <= x <= 2π``.
+        Best if ``-2π <= x <= 2π`` and ``n >= 22``.
 
     :param x: angle in radians
-    :param n: terms in expansion, must have ``2 <= n <= 20``
+    :param n: terms in expansion, must have ``2 <= n <= 84``
     :returns: Taylor series expansion of sine(x) centered at ``x = 0``
 
     """
@@ -51,15 +52,15 @@ def sin0(x: float, /, n: int = maxdepth) -> float:
     return x * (1 - accum)
 
 
-def cos0(x: float, /, n: int = maxdepth) -> float:
+def cos0(x: float, /, n: int = depth) -> float:
     """Partially factored Taylor expansion of cosine about ``x = 0``.
 
     .. note::
 
-        Best if ``-2π <= x <= 2π``.
+        Best if ``-2π <= x <= 2π`` and ``n >= 22``.
 
     :param x: angle in radians
-    :param n: terms in expansion, must have ``2 <= n <= 20``
+    :param n: terms in expansion, must have ``2 <= n <= 84``
     :returns: Taylor series expansion of ``cosine(x)`` centered at ``x = 0``
 
     """
@@ -73,15 +74,15 @@ def cos0(x: float, /, n: int = maxdepth) -> float:
     return 1 - accum
 
 
-def tan0(x: float, /, n: int = maxdepth) -> float:
+def tan0(x: float, /, n: int = depth) -> float:
     """Tangent centered about ``x = 0``.
 
     .. note::
 
-        Best if ``-π <= x <= π``.
+        Best if ``-π <= x <= π`` and ``n >= 22``.
 
     :param x: angle in radians
-    :param n: terms in expansion, must have ``2 <= n <= 20``
+    :param n: terms in expansion, must have ``2 <= n <= 84``
     :returns: ``sin0(x)/cos0(x)``
 
     """

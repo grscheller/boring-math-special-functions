@@ -30,16 +30,18 @@ def beta(u: complex, v: complex) -> complex:
 
     .. note::
 
-        Using natural logs for more numerical stability.
+        For all u, v ∈ ℂ and m, n ∈ ℕ, we have
 
-    .. note::
-
-        - B(u, v) = B(v, u) for ∀(u, v ∈ ℂ)
-        - B(0, v) = Γ(0) = ∞ for ∀(v ∈ ℂ)
-        - B(m, -n) = 0 ∀(m, n ∈ ℕ) when m > n > 0
+        - B(u, v) = B(v, u)
+        - B(0, v) = Γ(0) = ∞
+        - B(m, -n) = ∞ when m > n > 0
         - B(m, -n) = Γ(m) * (Res[Γ, -n]/Res[Γ, m-n]) when m <= n
 
           - where ∀(n>=0) Res[Γ(z), z = -n] = (-1)**(n)/(n!)
+
+    .. note::
+
+        Using natural logs for more numerical stability.
 
     :param u: First argument to analytically continued beta function.
     :param v: Second argument to analytically continued beta function.

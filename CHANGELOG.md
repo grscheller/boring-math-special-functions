@@ -16,6 +16,16 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ### PyPI Release 3.1.0 - TBD
 
+Added the beta function
+
+- implemented with gamma function
+- correctly handles singularities and canceling poles
+- using `inf + infj` to represent complex infinity
+  - in complex analysis all of these are the same: `inf+infj`,
+    `inf-infj`, `-inf+infj`, `-inf-infj`, `inf`, `-inf`
+  - in Python all are distinct values, there is no concept of
+    a single valued complex infinity
+  
 Now uses Python's inf to represent complex infinity.
 
 ### PyPI Release 3.0.0 - 2026-03-03

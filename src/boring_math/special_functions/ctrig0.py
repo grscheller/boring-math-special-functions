@@ -14,29 +14,32 @@
 
 """Complex valued special functions about a point."""
 
-from math import factorial, inf
+from cmath import inf, infj
+from math import factorial
 
 __all__ = ['csin0', 'ccos0', 'ctan0']
 
-maxdepth = 22
+depth = 22
+maxdepth = 84
+infinity = inf + infj
 
 s: list[complex] = list()
 c: list[complex] = list()
 
 for ii in range(maxdepth):
-    s.append(1 / factorial(2 * ii + 1))
-    c.append(1 / factorial(2 * (ii + 1)))
+    s.append(1 / factorial(2*ii + 1))
+    c.append(1 / factorial(2*(ii + 1)))
 
 
-def csin0(z: complex, /, n: int = maxdepth) -> complex:
-    """Partially factored Taylor expansion of sine about z = 0.
+def csin0(z: complex, /, n: int = depth) -> complex:
+    """Partially factored Taylor expansion of sine about ``z = 0``.
 
     .. note::
 
-        Best if ``|z| <= 2π``.
+        Best if ``|z| <= 2π`` and ``n >= 22``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have ``2 <= n <= 22``
+    :param n: terms in expansion, must have ``2 <= n <= 84``
     :returns: Taylor series expansion of sine(x) centered at ``z = 0``
 
     """
@@ -50,15 +53,15 @@ def csin0(z: complex, /, n: int = maxdepth) -> complex:
     return z * (1 - accum)
 
 
-def ccos0(z: complex, /, n: int = maxdepth) -> complex:
+def ccos0(z: complex, /, n: int = depth) -> complex:
     """Partially factored Taylor expansion of cosine about ``z = 0``.
 
     .. note::
 
-        Best if ``|z| <= 2π``.
+        Best if ``|z| <= 2π`` and ``n >= 22``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have ``2 <= n <= 22``
+    :param n: terms in expansion, must have ``2 <= n <= 84``
     :returns: Taylor series expansion of cosine(z) centered at ``z = 0``
 
     """
@@ -72,26 +75,19 @@ def ccos0(z: complex, /, n: int = maxdepth) -> complex:
     return 1 - accum
 
 
-def ctan0(z: complex, /, n: int = maxdepth) -> complex:
+def ctan0(z: complex, /, n: int = depth) -> complex:
     """Tangent centered about ``z = 0``.
 
     .. note::
 
-        Best if ``|z| <= π``.
+        Best if ``|z| <= π`` and ``n >= 22``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have ``2 <= n <= 22``
+    :param n: terms in expansion, must have ``2 <= n <= 84``
     :returns: ``csin0(z)/ccos0(z)``
 
     """
     try:
-        return csin0(z, n=n) / ccos0(z, n=n)
+        return csin0(z, n=n)/ccos0(z, n=n)
     except ZeroDivisionError:
-        absnum = abs(num := csin0(z, n=n))
-        if absnum > 0:
-            factor = num / absnum
-        elif num.real >= 0:
-            factor = complex(1.0, 0.0)
-        else:
-            factor = complex(-1.0, 0.0)
-        return factor * inf
+        return infinity

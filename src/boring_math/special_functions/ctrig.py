@@ -12,18 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Complex valued special functions."""
+"""Complex valued trig functions."""
 
-from math import pi
+from cmath import inf, infj, pi
 from .exponential import cexp
 
 __all__ = ['csin', 'ccos', 'ctan']
 
-mindepth = 22
-maxdepth = 22
+depth = 22
 
-two_pi = 2.0 * pi
-jay = 0.0 + 1.0j
+two_pi = 2.0*pi
+infinity = inf + infj
 
 
 def shift0(x: float) -> float:
@@ -33,41 +32,41 @@ def shift0(x: float) -> float:
     return shifted
 
 
-def csin(z: complex, /, n: int = maxdepth) -> complex:
-    """Partially factored Taylor expansion of sine about z = 0.
+def csin(z: complex, /, n: int = depth) -> complex:
+    """Complex sine valid for all ``z∈ℂ``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have 2 <= n <= 20
+    :param n: terms in expansion, must have 2 <= n <= 84
     :returns: Value of ``sine(z)``.
 
     """
     x = z.real
     y = z.imag
-    return 0.5 * jay * (cexp(y - jay * x) - cexp(-y + jay * x))
+    return (cexp(-y+(1j)*x) - cexp(y-(1j)*x))/2j
 
 
-def ccos(z: complex, /, n: int = maxdepth) -> complex:
-    """Partially factored Taylor expansion of cosine about z = 0.
+def ccos(z: complex, /, n: int = depth) -> complex:
+    """Complex cosine valid for all ``z∈ℂ``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have 2 <= n <= 20
+    :param n: terms in expansion, must have 2 <= n <= 84
     :returns: Value of ``cosine(z)``.
 
     """
     x = z.real
     y = z.imag
-    return 0.5 * (cexp(-y + jay * x) + cexp(y - jay * x))
+    return (cexp(-y+(1j)*x) + cexp(y-(1j)*x))/2
 
 
-def ctan(z: complex, /, n: int = maxdepth) -> complex:
-    """Tangent centered about z = 0.
+def ctan(z: complex, /, n: int = depth) -> complex:
+    """Complex tangent valid for all ``z∈ℂ``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have 2 <= n <= 20
+    :param n: terms in expansion, must have 2 <= n <= 84
     :returns: Value of ``tangent(z)`` via ``sin(z)/cos(z)``
 
     """
     try:
-        return csin(z) / ccos(z)
+        return csin(z)/ccos(z)
     except ZeroDivisionError:
-        return 1.633123935319537e16 + 0j
+        return infinity
