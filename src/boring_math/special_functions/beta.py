@@ -15,13 +15,14 @@
 """Beta function."""
 
 from math import factorial as fac
-from cmath import log as clog, isnan, nan, nanj
+from cmath import log as clog, isnan, inf, infj
 from .exponential import cexp
 from .gamma import gamma
 
 __all__ = ['beta']
 
-infinity = nan + nanj # represents complex infinity
+# used to represent complex infinity
+infinity = inf + infj
 
 
 def beta(u: complex, v: complex) -> complex:
@@ -42,13 +43,13 @@ def beta(u: complex, v: complex) -> complex:
 
     :param u: First argument to analytically continued beta function.
     :param v: Second argument to analytically continued beta function.
-    :returns: Value of beta(u,v) where inf + infj is used to represent
-              a single complex infinity.
+    :returns: Value of ``beta(u,v)`` where ``inf + infj`` is used to
+              represent a single complex infinity.
 
     """
-    if isnan(naive := clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))):
-        if isnan(u) or isnan(v):
-            return infinity
+    if not isnan(naive := clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))):
+        return cexp(naive)
+    else:
         ui, vi = int(u.real), int(v.real)
         umax = max(ui, vi)
         vmin = min(ui, vi)
@@ -57,16 +58,13 @@ def beta(u: complex, v: complex) -> complex:
             return infinity
 
         if umax > 0 >= vmin:
-            if umax < abs(vmin):
-                return infinity
-            elif umax == abs(vmin):
-                return (fac(umax-1)) / ((-1.0)**(umax-vmin)/fac(umax-vmin)) * ((-1.0)**(-vmin)/fac(-vmin))
+            if umax <= -vmin:
+                return (
+                    ((-1.0)**(-vmin) / fac(-vmin))
+                    / ((-1.0)**(-vmin - umax) / fac(-vmin - umax))
+                    * (fac(umax - 1))
+                )
             else:
-                assert False
-
-        if umax >= vmin > 0:
-            assert False
+                return infinity
 
         assert False
-    else:
-        return cexp(naive)

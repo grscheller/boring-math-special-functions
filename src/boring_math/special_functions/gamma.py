@@ -14,7 +14,7 @@
 
 """Gamma function."""
 
-from cmath import pi, inf, nan, nanj
+from cmath import pi, inf, infj
 from .exponential import exp, cexp
 from .ctrig import csin
 from .trig import sin as rsin
@@ -24,7 +24,9 @@ __all__ = ['gamma', 'gamma_real']
 two_pi = 2.0*pi
 sqrt_two_pi = float(two_pi**0.5)
 comp_sqrt_two_pi = complex(sqrt_two_pi)
-infinity = nan + nanj
+
+# represents complex infinity
+infinity = inf + infj
 
 
 def gamma(z: complex) -> complex:
@@ -40,8 +42,8 @@ def gamma(z: complex) -> complex:
         <https://en.wikipedia.org/wiki/Lanczos_approximation>`_.
 
     :param z: Complex argument.
-    :returns: Value of analytic continuation of ``gamma(z)``. Uses
-              ``nan + nanj`` to represent a single complex infinity.
+    :returns: Value of the analytic continuation of ``gamma(z)``. Uses
+              ``inf + infj`` to represent a single complex infinity.
 
     """
     g7 = 7.5 + 0.0j
@@ -71,7 +73,7 @@ def gamma(z: complex) -> complex:
         t = z + g7
         z += 0.5+0.0j
         if abs(y) == inf:
-            y = infinity
+            return infinity
         return comp_sqrt_two_pi * t**z * cexp(-t) * y
 
 

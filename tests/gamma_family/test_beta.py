@@ -31,46 +31,46 @@ class Test_beta:
         assert abs(beta(7, 3) - (1 / 252)) < tolerance1
         assert abs(beta(4, 4) - (1 / 140)) < tolerance1
         assert abs(beta(5, 4) - (1 / 280)) < tolerance1
-        assert abs(beta(1 / 2, 1 / 2) - (pi)) < tolerance1
-        assert abs(beta(3 / 2, 1 / 2) - (pi / 2)) < tolerance1
-        assert abs(beta(5 / 2, 3 / 2) - (pi / 16)) < tolerance1
-        assert abs(beta(5 / 2, 7 / 2) - (3 * pi / 256)) < tolerance1
-        assert abs(beta(3 / 2, -1 / 2) - (-pi)) < tolerance1
-        assert abs(beta(-5 / 2, 7 / 2) - (-pi)) < tolerance1
-        assert abs(beta(5 / 2, 11 / 2) - (9 * pi / 2048)) < tolerance1
-        assert abs(beta(5 / 2, -11 / 2) - (0)) < tolerance1
-        assert abs(beta(-5 / 2, 11 / 2) - (-63 * pi / 8)) < tolerance1
-        assert abs(beta(-7 / 4, -5 / 4) - (0)) < tolerance1
-        assert abs(beta(1 / 6, 5 / 6) - (2 * pi)) < tolerance2
-        assert abs(beta(1 / 6, 2) - (36 / 7)) < tolerance2
+        assert abs(beta(1/2, 1/1) - (2)) < tolerance1
+        assert abs(beta(3/2, 1/2) - (pi / 2)) < tolerance1
+        assert abs(beta(5/2, 3/2) - (pi / 16)) < tolerance1
+        assert abs(beta(5/2, 7/2) - (3 * pi / 256)) < tolerance1
+        assert abs(beta(3/2, -1/2) - (-pi)) < tolerance1
+        assert abs(beta(-5/ 2, 7/2) - (-pi)) < tolerance1
+        assert abs(beta(5/2, 11/2) - (9 * pi / 2048)) < tolerance1
+        assert abs(beta(5/2, -11/2) - (0)) < tolerance1
+        assert abs(beta(-5/2, 11/2) - (-63 * pi / 8)) < tolerance1
+        assert abs(beta(-7/4, -5/4) - (0)) < tolerance1
+        assert abs(beta(1/6, 5/6) - (2 * pi)) < tolerance2
+        assert abs(beta(1/6, 2) - (36 / 7)) < tolerance2
         assert abs(beta(42, 11) - (1 / 664441017240)) < tolerance1
         assert abs(beta(1, 1j) - (-1j)) < tolerance1
-        assert abs(beta(1 + 42j, 1 - 42j) - (pi / sinh(pi * 42))) < tolerance1
+        assert abs(beta(1+42j, 1-42j) - (pi / sinh(pi * 42))) < tolerance1
         assert (
-            abs(beta(1 / 2 - pi * (1j), 1 / 2 + pi * (1j)) - (pi / cosh(pi * pi)))
+            abs(beta(1/2 - pi*(1j), 1/2 + pi*(1j)) - (pi/cosh(pi * pi)))
             < tolerance1
         )
         assert beta(1, -1) == -1.0
-        assert beta(-3, 1) == -1 / 3
-        assert beta(2, -3) == 1 / 6
+        assert beta(-3, 1) == -1/3
+        assert beta(2, -3) == 1/6
 
     def test_beta_with_approx_values(self) -> None:
         assert abs(beta(1.0023, 2.2123) - (0.4503795612154237)) < tolerance1
         assert (
-            abs(beta(0 + 1j, 0 + 1j) - (-2.376146124821733 - 2.639568520278136j))
+            abs(beta(0+1j, 0+1j) - (-2.376146124821733 - 2.639568520278136j))
             < tolerance1
         )
         assert (
-            abs(beta(pi - 1j, 1 + 1j) - (0.036836170895854 - 0.1332437023662604j))
+            abs(beta(pi - 1j, 1+1j) - (0.036836170895854 - 0.1332437023662604j))
             < tolerance1
         )
-        assert abs(beta(1 + 0.12j, 1 - 0.12j) - (0.976699901665663089)) < tolerance1
-        assert abs(beta(1 + 0.12j, -1 - 0.12j) - (0.000000000000000000)) < tolerance1
+        assert abs(beta(1+0.12j, 1-0.12j) - (0.976699901665663089)) < tolerance1
+        assert abs(beta(1+0.12j, -1-0.12j) - (0.000000000000000000)) < tolerance1
         assert (
             abs(
-                beta(1 + 0.12j, -1 + 0.12j)
-                - (-2.018296926369466089 - 0.233998375204097255j)
-            ) < tolerance1
+                beta(1+0.12j, -1+0.12j)
+                - (-2.018296926369466089-0.233998375204097255j)
+            ) < tolerance2
         )
 
     def test_beta_with_singular_values(self) -> None:
