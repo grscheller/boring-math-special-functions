@@ -14,7 +14,8 @@
 
 """Floating point special functions about a point."""
 
-from math import ceil, floor, pi, inf, isinf, isnan
+from cmath import inf, infj, isinf, isnan
+from math import ceil, floor, pi
 from .trig import sin, cos
 
 __all__ = ['exp0', 'exp', 'cexp0', 'cexp']
@@ -105,8 +106,8 @@ def cexp(z: complex, /, n: int = 22) -> complex:
     x = z.real
     y = z.imag
 
-    if isinf(y) or isnan(y):
-        y = 0
+    if isinf(y):
+        return inf + infj
     else:
         y %= two_pi
 

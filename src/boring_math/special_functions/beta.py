@@ -37,7 +37,7 @@ def beta(u: complex, v: complex) -> complex:
         - B(m, -n) = ∞ when m > n > 0
         - B(m, -n) = Γ(m) * (Res[Γ, -n]/Res[Γ, m-n]) when m <= n
 
-          - where ∀(n>=0) Res[Γ(z), z = -n] = (-1)**(n)/(n!)
+          - where ∀(n>=0) Res[Γ(z), z = -n] = (-1)ⁿ/(n!)
 
     .. note::
 
