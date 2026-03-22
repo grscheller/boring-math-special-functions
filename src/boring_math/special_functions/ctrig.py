@@ -17,26 +17,20 @@
 from cmath import inf, infj, pi
 from .exponential import cexp
 
-__all__ = ['csin', 'ccos', 'ctan']
+__all__ = ['csin', 'ccos', 'ctan', 'infinity']
 
 depth = 22
 
 two_pi = 2.0*pi
 infinity = inf + infj
-
-
-def shift0(x: float) -> float:
-    shifted = x % (two_pi)
-    if shifted > pi:
-        shifted = -1.0 * (shifted - pi)
-    return shifted
+"""Used to represent a single complex infinity."""
 
 
 def csin(z: complex, /, n: int = depth) -> complex:
     """Complex sine valid for all ``z∈ℂ``.
 
-    :param z: independent variable
-    :param n: terms in expansion, must have 2 <= n <= 84
+    :param z: Independent variable.
+    :param n: Terms in expansion, must have 2 <= n <= 84.
     :returns: Value of ``sine(z)``.
 
     """
@@ -48,8 +42,8 @@ def csin(z: complex, /, n: int = depth) -> complex:
 def ccos(z: complex, /, n: int = depth) -> complex:
     """Complex cosine valid for all ``z∈ℂ``.
 
-    :param z: independent variable
-    :param n: terms in expansion, must have 2 <= n <= 84
+    :param z: Independent variable.
+    :param n: Terms in expansion, must have 2 <= n <= 84.
     :returns: Value of ``cosine(z)``.
 
     """
@@ -61,9 +55,9 @@ def ccos(z: complex, /, n: int = depth) -> complex:
 def ctan(z: complex, /, n: int = depth) -> complex:
     """Complex tangent valid for all ``z∈ℂ``.
 
-    :param z: independent variable
-    :param n: terms in expansion, must have 2 <= n <= 84
-    :returns: Value of ``tangent(z)`` via ``sin(z)/cos(z)``
+    :param z: Independent variable.
+    :param n: Terms in expansion, must have 2 <= n <= 84.
+    :returns: Value of ``tangent(z)`` via ``sin(z)/cos(z)``.
 
     """
     try:

@@ -17,18 +17,20 @@
 from cmath import inf, infj
 from math import factorial
 
-__all__ = ['csin0', 'ccos0', 'ctan0']
+__all__ = ['csin0', 'ccos0', 'ctan0', 'infinity']
 
-depth = 22
+depth = 20
 maxdepth = 84
-infinity = inf + infj
 
-s: list[complex] = list()
-c: list[complex] = list()
+infinity = inf + infj
+"""Used to represent a single complex infinity."""
+
+sin_factors: list[complex] = list()
+cos_factors: list[complex] = list()
 
 for ii in range(maxdepth):
-    s.append(1 / factorial(2*ii + 1))
-    c.append(1 / factorial(2*(ii + 1)))
+    sin_factors.append(1 / factorial(2*ii + 1))
+    cos_factors.append(1 / factorial(2*(ii + 1)))
 
 
 def csin0(z: complex, /, n: int = depth) -> complex:
@@ -36,19 +38,19 @@ def csin0(z: complex, /, n: int = depth) -> complex:
 
     .. note::
 
-        Best if ``|z| <= 2π`` and ``n >= 22``.
+        Best if ``|z| <= 2π`` and ``n >= 20``.
 
     :param z: independent variable
     :param n: terms in expansion, must have ``2 <= n <= 84``
-    :returns: Taylor series expansion of sine(x) centered at ``z = 0``
+    :returns: Taylor series expansion of sine(x) centered at ``z = 0``.
 
     """
     zsqr = z * z
     pos = n - 1
-    accum = zsqr * s[pos]
+    accum = zsqr * sin_factors[pos]
     pos -= 1
     while pos > 0:
-        accum = zsqr * (s[pos] - accum)
+        accum = zsqr * (sin_factors[pos] - accum)
         pos -= 1
     return z * (1 - accum)
 
@@ -67,10 +69,10 @@ def ccos0(z: complex, /, n: int = depth) -> complex:
     """
     zsqr = z * z
     pos = n - 1
-    accum = zsqr * c[pos]
+    accum = zsqr * cos_factors[pos]
     pos -= 1
     while pos >= 0:
-        accum = zsqr * (c[pos] - accum)
+        accum = zsqr * (cos_factors[pos] - accum)
         pos -= 1
     return 1 - accum
 
@@ -80,11 +82,11 @@ def ctan0(z: complex, /, n: int = depth) -> complex:
 
     .. note::
 
-        Best if ``|z| <= π`` and ``n >= 22``.
+        Best if ``|z| <= π`` and ``n >= 20``.
 
-    :param z: independent variable
-    :param n: terms in expansion, must have ``2 <= n <= 84``
-    :returns: ``csin0(z)/ccos0(z)``
+    :param z: Independent variable.
+    :param n: Terms in expansion, must have ``2 <= n <= 84``.
+    :returns: The value ``csin0(z)/ccos0(z)``.
 
     """
     try:

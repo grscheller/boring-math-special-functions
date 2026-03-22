@@ -19,59 +19,55 @@ from .trig0 import sin0, cos0, tan0
 
 __all__ = ['sin', 'cos', 'tan']
 
-mindepth = 22
-maxdepth = 22
+mindepth = 20
 
 two_pi = 2.0 * pi
 pi_half = pi / 2.0
 
 
-def shift0(x: float) -> float:
-    shifted = x % (two_pi)
+def shift0(θ: float) -> float:
+    shifted = θ % (two_pi)
     if shifted > pi:
         shifted = -1.0 * (shifted - pi)
     return shifted
 
 
-def sin(x: float, /, n: int = maxdepth) -> float:
-    """Partially factored Taylor expansion of sine about x = 0.
+def sin(θ: float) -> float:
+    """Sine centered about θ = 0.
 
-    :param x: angle in radians
-    :param n: terms in expansion, must have 2 <= n <= 20
-    :returns: Taylor series expansion of sine(x) centered at x = 0
-
-    """
-    return sin0(shift0(x), n=n)
-
-
-def shift1(x: float) -> float:
-    return x % two_pi
-
-
-def cos(x: float, /, n: int = maxdepth) -> float:
-    """Partially factored Taylor expansion of cosine about x = 0.
-
-    :param x: angle in radians
-    :param n: terms in expansion, must have 2 <= n <= 20
-    :returns: Taylor series expansion of cosine(x) centered at x = 0
+    :param θ: Angle in radians.
+    :returns: Sine of angle θ.
 
     """
-    return cos0(shift1(x), n=n)
+    return sin0(shift0(θ), n=mindepth)
 
 
-def shift2(x: float) -> float:
-    shifted = x % pi
+def shift1(θ: float) -> float:
+    return θ % two_pi
+
+
+def cos(θ: float) -> float:
+    """Cosine centered about θ = 0.
+
+    :param θ: Angle in radians.
+    :returns: Cosine of angle θ.
+
+    """
+    return cos0(shift1(θ), n=mindepth)
+
+
+def shift2(θ: float) -> float:
+    shifted = θ % pi
     if shifted > pi_half:
         shifted = -1.0 * (shifted - pi_half)
     return shifted
 
 
-def tan(x: float, /, n: int = maxdepth) -> float:
-    """Tangent centered about x = 0.
+def tan(θ: float) -> float:
+    """Tangent centered about θ = 0.
 
-    :param x: angle in radians
-    :param n: terms in expansion, must have 2 <= n <= 20
-    :returns: sin0(x)/cos0(x)
+    :param θ: Angle in radians.
+    :returns: Tangent of angle θ.
 
     """
-    return tan0(shift2(x), n=n)
+    return tan0(shift2(θ), n=mindepth)

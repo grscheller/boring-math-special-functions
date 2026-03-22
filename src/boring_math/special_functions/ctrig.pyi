@@ -1,4 +1,8 @@
-__all__ = ['csin', 'ccos', 'ctan']
+from _typeshed import Incomplete
+
+__all__ = ['csin', 'ccos', 'ctan', 'infinity']
+
+infinity: Incomplete
 
 def csin(z: complex, /, n: int = ...) -> complex: ...
 def ccos(z: complex, /, n: int = ...) -> complex: ...

@@ -14,7 +14,7 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
-### PyPI Release 3.1.0 - TBD
+### PyPI Release 4.0.0 - TBD
 
 Added the beta function
 
@@ -26,8 +26,6 @@ Added the beta function
   - in Python all are distinct values, there is no concept of
     a single valued complex infinity
   
-Now uses Python's inf to represent complex infinity.
-
 ### PyPI Release 3.0.0 - 2026-03-03
 
 Breaking API changes.

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import pi, isinf
+from cmath import pi, isinf, isnan
 from boring_math.special_functions.beta import beta
 
 tolerance1 = 1.0e-13
@@ -167,7 +167,7 @@ class Test_beta_neg3_pos1:
         assert abs(beta(-1/20, 1) - (-20)) < tolerance2
         assert abs(beta(-1/100, 1) - (-100)) < tolerance6
         assert abs(beta(-1/256, 1) - (-256)) < tolerance7
-        assert isinf(beta(0, 1))
+        assert isnan(beta(0, 1))
         assert abs(beta(1/256, 1) - (256)) < tolerance7
         assert abs(beta(1/100, 1) - (100)) < tolerance6
         assert abs(beta(1/20, 1) - (20)) < tolerance2

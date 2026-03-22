@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import exp as std_cexp, inf, infj, isinf
+from cmath import exp as std_cexp, inf, infj, isnan
 from math import pi
-from boring_math.special_functions.exponential import cexp
+from boring_math.special_functions.exponential import cexp, infinity
 from boring_math.special_functions.trig0 import sin0, cos0
 
 tolerance0 = 5.0e-16
@@ -69,11 +69,11 @@ class Test_cexp:
     def test_infinity(self) -> None:
         assert cexp(0.0+0.0j) == 1.0
         assert cexp(0.0) == 1.0
-        assert isinf(cexp(inf))
-        assert isinf(cexp(inf + 0j))
-        assert isinf(cexp(infj))
-        assert isinf(cexp(inf+infj))
-        assert isinf(cexp(inf+infj))
-        assert isinf(cexp(42 + infj))
-        assert isinf(cexp(inf + 42j))
-        assert cexp(-inf + 0j) == 0
+        assert isnan(cexp(inf))
+        assert isnan(cexp(inf + 0j))
+        assert isnan(cexp(infj))
+        assert isnan(cexp(inf+infj))
+        assert isnan(cexp(inf+infj))
+        assert isnan(cexp(42 + infj))
+        assert isnan(cexp(inf + 42j))
+        assert isnan(cexp(-inf + 0j))

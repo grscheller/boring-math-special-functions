@@ -14,25 +14,31 @@
 
 """Floating point special functions about a point."""
 
-from cmath import inf, infj, isinf, isnan
-from math import ceil, floor, pi
+from cmath import inf, infj, isinf
+from math import ceil, floor, pi, nan
 from .trig import sin, cos
 
-__all__ = ['exp0', 'exp', 'cexp0', 'cexp']
+__all__ = ['exp0', 'exp', 'cexp0', 'cexp', 'infinity']
 
 two_pi = 2.0 * pi
 
+mindepth: int = 22
+"""Minimum depth required to agree with stdlib exp implementations."""
 
-def exp0(x: float, /, n: int = 22) -> float:
+infinity = inf + infj
+"""Used to represent a single complex infinity."""
+
+
+def exp0(x: float, /, n: int = mindepth) -> float:
     """Partially factored Taylor expansion of exp about ``x = 0``.
 
     .. note::
 
         Best if ``-1 <= x <= 1`` for ``n >= 22``.
 
-    :param x: independent variable
-    :param n: terms in expansion, must have ``n >= 2``
-    :returns: Taylor series expansion of ``eˣ`` centered at ``x = 0``
+    :param x: Independent variable.
+    :param n: Terms in expansion, must have ``n >= 2``.
+    :returns: Taylor series expansion of ``eˣ`` centered at ``x = 0``.
 
     """
     d = float(n)
@@ -55,12 +61,12 @@ def shift0(x: float) -> float:
     return shifted
 
 
-def exp(x: float, /, n: int = 22) -> float:
+def exp(x: float, /, n: int = mindepth) -> float:
     """Exponential function good for all floating point x.
 
-    :param x: independent variable
-    :param n: terms in expansion, must have ``n >= 2``
-    :returns: Value of ``eˣ``
+    :param x: Independent variable.
+    :param n: Terms in expansion, must have ``n >= 2``.
+    :returns: Value of ``eˣ``.
 
     """
     try:
@@ -74,7 +80,7 @@ def exp(x: float, /, n: int = 22) -> float:
         return exp0(shift0(x), n=n) * factor
 
 
-def cexp0(z: complex, /, n: int = 22) -> complex:
+def cexp0(z: complex, /, n: int = mindepth) -> complex:
     """Partially factored Taylor expansion of exp about z = 0.
 
     .. note::
@@ -95,19 +101,26 @@ def cexp0(z: complex, /, n: int = 22) -> complex:
     return 1.0 + accum
 
 
-def cexp(z: complex, /, n: int = 22) -> complex:
+def cexp(z: complex, /, n: int = mindepth) -> complex:
     """Exponential function good for all complex z.
+
+    .. note::
+
+        Complex exp(z) has an essential singularity at infinity,
+        so function returns ``nan`` if given an infinite argument.
 
     :param z: independent variable
     :param n: terms in expansion, must have ``n >= 2``
-    :returns: Value of ``eᶻ``
+    :returns: Value of ``eᶻ`` where inf+infj is used to
+              represent a single complex infinity. Returns ``nan``
+              if given an infinte argument.
 
     """
     x = z.real
     y = z.imag
 
-    if isinf(y):
-        return inf + infj
+    if isinf(z):
+        return nan
     else:
         y %= two_pi
 

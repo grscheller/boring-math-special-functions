@@ -16,11 +16,11 @@
 
 from math import factorial, inf
 
-__all__ = ['sin0', 'cos0', 'tan0']
+__all__ = ['sin0', 'cos0', 'tan0', 'maxdepth', 'mindepth']
 
 maxdepth = 84
 mindepth = 2
-depth = 22
+depth = 20
 
 s: list[float] = list()
 c: list[float] = list()
@@ -30,66 +30,82 @@ for ii in range(maxdepth):
     c.append(1 / factorial(2 * (ii + 1)))
 
 
-def sin0(x: float, /, n: int = depth) -> float:
-    """Partially factored Taylor expansion of sine about ``x = 0``.
+def sin0(θ: float, /, n: int = depth) -> float:
+    """Partially factored Taylor expansion of sine centered at ``x = 0``.
 
     .. note::
 
-        Best if ``-2π <= x <= 2π`` and ``n >= 22``.
+        Best n to use
+
+        - ``n >= 20`` when ``-2π <= θ <= 2π``
+        - ``n >= 15`` when ``-π <= θ <= π``
+        - ``n >= 12`` when ``-π/2 <= θ <= π/2``
+
+        The default is ``n=20``.
 
     :param x: angle in radians
     :param n: terms in expansion, must have ``2 <= n <= 84``
-    :returns: Taylor series expansion of sine(x) centered at ``x = 0``
+    :returns: Taylor series expansion of sine(x) centered at ``θ = 0``
 
     """
-    xsqr = x * x
+    θ_sqr = θ * θ
     pos = n - 1
-    accum = xsqr * s[pos]
+    accum = θ_sqr * s[pos]
     pos -= 1
     while pos > 0:
-        accum = xsqr * (s[pos] - accum)
+        accum = θ_sqr * (s[pos] - accum)
         pos -= 1
-    return x * (1 - accum)
+    return θ * (1 - accum)
 
 
-def cos0(x: float, /, n: int = depth) -> float:
-    """Partially factored Taylor expansion of cosine about ``x = 0``.
+def cos0(θ: float, /, n: int = depth) -> float:
+    """Partially factored Taylor expansion of cosine centered at ``x = 0``.
 
     .. note::
 
-        Best if ``-2π <= x <= 2π`` and ``n >= 22``.
+        Best n to use
+
+        - ``n >= 20`` when ``-2π <= θ <= 2π``
+        - ``n >= 15`` when ``-π <= θ <= π``
+        - ``n >= 12`` when ``-π/2 <= θ <= π/2``
+
+        The default is ``n=20``.
 
     :param x: angle in radians
     :param n: terms in expansion, must have ``2 <= n <= 84``
-    :returns: Taylor series expansion of ``cosine(x)`` centered at ``x = 0``
+    :returns: Taylor series expansion of ``cosine(θ)`` centered at ``θ = 0``
 
     """
-    xsqr = x * x
+    θ_sqr = θ * θ
     pos = n - 1
-    accum = xsqr * c[pos]
+    accum = θ_sqr * c[pos]
     pos -= 1
     while pos >= 0:
-        accum = xsqr * (c[pos] - accum)
+        accum = θ_sqr * (c[pos] - accum)
         pos -= 1
     return 1 - accum
 
 
-def tan0(x: float, /, n: int = depth) -> float:
+def tan0(θ: float, /, n: int = depth) -> float:
     """Tangent centered about ``x = 0``.
 
     .. note::
 
-        Best if ``-π <= x <= π`` and ``n >= 22``.
+        Best n to use
+
+        - ``n >= 20`` when ``-2π <= θ <= 2π``
+        - ``n >= 15`` when ``-π <= θ <= π``
+        - ``n >= 12`` when ``-π/2 <= θ <= π/2``
 
     :param x: angle in radians
     :param n: terms in expansion, must have ``2 <= n <= 84``
-    :returns: ``sin0(x)/cos0(x)``
+    :returns: ``sin0(θ)/cos0(θ)``
 
     """
     try:
-        return sin0(x, n=n) / cos0(x, n=n)
+        return sin0(θ, n=n) / cos0(θ, n=n)
     except ZeroDivisionError:
-        if sin0(x, n=n) >= 0:
+        if sin0(θ, n=n) >= 0:
             return inf
         else:
             return -inf
