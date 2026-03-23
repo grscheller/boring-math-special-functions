@@ -15,7 +15,7 @@
 """Beta function."""
 
 from math import factorial as fac
-from cmath import log as clog, isnan, inf, infj, nan
+from cmath import log as clog, isnan, isinf, inf, infj
 from .exponential import cexp
 from .gamma import gamma
 
@@ -50,23 +50,24 @@ def beta(u: complex, v: complex) -> complex:
 
     """
     if not isnan(naive := clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))):
-        return cexp(naive)
-    else:
-        ui, vi = int(u.real), int(v.real)
-        umax = max(ui, vi)
-        vmin = min(ui, vi)
+        if not isinf(naive):
+            return cexp(naive)
 
-        if vmin <= umax <= 0:
-            return nan
+    ui, vi = int(u.real), int(v.real)
+    umax = max(ui, vi)
+    vmin = min(ui, vi)
 
-        if umax > 0 >= vmin:
-            if umax <= -vmin:
-                return (
-                    ((-1.0)**(-vmin) / fac(-vmin))
-                    / ((-1.0)**(-vmin - umax) / fac(-vmin - umax))
-                    * (fac(umax - 1))
-                )
-            else:
-                return infinity
+    if vmin <= umax <= 0:
+        return infinity
 
-        assert False
+    if umax > 0 >= vmin:
+        if umax <= -vmin:
+            return (
+                ((-1.0)**(-vmin) / fac(-vmin))
+                / ((-1.0)**(-vmin - umax) / fac(-vmin - umax))
+                * (fac(umax - 1))
+            )
+        else:
+            return infinity
+
+    assert False

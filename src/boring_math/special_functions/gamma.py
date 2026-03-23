@@ -14,7 +14,7 @@
 
 """Gamma function."""
 
-from cmath import pi, inf, infj, isinf, nan
+from cmath import pi, inf, infj, isinf
 from .exponential import exp, cexp
 from .ctrig import csin
 from .trig import sin as rsin
@@ -24,9 +24,6 @@ __all__ = ['gamma', 'gamma_real']
 two_pi = 2.0*pi
 sqrt_two_pi = float(two_pi**0.5)
 comp_sqrt_two_pi = complex(sqrt_two_pi)
-
-infinity: complex = inf + infj
-"""Used to represent a single valued complex infinity."""
 
 
 def gamma(z: complex) -> complex:
@@ -61,7 +58,7 @@ def gamma(z: complex) -> complex:
     ]
 
     if isinf(z):
-        return nan # gamma(z) has an essential singularity at infinity.
+        return infinity # gamma(z) has an essential singularity at infinity.
     elif z.real < 0.5:
         try:
             return pi / (csin(pi * z) * gamma(1.0 - z))  # Reflection formula
@@ -104,7 +101,7 @@ def gamma_real(x: float) -> float:
         if x > 0:
             return inf
         else:
-            return nan # gamma(x) has no limit as x approaches -inf.
+            return -inf
     if x < 0.5:
         try:
             return pi / (rsin(pi*x) * gamma_real(1.0 - x))  # Reflection formula

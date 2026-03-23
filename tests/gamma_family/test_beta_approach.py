@@ -167,7 +167,7 @@ class Test_beta_neg3_pos1:
         assert abs(beta(-1/20, 1) - (-20)) < tolerance2
         assert abs(beta(-1/100, 1) - (-100)) < tolerance6
         assert abs(beta(-1/256, 1) - (-256)) < tolerance7
-        assert isnan(beta(0, 1))
+        assert isinf(beta(0, 1))
         assert abs(beta(1/256, 1) - (256)) < tolerance7
         assert abs(beta(1/100, 1) - (100)) < tolerance6
         assert abs(beta(1/20, 1) - (20)) < tolerance2
