@@ -57,13 +57,11 @@ def gamma(z: complex) -> complex:
         1.5056327351493116e-7+0.0j,
     ]
 
-    if isinf(z):
-        return infinity # gamma(z) has an essential singularity at infinity.
-    elif z.real < 0.5:
+    if z.real < 0.5:
         try:
             return pi / (csin(pi * z) * gamma(1.0 - z))  # Reflection formula
         except ZeroDivisionError:
-            return infinity
+            return inf
     else:
         z -= 1.0+0.0j
         y = p[0]
@@ -71,8 +69,6 @@ def gamma(z: complex) -> complex:
             y += p[ii] / (z + ii)
         t = z + g7
         z += 0.5+0.0j
-        if isinf(y):
-            return infinity
         return comp_sqrt_two_pi * t**z * cexp(-t) * y
 
 
@@ -97,11 +93,6 @@ def gamma_real(x: float) -> float:
         1.5056327351493116e-7,
     ]
 
-    if isinf(x):
-        if x > 0:
-            return inf
-        else:
-            return -inf
     if x < 0.5:
         try:
             return pi / (rsin(pi*x) * gamma_real(1.0 - x))  # Reflection formula

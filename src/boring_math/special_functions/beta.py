@@ -15,14 +15,11 @@
 """Beta function."""
 
 from math import factorial as fac
-from cmath import log as clog, isnan, isinf, inf, infj
+from cmath import log as clog, isnan, nan
 from .exponential import cexp
 from .gamma import gamma
 
-__all__ = ['beta', 'infinity']
-
-infinity = inf + infj
-"""Used to represent a single complex infinity."""
+__all__ = ['beta']
 
 
 def beta(u: complex, v: complex) -> complex:
@@ -50,24 +47,23 @@ def beta(u: complex, v: complex) -> complex:
 
     """
     if not isnan(naive := clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))):
-        if not isinf(naive):
-            return cexp(naive)
+        return cexp(naive)
 
     ui, vi = int(u.real), int(v.real)
     umax = max(ui, vi)
     vmin = min(ui, vi)
 
     if vmin <= umax <= 0:
-        return infinity
+        return nan
 
     if umax > 0 >= vmin:
         if umax <= -vmin:
             return (
-                ((-1.0)**(-vmin) / fac(-vmin))
-                / ((-1.0)**(-vmin - umax) / fac(-vmin - umax))
-                * (fac(umax - 1))
+                ((-1.0)**(-vmin)/fac(-vmin))
+                / ((-1.0)**(-vmin - umax)/fac(-vmin - umax))
+                * (fac(umax-1))
             )
         else:
-            return infinity
+            return nan
 
     assert False

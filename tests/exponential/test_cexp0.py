@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import exp as std_cexp
+from cmath import exp as std_exp
 from math import pi
 from boring_math.special_functions.exponential import cexp0
 from boring_math.special_functions.trig0 import sin0, cos0
@@ -61,183 +61,183 @@ tolerance16 = 5.0e-8
 class Test_cexp0_default:
     def test_reasonable_values(self) -> None:
         assert abs(cexp0(0.0) - 1.0) < tolerance0
-        assert abs(cexp0(1.0) - std_cexp(1.0)) < tolerance0
-        assert abs(cexp0(-1.0) - std_cexp(-1.0)) < tolerance0
-        assert abs(cexp0(1j) - std_cexp(1j)) < tolerance0
-        assert abs(cexp0(-1j) - std_cexp(-1j)) < tolerance0
+        assert abs(cexp0(1.0) - std_exp(1.0)) < tolerance0
+        assert abs(cexp0(-1.0) - std_exp(-1.0)) < tolerance0
+        assert abs(cexp0(1j) - std_exp(1j)) < tolerance0
+        assert abs(cexp0(-1j) - std_exp(-1j)) < tolerance0
         assert abs(cexp0(pi*(1j)/2) - (1j)) < tolerance0
         assert abs(cexp0(-pi*(1j)/2) - (-1j)) < tolerance0
         assert abs(cexp0(pi*(1j)/4) - ((1+1j)/(2**(0.5)))) < tolerance0
         assert abs(cexp0(-pi*(1j)/4) - ((1-1j)/(2**(0.5)))) < tolerance0
         assert abs(cexp0(pi*(3j)/4) - ((-1+1j)/(2**(0.5)))) < tolerance4
         assert abs(cexp0(-pi*(3j)/4) - ((-1-1j)/(2**(0.5)))) < tolerance4
-        assert abs(cexp0(c0) - std_cexp(c0)) < tolerance0
-        assert abs(cexp0(s1) - std_cexp(s1)) < tolerance0
-        assert abs(cexp0(s2) - std_cexp(s2)) < tolerance0
-        assert abs(cexp0(s3) - std_cexp(s3)) < tolerance0
-        assert abs(cexp0(s4) - std_cexp(s4)) < tolerance0
-        assert abs(cexp0(s5) - std_cexp(s5)) < tolerance0
+        assert abs(cexp0(c0) - std_exp(c0)) < tolerance0
+        assert abs(cexp0(s1) - std_exp(s1)) < tolerance0
+        assert abs(cexp0(s2) - std_exp(s2)) < tolerance0
+        assert abs(cexp0(s3) - std_exp(s3)) < tolerance0
+        assert abs(cexp0(s4) - std_exp(s4)) < tolerance0
+        assert abs(cexp0(s5) - std_exp(s5)) < tolerance0
 
     def test_questionable_values(self) -> None:
-        assert abs(cexp0(0.1*c0) - std_cexp(0.1*c0)) < tolerance0
-        assert abs(cexp0(0.5*c0) - std_cexp(0.5*c0)) < tolerance0
-        assert abs(cexp0(1.0*c0) - std_cexp(1.0*c0)) < tolerance0
-        assert abs(cexp0(1.5*c0) - std_cexp(1.5*c0)) < tolerance0
-        assert abs(cexp0(2.0*c0) - std_cexp(2.0*c0)) < tolerance1
-        assert abs(cexp0(2.5*c0) - std_cexp(2.5*c0)) < tolerance5
-        assert abs(cexp0(3.0*c0) - std_cexp(3.0*c0)) < tolerance8
-        assert abs(cexp0(3.5*c0) - std_cexp(3.5*c0)) < tolerance12
-        assert abs(cexp0(4.0*c0) - std_cexp(4.0*c0)) < tolerance14
+        assert abs(cexp0(0.1*c0) - std_exp(0.1*c0)) < tolerance0
+        assert abs(cexp0(0.5*c0) - std_exp(0.5*c0)) < tolerance0
+        assert abs(cexp0(1.0*c0) - std_exp(1.0*c0)) < tolerance0
+        assert abs(cexp0(1.5*c0) - std_exp(1.5*c0)) < tolerance0
+        assert abs(cexp0(2.0*c0) - std_exp(2.0*c0)) < tolerance1
+        assert abs(cexp0(2.5*c0) - std_exp(2.5*c0)) < tolerance5
+        assert abs(cexp0(3.0*c0) - std_exp(3.0*c0)) < tolerance8
+        assert abs(cexp0(3.5*c0) - std_exp(3.5*c0)) < tolerance12
+        assert abs(cexp0(4.0*c0) - std_exp(4.0*c0)) < tolerance14
 
-        assert abs(cexp0(0.1*c1) - std_cexp(0.1*c1)) < tolerance0
-        assert abs(cexp0(0.5*c1) - std_cexp(0.5*c1)) < tolerance0
-        assert abs(cexp0(1.0*c1) - std_cexp(1.0*c1)) < tolerance0
-        assert abs(cexp0(1.5*c1) - std_cexp(1.5*c1)) < tolerance1
-        assert abs(cexp0(2.0*c1) - std_cexp(2.0*c1)) < tolerance2
-        assert abs(cexp0(2.5*c1) - std_cexp(2.5*c1)) < tolerance5
-        assert abs(cexp0(3.0*c1) - std_cexp(3.0*c1)) < tolerance8
-        assert abs(cexp0(3.5*c1) - std_cexp(3.5*c1)) < tolerance12
-        assert abs(cexp0(4.0*c1) - std_cexp(4.0*c1)) < tolerance14
+        assert abs(cexp0(0.1*c1) - std_exp(0.1*c1)) < tolerance0
+        assert abs(cexp0(0.5*c1) - std_exp(0.5*c1)) < tolerance0
+        assert abs(cexp0(1.0*c1) - std_exp(1.0*c1)) < tolerance0
+        assert abs(cexp0(1.5*c1) - std_exp(1.5*c1)) < tolerance1
+        assert abs(cexp0(2.0*c1) - std_exp(2.0*c1)) < tolerance2
+        assert abs(cexp0(2.5*c1) - std_exp(2.5*c1)) < tolerance5
+        assert abs(cexp0(3.0*c1) - std_exp(3.0*c1)) < tolerance8
+        assert abs(cexp0(3.5*c1) - std_exp(3.5*c1)) < tolerance12
+        assert abs(cexp0(4.0*c1) - std_exp(4.0*c1)) < tolerance14
 
-        assert abs(cexp0(0.1*c2) - std_cexp(0.1*c2)) < tolerance0
-        assert abs(cexp0(0.5*c2) - std_cexp(0.5*c2)) < tolerance0
-        assert abs(cexp0(1.0*c2) - std_cexp(1.0*c2)) < tolerance0
-        assert abs(cexp0(1.5*c2) - std_cexp(1.5*c2)) < tolerance0
-        assert abs(cexp0(2.0*c2) - std_cexp(2.0*c2)) < tolerance1
-        assert abs(cexp0(2.5*c2) - std_cexp(2.5*c2)) < tolerance5
-        assert abs(cexp0(3.0*c2) - std_cexp(3.0*c2)) < tolerance8
-        assert abs(cexp0(3.5*c2) - std_cexp(3.5*c2)) < tolerance12
-        assert abs(cexp0(4.0*c2) - std_cexp(4.0*c2)) < tolerance14
+        assert abs(cexp0(0.1*c2) - std_exp(0.1*c2)) < tolerance0
+        assert abs(cexp0(0.5*c2) - std_exp(0.5*c2)) < tolerance0
+        assert abs(cexp0(1.0*c2) - std_exp(1.0*c2)) < tolerance0
+        assert abs(cexp0(1.5*c2) - std_exp(1.5*c2)) < tolerance0
+        assert abs(cexp0(2.0*c2) - std_exp(2.0*c2)) < tolerance1
+        assert abs(cexp0(2.5*c2) - std_exp(2.5*c2)) < tolerance5
+        assert abs(cexp0(3.0*c2) - std_exp(3.0*c2)) < tolerance8
+        assert abs(cexp0(3.5*c2) - std_exp(3.5*c2)) < tolerance12
+        assert abs(cexp0(4.0*c2) - std_exp(4.0*c2)) < tolerance14
 
-        assert abs(cexp0(0.1*c3) - std_cexp(0.1*c3)) < tolerance0
-        assert abs(cexp0(0.5*c3) - std_cexp(0.5*c3)) < tolerance0
-        assert abs(cexp0(1.0*c3) - std_cexp(1.0*c3)) < tolerance0
-        assert abs(cexp0(1.5*c3) - std_cexp(1.5*c3)) < tolerance0
-        assert abs(cexp0(2.0*c3) - std_cexp(2.0*c3)) < tolerance1
-        assert abs(cexp0(2.5*c3) - std_cexp(2.5*c3)) < tolerance5
-        assert abs(cexp0(3.0*c3) - std_cexp(3.0*c3)) < tolerance8
-        assert abs(cexp0(3.5*c3) - std_cexp(3.5*c3)) < tolerance12
-        assert abs(cexp0(4.0*c3) - std_cexp(4.0*c3)) < tolerance14
+        assert abs(cexp0(0.1*c3) - std_exp(0.1*c3)) < tolerance0
+        assert abs(cexp0(0.5*c3) - std_exp(0.5*c3)) < tolerance0
+        assert abs(cexp0(1.0*c3) - std_exp(1.0*c3)) < tolerance0
+        assert abs(cexp0(1.5*c3) - std_exp(1.5*c3)) < tolerance0
+        assert abs(cexp0(2.0*c3) - std_exp(2.0*c3)) < tolerance1
+        assert abs(cexp0(2.5*c3) - std_exp(2.5*c3)) < tolerance5
+        assert abs(cexp0(3.0*c3) - std_exp(3.0*c3)) < tolerance8
+        assert abs(cexp0(3.5*c3) - std_exp(3.5*c3)) < tolerance12
+        assert abs(cexp0(4.0*c3) - std_exp(4.0*c3)) < tolerance14
 
-        assert abs(cexp0(0.1*c4) - std_cexp(0.1*c4)) < tolerance0
-        assert abs(cexp0(0.5*c4) - std_cexp(0.5*c4)) < tolerance0
-        assert abs(cexp0(1.0*c4) - std_cexp(1.0*c4)) < tolerance0
-        assert abs(cexp0(1.5*c4) - std_cexp(1.5*c4)) < tolerance0
-        assert abs(cexp0(2.0*c4) - std_cexp(2.0*c4)) < tolerance1
-        assert abs(cexp0(2.5*c4) - std_cexp(2.5*c4)) < tolerance5
-        assert abs(cexp0(3.0*c4) - std_cexp(3.0*c4)) < tolerance8
-        assert abs(cexp0(3.5*c4) - std_cexp(3.5*c4)) < tolerance12
-        assert abs(cexp0(4.0*c4) - std_cexp(4.0*c4)) < tolerance14
+        assert abs(cexp0(0.1*c4) - std_exp(0.1*c4)) < tolerance0
+        assert abs(cexp0(0.5*c4) - std_exp(0.5*c4)) < tolerance0
+        assert abs(cexp0(1.0*c4) - std_exp(1.0*c4)) < tolerance0
+        assert abs(cexp0(1.5*c4) - std_exp(1.5*c4)) < tolerance0
+        assert abs(cexp0(2.0*c4) - std_exp(2.0*c4)) < tolerance1
+        assert abs(cexp0(2.5*c4) - std_exp(2.5*c4)) < tolerance5
+        assert abs(cexp0(3.0*c4) - std_exp(3.0*c4)) < tolerance8
+        assert abs(cexp0(3.5*c4) - std_exp(3.5*c4)) < tolerance12
+        assert abs(cexp0(4.0*c4) - std_exp(4.0*c4)) < tolerance14
 
-        assert abs(cexp0(0.1*c5) - std_cexp(0.1*c5)) < tolerance0
-        assert abs(cexp0(0.5*c5) - std_cexp(0.5*c5)) < tolerance0
-        assert abs(cexp0(1.0*c5) - std_cexp(1.0*c5)) < tolerance0
-        assert abs(cexp0(1.5*c5) - std_cexp(1.5*c5)) < tolerance0
-        assert abs(cexp0(2.0*c5) - std_cexp(2.0*c5)) < tolerance1
-        assert abs(cexp0(2.5*c5) - std_cexp(2.5*c5)) < tolerance5
-        assert abs(cexp0(3.0*c5) - std_cexp(3.0*c5)) < tolerance8
-        assert abs(cexp0(3.5*c5) - std_cexp(3.5*c5)) < tolerance12
-        assert abs(cexp0(4.0*c5) - std_cexp(4.0*c5)) < tolerance14
+        assert abs(cexp0(0.1*c5) - std_exp(0.1*c5)) < tolerance0
+        assert abs(cexp0(0.5*c5) - std_exp(0.5*c5)) < tolerance0
+        assert abs(cexp0(1.0*c5) - std_exp(1.0*c5)) < tolerance0
+        assert abs(cexp0(1.5*c5) - std_exp(1.5*c5)) < tolerance0
+        assert abs(cexp0(2.0*c5) - std_exp(2.0*c5)) < tolerance1
+        assert abs(cexp0(2.5*c5) - std_exp(2.5*c5)) < tolerance5
+        assert abs(cexp0(3.0*c5) - std_exp(3.0*c5)) < tolerance8
+        assert abs(cexp0(3.5*c5) - std_exp(3.5*c5)) < tolerance12
+        assert abs(cexp0(4.0*c5) - std_exp(4.0*c5)) < tolerance14
 
-        assert abs(cexp0(0.1*c6) - std_cexp(0.1*c6)) < tolerance0
-        assert abs(cexp0(0.5*c6) - std_cexp(0.5*c6)) < tolerance0
-        assert abs(cexp0(1.0*c6) - std_cexp(1.0*c6)) < tolerance0
-        assert abs(cexp0(1.5*c6) - std_cexp(1.5*c6)) < tolerance0
-        assert abs(cexp0(2.0*c6) - std_cexp(2.0*c6)) < tolerance1
-        assert abs(cexp0(2.5*c6) - std_cexp(2.5*c6)) < tolerance5
-        assert abs(cexp0(3.0*c6) - std_cexp(3.0*c6)) < tolerance8
-        assert abs(cexp0(3.5*c6) - std_cexp(3.5*c6)) < tolerance12
-        assert abs(cexp0(4.0*c6) - std_cexp(4.0*c6)) < tolerance14
+        assert abs(cexp0(0.1*c6) - std_exp(0.1*c6)) < tolerance0
+        assert abs(cexp0(0.5*c6) - std_exp(0.5*c6)) < tolerance0
+        assert abs(cexp0(1.0*c6) - std_exp(1.0*c6)) < tolerance0
+        assert abs(cexp0(1.5*c6) - std_exp(1.5*c6)) < tolerance0
+        assert abs(cexp0(2.0*c6) - std_exp(2.0*c6)) < tolerance1
+        assert abs(cexp0(2.5*c6) - std_exp(2.5*c6)) < tolerance5
+        assert abs(cexp0(3.0*c6) - std_exp(3.0*c6)) < tolerance8
+        assert abs(cexp0(3.5*c6) - std_exp(3.5*c6)) < tolerance12
+        assert abs(cexp0(4.0*c6) - std_exp(4.0*c6)) < tolerance14
 
-        assert abs(cexp0(0.1*c7) - std_cexp(0.1*c7)) < tolerance0
-        assert abs(cexp0(0.5*c7) - std_cexp(0.5*c7)) < tolerance0
-        assert abs(cexp0(1.0*c7) - std_cexp(1.0*c7)) < tolerance0
-        assert abs(cexp0(1.5*c7) - std_cexp(1.5*c7)) < tolerance0
-        assert abs(cexp0(2.0*c7) - std_cexp(2.0*c7)) < tolerance1
-        assert abs(cexp0(2.5*c7) - std_cexp(2.5*c7)) < tolerance5
-        assert abs(cexp0(3.0*c7) - std_cexp(3.0*c7)) < tolerance8
-        assert abs(cexp0(3.5*c7) - std_cexp(3.5*c7)) < tolerance12
-        assert abs(cexp0(4.0*c7) - std_cexp(4.0*c7)) < tolerance14
+        assert abs(cexp0(0.1*c7) - std_exp(0.1*c7)) < tolerance0
+        assert abs(cexp0(0.5*c7) - std_exp(0.5*c7)) < tolerance0
+        assert abs(cexp0(1.0*c7) - std_exp(1.0*c7)) < tolerance0
+        assert abs(cexp0(1.5*c7) - std_exp(1.5*c7)) < tolerance0
+        assert abs(cexp0(2.0*c7) - std_exp(2.0*c7)) < tolerance1
+        assert abs(cexp0(2.5*c7) - std_exp(2.5*c7)) < tolerance5
+        assert abs(cexp0(3.0*c7) - std_exp(3.0*c7)) < tolerance8
+        assert abs(cexp0(3.5*c7) - std_exp(3.5*c7)) < tolerance12
+        assert abs(cexp0(4.0*c7) - std_exp(4.0*c7)) < tolerance14
 
-        assert abs(cexp0(0.1*c8) - std_cexp(0.1*c8)) < tolerance0
-        assert abs(cexp0(0.5*c8) - std_cexp(0.5*c8)) < tolerance0
-        assert abs(cexp0(1.0*c8) - std_cexp(1.0*c8)) < tolerance0
-        assert abs(cexp0(1.5*c8) - std_cexp(1.5*c8)) < tolerance0
-        assert abs(cexp0(2.0*c8) - std_cexp(2.0*c8)) < tolerance1
-        assert abs(cexp0(2.5*c8) - std_cexp(2.5*c8)) < tolerance5
-        assert abs(cexp0(3.0*c8) - std_cexp(3.0*c8)) < tolerance8
-        assert abs(cexp0(3.5*c8) - std_cexp(3.5*c8)) < tolerance12
-        assert abs(cexp0(4.0*c8) - std_cexp(4.0*c8)) < tolerance14
+        assert abs(cexp0(0.1*c8) - std_exp(0.1*c8)) < tolerance0
+        assert abs(cexp0(0.5*c8) - std_exp(0.5*c8)) < tolerance0
+        assert abs(cexp0(1.0*c8) - std_exp(1.0*c8)) < tolerance0
+        assert abs(cexp0(1.5*c8) - std_exp(1.5*c8)) < tolerance0
+        assert abs(cexp0(2.0*c8) - std_exp(2.0*c8)) < tolerance1
+        assert abs(cexp0(2.5*c8) - std_exp(2.5*c8)) < tolerance5
+        assert abs(cexp0(3.0*c8) - std_exp(3.0*c8)) < tolerance8
+        assert abs(cexp0(3.5*c8) - std_exp(3.5*c8)) < tolerance12
+        assert abs(cexp0(4.0*c8) - std_exp(4.0*c8)) < tolerance14
 
-        assert abs(cexp0(0.1*c9) - std_cexp(0.1*c9)) < tolerance0
-        assert abs(cexp0(0.5*c9) - std_cexp(0.5*c9)) < tolerance0
-        assert abs(cexp0(1.0*c9) - std_cexp(1.0*c9)) < tolerance0
-        assert abs(cexp0(1.5*c9) - std_cexp(1.5*c9)) < tolerance0
-        assert abs(cexp0(2.0*c9) - std_cexp(2.0*c9)) < tolerance1
-        assert abs(cexp0(2.5*c9) - std_cexp(2.5*c9)) < tolerance5
-        assert abs(cexp0(3.0*c9) - std_cexp(3.0*c9)) < tolerance8
-        assert abs(cexp0(3.5*c9) - std_cexp(3.5*c9)) < tolerance12
-        assert abs(cexp0(4.0*c9) - std_cexp(4.0*c9)) < tolerance14
+        assert abs(cexp0(0.1*c9) - std_exp(0.1*c9)) < tolerance0
+        assert abs(cexp0(0.5*c9) - std_exp(0.5*c9)) < tolerance0
+        assert abs(cexp0(1.0*c9) - std_exp(1.0*c9)) < tolerance0
+        assert abs(cexp0(1.5*c9) - std_exp(1.5*c9)) < tolerance0
+        assert abs(cexp0(2.0*c9) - std_exp(2.0*c9)) < tolerance1
+        assert abs(cexp0(2.5*c9) - std_exp(2.5*c9)) < tolerance5
+        assert abs(cexp0(3.0*c9) - std_exp(3.0*c9)) < tolerance8
+        assert abs(cexp0(3.5*c9) - std_exp(3.5*c9)) < tolerance12
+        assert abs(cexp0(4.0*c9) - std_exp(4.0*c9)) < tolerance14
 
-        assert abs(cexp0(0.1*c10) - std_cexp(0.1*c10)) < tolerance0
-        assert abs(cexp0(0.5*c10) - std_cexp(0.5*c10)) < tolerance0
-        assert abs(cexp0(1.0*c10) - std_cexp(1.0*c10)) < tolerance0
-        assert abs(cexp0(1.5*c10) - std_cexp(1.5*c10)) < tolerance0
-        assert abs(cexp0(2.0*c10) - std_cexp(2.0*c10)) < tolerance1
-        assert abs(cexp0(2.5*c10) - std_cexp(2.5*c10)) < tolerance5
-        assert abs(cexp0(3.0*c10) - std_cexp(3.0*c10)) < tolerance8
-        assert abs(cexp0(3.5*c10) - std_cexp(3.5*c10)) < tolerance12
-        assert abs(cexp0(4.0*c10) - std_cexp(4.0*c10)) < tolerance14
+        assert abs(cexp0(0.1*c10) - std_exp(0.1*c10)) < tolerance0
+        assert abs(cexp0(0.5*c10) - std_exp(0.5*c10)) < tolerance0
+        assert abs(cexp0(1.0*c10) - std_exp(1.0*c10)) < tolerance0
+        assert abs(cexp0(1.5*c10) - std_exp(1.5*c10)) < tolerance0
+        assert abs(cexp0(2.0*c10) - std_exp(2.0*c10)) < tolerance1
+        assert abs(cexp0(2.5*c10) - std_exp(2.5*c10)) < tolerance5
+        assert abs(cexp0(3.0*c10) - std_exp(3.0*c10)) < tolerance8
+        assert abs(cexp0(3.5*c10) - std_exp(3.5*c10)) < tolerance12
+        assert abs(cexp0(4.0*c10) - std_exp(4.0*c10)) < tolerance14
 
-        assert abs(cexp0(0.1*c11) - std_cexp(0.1*c11)) < tolerance0
-        assert abs(cexp0(0.5*c11) - std_cexp(0.5*c11)) < tolerance0
-        assert abs(cexp0(1.0*c11) - std_cexp(1.0*c11)) < tolerance0
-        assert abs(cexp0(1.5*c11) - std_cexp(1.5*c11)) < tolerance0
-        assert abs(cexp0(2.0*c11) - std_cexp(2.0*c11)) < tolerance1
-        assert abs(cexp0(2.5*c11) - std_cexp(2.5*c11)) < tolerance5
-        assert abs(cexp0(3.0*c11) - std_cexp(3.0*c11)) < tolerance8
-        assert abs(cexp0(3.5*c11) - std_cexp(3.5*c11)) < tolerance12
-        assert abs(cexp0(4.0*c11) - std_cexp(4.0*c11)) < tolerance14
+        assert abs(cexp0(0.1*c11) - std_exp(0.1*c11)) < tolerance0
+        assert abs(cexp0(0.5*c11) - std_exp(0.5*c11)) < tolerance0
+        assert abs(cexp0(1.0*c11) - std_exp(1.0*c11)) < tolerance0
+        assert abs(cexp0(1.5*c11) - std_exp(1.5*c11)) < tolerance0
+        assert abs(cexp0(2.0*c11) - std_exp(2.0*c11)) < tolerance1
+        assert abs(cexp0(2.5*c11) - std_exp(2.5*c11)) < tolerance5
+        assert abs(cexp0(3.0*c11) - std_exp(3.0*c11)) < tolerance8
+        assert abs(cexp0(3.5*c11) - std_exp(3.5*c11)) < tolerance12
+        assert abs(cexp0(4.0*c11) - std_exp(4.0*c11)) < tolerance14
 
-        assert abs(cexp0(0.1*c12) - std_cexp(0.1*c12)) < tolerance0
-        assert abs(cexp0(0.5*c12) - std_cexp(0.5*c12)) < tolerance0
-        assert abs(cexp0(1.0*c12) - std_cexp(1.0*c12)) < tolerance0
-        assert abs(cexp0(1.5*c12) - std_cexp(1.5*c12)) < tolerance0
-        assert abs(cexp0(2.0*c12) - std_cexp(2.0*c12)) < tolerance1
-        assert abs(cexp0(2.5*c12) - std_cexp(2.5*c12)) < tolerance5
-        assert abs(cexp0(3.0*c12) - std_cexp(3.0*c12)) < tolerance8
-        assert abs(cexp0(3.5*c12) - std_cexp(3.5*c12)) < tolerance12
-        assert abs(cexp0(4.0*c12) - std_cexp(4.0*c12)) < tolerance14
+        assert abs(cexp0(0.1*c12) - std_exp(0.1*c12)) < tolerance0
+        assert abs(cexp0(0.5*c12) - std_exp(0.5*c12)) < tolerance0
+        assert abs(cexp0(1.0*c12) - std_exp(1.0*c12)) < tolerance0
+        assert abs(cexp0(1.5*c12) - std_exp(1.5*c12)) < tolerance0
+        assert abs(cexp0(2.0*c12) - std_exp(2.0*c12)) < tolerance1
+        assert abs(cexp0(2.5*c12) - std_exp(2.5*c12)) < tolerance5
+        assert abs(cexp0(3.0*c12) - std_exp(3.0*c12)) < tolerance8
+        assert abs(cexp0(3.5*c12) - std_exp(3.5*c12)) < tolerance12
+        assert abs(cexp0(4.0*c12) - std_exp(4.0*c12)) < tolerance14
 
-        assert abs(cexp0(0.1*c13) - std_cexp(0.1*c13)) < tolerance0
-        assert abs(cexp0(0.5*c13) - std_cexp(0.5*c13)) < tolerance0
-        assert abs(cexp0(1.0*c13) - std_cexp(1.0*c13)) < tolerance0
-        assert abs(cexp0(1.5*c13) - std_cexp(1.5*c13)) < tolerance0
-        assert abs(cexp0(2.0*c13) - std_cexp(2.0*c13)) < tolerance1
-        assert abs(cexp0(2.5*c13) - std_cexp(2.5*c13)) < tolerance5
-        assert abs(cexp0(3.0*c13) - std_cexp(3.0*c13)) < tolerance8
-        assert abs(cexp0(3.5*c13) - std_cexp(3.5*c13)) < tolerance12
-        assert abs(cexp0(4.0*c13) - std_cexp(4.0*c13)) < tolerance14
+        assert abs(cexp0(0.1*c13) - std_exp(0.1*c13)) < tolerance0
+        assert abs(cexp0(0.5*c13) - std_exp(0.5*c13)) < tolerance0
+        assert abs(cexp0(1.0*c13) - std_exp(1.0*c13)) < tolerance0
+        assert abs(cexp0(1.5*c13) - std_exp(1.5*c13)) < tolerance0
+        assert abs(cexp0(2.0*c13) - std_exp(2.0*c13)) < tolerance1
+        assert abs(cexp0(2.5*c13) - std_exp(2.5*c13)) < tolerance5
+        assert abs(cexp0(3.0*c13) - std_exp(3.0*c13)) < tolerance8
+        assert abs(cexp0(3.5*c13) - std_exp(3.5*c13)) < tolerance12
+        assert abs(cexp0(4.0*c13) - std_exp(4.0*c13)) < tolerance14
 
-        assert abs(cexp0(0.1*c14) - std_cexp(0.1*c14)) < tolerance0
-        assert abs(cexp0(0.5*c14) - std_cexp(0.5*c14)) < tolerance0
-        assert abs(cexp0(1.0*c14) - std_cexp(1.0*c14)) < tolerance0
-        assert abs(cexp0(1.5*c14) - std_cexp(1.5*c14)) < tolerance0
-        assert abs(cexp0(2.0*c14) - std_cexp(2.0*c14)) < tolerance1
-        assert abs(cexp0(2.5*c14) - std_cexp(2.5*c14)) < tolerance5
-        assert abs(cexp0(3.0*c14) - std_cexp(3.0*c14)) < tolerance8
-        assert abs(cexp0(3.5*c14) - std_cexp(3.5*c14)) < tolerance12
-        assert abs(cexp0(4.0*c14) - std_cexp(4.0*c14)) < tolerance14
+        assert abs(cexp0(0.1*c14) - std_exp(0.1*c14)) < tolerance0
+        assert abs(cexp0(0.5*c14) - std_exp(0.5*c14)) < tolerance0
+        assert abs(cexp0(1.0*c14) - std_exp(1.0*c14)) < tolerance0
+        assert abs(cexp0(1.5*c14) - std_exp(1.5*c14)) < tolerance0
+        assert abs(cexp0(2.0*c14) - std_exp(2.0*c14)) < tolerance1
+        assert abs(cexp0(2.5*c14) - std_exp(2.5*c14)) < tolerance5
+        assert abs(cexp0(3.0*c14) - std_exp(3.0*c14)) < tolerance8
+        assert abs(cexp0(3.5*c14) - std_exp(3.5*c14)) < tolerance12
+        assert abs(cexp0(4.0*c14) - std_exp(4.0*c14)) < tolerance14
 
-        assert abs(cexp0(0.1*c15) - std_cexp(0.1*c15)) < tolerance0
-        assert abs(cexp0(0.5*c15) - std_cexp(0.5*c15)) < tolerance0
-        assert abs(cexp0(1.0*c15) - std_cexp(1.0*c15)) < tolerance0
-        assert abs(cexp0(1.5*c15) - std_cexp(1.5*c15)) < tolerance1
-        assert abs(cexp0(2.0*c15) - std_cexp(2.0*c15)) < tolerance2
-        assert abs(cexp0(2.5*c15) - std_cexp(2.5*c15)) < tolerance5
-        assert abs(cexp0(3.0*c15) - std_cexp(3.0*c15)) < tolerance8
-        assert abs(cexp0(3.5*c15) - std_cexp(3.5*c15)) < tolerance12
-        assert abs(cexp0(4.0*c15) - std_cexp(4.0*c15)) < tolerance14
+        assert abs(cexp0(0.1*c15) - std_exp(0.1*c15)) < tolerance0
+        assert abs(cexp0(0.5*c15) - std_exp(0.5*c15)) < tolerance0
+        assert abs(cexp0(1.0*c15) - std_exp(1.0*c15)) < tolerance0
+        assert abs(cexp0(1.5*c15) - std_exp(1.5*c15)) < tolerance1
+        assert abs(cexp0(2.0*c15) - std_exp(2.0*c15)) < tolerance2
+        assert abs(cexp0(2.5*c15) - std_exp(2.5*c15)) < tolerance5
+        assert abs(cexp0(3.0*c15) - std_exp(3.0*c15)) < tolerance8
+        assert abs(cexp0(3.5*c15) - std_exp(3.5*c15)) < tolerance12
+        assert abs(cexp0(4.0*c15) - std_exp(4.0*c15)) < tolerance14
 
 class Test_cexp0_iteration:
     def test_25(self) -> None:
@@ -263,35 +263,35 @@ class Test_cexp0_iteration:
         assert abs(cexp0(3.5*c1, n=25) - (-3.693219478738045+20.38797465984588j)) < tolerance6
         assert abs(cexp0(4.0*c1, n=25) - (-13.29495322708720+29.05000278138290j)) < tolerance11
 
-        assert abs(cexp0(0.1*c1, n=25) - std_cexp(0.1*c1)) < tolerance0
-        assert abs(cexp0(0.5*c1, n=25) - std_cexp(0.5*c1)) < tolerance0
-        assert abs(cexp0(1.0*c1, n=25) - std_cexp(1.0*c1)) < tolerance0
-        assert abs(cexp0(1.5*c1, n=25) - std_cexp(1.5*c1)) < tolerance0
-        assert abs(cexp0(2.0*c1, n=25) - std_cexp(2.0*c1)) < tolerance0
-        assert abs(cexp0(2.5*c1, n=25) - std_cexp(2.5*c1)) < tolerance2
-        assert abs(cexp0(3.0*c1, n=25) - std_cexp(3.0*c1)) < tolerance3
-        assert abs(cexp0(3.5*c1, n=25) - std_cexp(3.5*c1)) < tolerance6
-        assert abs(cexp0(4.0*c1, n=25) - std_cexp(4.0*c1)) < tolerance11
+        assert abs(cexp0(0.1*c1, n=25) - std_exp(0.1*c1)) < tolerance0
+        assert abs(cexp0(0.5*c1, n=25) - std_exp(0.5*c1)) < tolerance0
+        assert abs(cexp0(1.0*c1, n=25) - std_exp(1.0*c1)) < tolerance0
+        assert abs(cexp0(1.5*c1, n=25) - std_exp(1.5*c1)) < tolerance0
+        assert abs(cexp0(2.0*c1, n=25) - std_exp(2.0*c1)) < tolerance0
+        assert abs(cexp0(2.5*c1, n=25) - std_exp(2.5*c1)) < tolerance2
+        assert abs(cexp0(3.0*c1, n=25) - std_exp(3.0*c1)) < tolerance3
+        assert abs(cexp0(3.5*c1, n=25) - std_exp(3.5*c1)) < tolerance6
+        assert abs(cexp0(4.0*c1, n=25) - std_exp(4.0*c1)) < tolerance11
 
-        assert abs(cexp0(0.1*c8, n=25) - std_cexp(0.1*c8)) < tolerance0
-        assert abs(cexp0(0.5*c8, n=25) - std_cexp(0.5*c8)) < tolerance0
-        assert abs(cexp0(1.0*c8, n=25) - std_cexp(1.0*c8)) < tolerance0
-        assert abs(cexp0(1.5*c8, n=25) - std_cexp(1.5*c8)) < tolerance0
-        assert abs(cexp0(2.0*c8, n=25) - std_cexp(2.0*c8)) < tolerance0
-        assert abs(cexp0(2.5*c8, n=25) - std_cexp(2.5*c8)) < tolerance2
-        assert abs(cexp0(3.0*c8, n=25) - std_cexp(3.0*c8)) < tolerance3
-        assert abs(cexp0(3.5*c8, n=25) - std_cexp(3.5*c8)) < tolerance6
-        assert abs(cexp0(4.0*c8, n=25) - std_cexp(4.0*c8)) < tolerance11
+        assert abs(cexp0(0.1*c8, n=25) - std_exp(0.1*c8)) < tolerance0
+        assert abs(cexp0(0.5*c8, n=25) - std_exp(0.5*c8)) < tolerance0
+        assert abs(cexp0(1.0*c8, n=25) - std_exp(1.0*c8)) < tolerance0
+        assert abs(cexp0(1.5*c8, n=25) - std_exp(1.5*c8)) < tolerance0
+        assert abs(cexp0(2.0*c8, n=25) - std_exp(2.0*c8)) < tolerance0
+        assert abs(cexp0(2.5*c8, n=25) - std_exp(2.5*c8)) < tolerance2
+        assert abs(cexp0(3.0*c8, n=25) - std_exp(3.0*c8)) < tolerance3
+        assert abs(cexp0(3.5*c8, n=25) - std_exp(3.5*c8)) < tolerance6
+        assert abs(cexp0(4.0*c8, n=25) - std_exp(4.0*c8)) < tolerance11
 
-        assert abs(cexp0(0.1*c11, n=25) - std_cexp(0.1*c11)) < tolerance0
-        assert abs(cexp0(0.5*c11, n=25) - std_cexp(0.5*c11)) < tolerance0
-        assert abs(cexp0(1.0*c11, n=25) - std_cexp(1.0*c11)) < tolerance0
-        assert abs(cexp0(1.5*c11, n=25) - std_cexp(1.5*c11)) < tolerance0
-        assert abs(cexp0(2.0*c11, n=25) - std_cexp(2.0*c11)) < tolerance0
-        assert abs(cexp0(2.5*c11, n=25) - std_cexp(2.5*c11)) < tolerance2
-        assert abs(cexp0(3.0*c11, n=25) - std_cexp(3.0*c11)) < tolerance3
-        assert abs(cexp0(3.5*c11, n=25) - std_cexp(3.5*c11)) < tolerance6
-        assert abs(cexp0(4.0*c11, n=25) - std_cexp(4.0*c11)) < tolerance11
+        assert abs(cexp0(0.1*c11, n=25) - std_exp(0.1*c11)) < tolerance0
+        assert abs(cexp0(0.5*c11, n=25) - std_exp(0.5*c11)) < tolerance0
+        assert abs(cexp0(1.0*c11, n=25) - std_exp(1.0*c11)) < tolerance0
+        assert abs(cexp0(1.5*c11, n=25) - std_exp(1.5*c11)) < tolerance0
+        assert abs(cexp0(2.0*c11, n=25) - std_exp(2.0*c11)) < tolerance0
+        assert abs(cexp0(2.5*c11, n=25) - std_exp(2.5*c11)) < tolerance2
+        assert abs(cexp0(3.0*c11, n=25) - std_exp(3.0*c11)) < tolerance3
+        assert abs(cexp0(3.5*c11, n=25) - std_exp(3.5*c11)) < tolerance6
+        assert abs(cexp0(4.0*c11, n=25) - std_exp(4.0*c11)) < tolerance11
 
     def test_30(self) -> None:
         assert abs(cexp0(0.0, n=30) - 1.0) < tolerance0
@@ -320,46 +320,46 @@ class Test_cexp0_iteration:
           - (-13.294953227087199358226967988371017640050105071432297091+29.050002781382904736646704842355139971014070479969889431j)
         ) < tolerance3
 
-        assert abs(cexp0(0.1*c1, n=30) - std_cexp(0.1*c1)) < tolerance0
-        assert abs(cexp0(0.5*c1, n=30) - std_cexp(0.5*c1)) < tolerance0
-        assert abs(cexp0(1.0*c1, n=30) - std_cexp(1.0*c1)) < tolerance0
-        assert abs(cexp0(1.5*c1, n=30) - std_cexp(1.5*c1)) < tolerance0
-        assert abs(cexp0(2.0*c1, n=30) - std_cexp(2.0*c1)) < tolerance0
-        assert abs(cexp0(2.5*c1, n=30) - std_cexp(2.5*c1)) < tolerance2
-        assert abs(cexp0(3.0*c1, n=30) - std_cexp(3.0*c1)) < tolerance2
-        assert abs(cexp0(3.5*c1, n=30) - std_cexp(3.5*c1)) < tolerance2
-        assert abs(cexp0(4.0*c1, n=30) - std_cexp(4.0*c1)) < tolerance2
+        assert abs(cexp0(0.1*c1, n=30) - std_exp(0.1*c1)) < tolerance0
+        assert abs(cexp0(0.5*c1, n=30) - std_exp(0.5*c1)) < tolerance0
+        assert abs(cexp0(1.0*c1, n=30) - std_exp(1.0*c1)) < tolerance0
+        assert abs(cexp0(1.5*c1, n=30) - std_exp(1.5*c1)) < tolerance0
+        assert abs(cexp0(2.0*c1, n=30) - std_exp(2.0*c1)) < tolerance0
+        assert abs(cexp0(2.5*c1, n=30) - std_exp(2.5*c1)) < tolerance2
+        assert abs(cexp0(3.0*c1, n=30) - std_exp(3.0*c1)) < tolerance2
+        assert abs(cexp0(3.5*c1, n=30) - std_exp(3.5*c1)) < tolerance2
+        assert abs(cexp0(4.0*c1, n=30) - std_exp(4.0*c1)) < tolerance2
 
-        assert abs(cexp0(0.1*c8, n=30) - std_cexp(0.1*c8)) < tolerance0
-        assert abs(cexp0(0.5*c8, n=30) - std_cexp(0.5*c8)) < tolerance0
-        assert abs(cexp0(1.0*c8, n=30) - std_cexp(1.0*c8)) < tolerance0
-        assert abs(cexp0(1.5*c8, n=30) - std_cexp(1.5*c8)) < tolerance0
-        assert abs(cexp0(2.0*c8, n=30) - std_cexp(2.0*c8)) < tolerance0
-        assert abs(cexp0(2.5*c8, n=30) - std_cexp(2.5*c8)) < tolerance2
-        assert abs(cexp0(3.0*c8, n=30) - std_cexp(3.0*c8)) < tolerance2
-        assert abs(cexp0(3.5*c8, n=30) - std_cexp(3.5*c8)) < tolerance2
-        assert abs(cexp0(4.0*c8, n=30) - std_cexp(4.0*c8)) < tolerance2
+        assert abs(cexp0(0.1*c8, n=30) - std_exp(0.1*c8)) < tolerance0
+        assert abs(cexp0(0.5*c8, n=30) - std_exp(0.5*c8)) < tolerance0
+        assert abs(cexp0(1.0*c8, n=30) - std_exp(1.0*c8)) < tolerance0
+        assert abs(cexp0(1.5*c8, n=30) - std_exp(1.5*c8)) < tolerance0
+        assert abs(cexp0(2.0*c8, n=30) - std_exp(2.0*c8)) < tolerance0
+        assert abs(cexp0(2.5*c8, n=30) - std_exp(2.5*c8)) < tolerance2
+        assert abs(cexp0(3.0*c8, n=30) - std_exp(3.0*c8)) < tolerance2
+        assert abs(cexp0(3.5*c8, n=30) - std_exp(3.5*c8)) < tolerance2
+        assert abs(cexp0(4.0*c8, n=30) - std_exp(4.0*c8)) < tolerance2
 
-        assert abs(cexp0(0.1*c11, n=30) - std_cexp(0.1*c11)) < tolerance0
-        assert abs(cexp0(0.5*c11, n=30) - std_cexp(0.5*c11)) < tolerance0
-        assert abs(cexp0(1.0*c11, n=30) - std_cexp(1.0*c11)) < tolerance0
-        assert abs(cexp0(1.5*c11, n=30) - std_cexp(1.5*c11)) < tolerance0
-        assert abs(cexp0(2.0*c11, n=30) - std_cexp(2.0*c11)) < tolerance0
-        assert abs(cexp0(2.5*c11, n=30) - std_cexp(2.5*c11)) < tolerance2
-        assert abs(cexp0(3.0*c11, n=30) - std_cexp(3.0*c11)) < tolerance2
-        assert abs(cexp0(3.5*c11, n=30) - std_cexp(3.5*c11)) < tolerance2
-        assert abs(cexp0(4.0*c11, n=30) - std_cexp(4.0*c11)) < tolerance2
+        assert abs(cexp0(0.1*c11, n=30) - std_exp(0.1*c11)) < tolerance0
+        assert abs(cexp0(0.5*c11, n=30) - std_exp(0.5*c11)) < tolerance0
+        assert abs(cexp0(1.0*c11, n=30) - std_exp(1.0*c11)) < tolerance0
+        assert abs(cexp0(1.5*c11, n=30) - std_exp(1.5*c11)) < tolerance0
+        assert abs(cexp0(2.0*c11, n=30) - std_exp(2.0*c11)) < tolerance0
+        assert abs(cexp0(2.5*c11, n=30) - std_exp(2.5*c11)) < tolerance2
+        assert abs(cexp0(3.0*c11, n=30) - std_exp(3.0*c11)) < tolerance2
+        assert abs(cexp0(3.5*c11, n=30) - std_exp(3.5*c11)) < tolerance2
+        assert abs(cexp0(4.0*c11, n=30) - std_exp(4.0*c11)) < tolerance2
 
     def test_10(self) -> None:
         assert abs(cexp0(0.0, n=10) - 1.0) < tolerance0
 
-        assert abs(cexp0(0.01*c1, n=10) - std_cexp(0.01*c1)) < tolerance0
-        assert abs(cexp0(0.05*c1, n=10) - std_cexp(0.05*c1)) < tolerance0
-        assert abs(cexp0(0.1*c1, n=10) - std_cexp(0.1*c1)) < tolerance0
-        assert abs(cexp0(0.2*c1, n=10) - std_cexp(0.2*c1)) < tolerance1
-        assert abs(cexp0(0.3*c1, n=10) - std_cexp(0.3*c1)) < tolerance4
-        assert abs(cexp0(0.4*c1, n=10) - std_cexp(0.4*c1)) < tolerance8
-        assert abs(cexp0(0.5*c1, n=10) - std_cexp(0.5*c1)) < tolerance10
+        assert abs(cexp0(0.01*c1, n=10) - std_exp(0.01*c1)) < tolerance0
+        assert abs(cexp0(0.05*c1, n=10) - std_exp(0.05*c1)) < tolerance0
+        assert abs(cexp0(0.1*c1, n=10) - std_exp(0.1*c1)) < tolerance0
+        assert abs(cexp0(0.2*c1, n=10) - std_exp(0.2*c1)) < tolerance1
+        assert abs(cexp0(0.3*c1, n=10) - std_exp(0.3*c1)) < tolerance4
+        assert abs(cexp0(0.4*c1, n=10) - std_exp(0.4*c1)) < tolerance8
+        assert abs(cexp0(0.5*c1, n=10) - std_exp(0.5*c1)) < tolerance10
 
         assert abs(cexp0(0.1*c1, n=10) - (1.089100383470131+0.05450044378129976j)) < tolerance0
         assert abs(cexp0(0.5*c1, n=10) - (1.493961999000881+0.3814711270561049j)) < tolerance10
@@ -368,13 +368,13 @@ class Test_cexp0_iteration:
     def test_18(self) -> None:
         assert abs(cexp0(0.0, n=15) - 1.0) < tolerance0
 
-        assert abs(cexp0(0.01*c1, n=18) - std_cexp(0.01*c1)) < tolerance0
-        assert abs(cexp0(0.05*c1, n=18) - std_cexp(0.05*c1)) < tolerance0
-        assert abs(cexp0(0.1*c1, n=18) - std_cexp(0.1*c1)) < tolerance0
-        assert abs(cexp0(0.2*c1, n=18) - std_cexp(0.2*c1)) < tolerance0
-        assert abs(cexp0(0.3*c1, n=18) - std_cexp(0.3*c1)) < tolerance0
-        assert abs(cexp0(0.4*c1, n=18) - std_cexp(0.4*c1)) < tolerance0
-        assert abs(cexp0(0.5*c1, n=18) - std_cexp(0.5*c1)) < tolerance0
+        assert abs(cexp0(0.01*c1, n=18) - std_exp(0.01*c1)) < tolerance0
+        assert abs(cexp0(0.05*c1, n=18) - std_exp(0.05*c1)) < tolerance0
+        assert abs(cexp0(0.1*c1, n=18) - std_exp(0.1*c1)) < tolerance0
+        assert abs(cexp0(0.2*c1, n=18) - std_exp(0.2*c1)) < tolerance0
+        assert abs(cexp0(0.3*c1, n=18) - std_exp(0.3*c1)) < tolerance0
+        assert abs(cexp0(0.4*c1, n=18) - std_exp(0.4*c1)) < tolerance0
+        assert abs(cexp0(0.5*c1, n=18) - std_exp(0.5*c1)) < tolerance0
 
         assert abs(cexp0(0.1*c1, n=18) - (1.089100383470131+0.05450044378129976j)) < tolerance0
         assert abs(cexp0(0.5*c1, n=18) - (1.493961999000881+0.3814711270561049j)) < tolerance0

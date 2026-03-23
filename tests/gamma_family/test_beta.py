@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import isinf
+from cmath import isnan
 from math import pi, sinh, cosh
 from boring_math.special_functions.beta import beta
 
@@ -28,11 +28,11 @@ tolerance5 = 1.0e-12
 class Test_beta:
     def test_beta_with_exact_values(self) -> None:
         assert abs(beta(1, 1) - (1)) < tolerance1
-        assert abs(beta(1, 2) - (1 / 2)) < tolerance1
-        assert abs(beta(2, 3) - (1 / 12)) < tolerance1
-        assert abs(beta(7, 3) - (1 / 252)) < tolerance1
-        assert abs(beta(4, 4) - (1 / 140)) < tolerance1
-        assert abs(beta(5, 4) - (1 / 280)) < tolerance1
+        assert abs(beta(1, 2) - (1/2)) < tolerance1
+        assert abs(beta(2, 3) - (1/12)) < tolerance1
+        assert abs(beta(7, 3) - (1/252)) < tolerance1
+        assert abs(beta(4, 4) - (1/140)) < tolerance1
+        assert abs(beta(5, 4) - (1/280)) < tolerance1
         assert abs(beta(1/2, 1/1) - (2)) < tolerance1
         assert abs(beta(3/2, 1/2) - (pi / 2)) < tolerance1
         assert abs(beta(5/2, 3/2) - (pi / 16)) < tolerance1
@@ -41,13 +41,13 @@ class Test_beta:
         assert abs(beta(-5/ 2, 7/2) - (-pi)) < tolerance1
         assert abs(beta(5/2, 11/2) - (9 * pi / 2048)) < tolerance1
         assert abs(beta(5/2, -11/2) - (0)) < tolerance1
-        assert abs(beta(-5/2, 11/2) - (-63 * pi / 8)) < tolerance1
+        assert abs(beta(-5/2, 11/2) - (-63*pi/8)) < tolerance1
         assert abs(beta(-7/4, -5/4) - (0)) < tolerance1
         assert abs(beta(1/6, 5/6) - (2 * pi)) < tolerance2
         assert abs(beta(1/6, 2) - (36 / 7)) < tolerance2
         assert abs(beta(42, 11) - (1 / 664441017240)) < tolerance1
         assert abs(beta(1, 1j) - (-1j)) < tolerance1
-    #   assert abs(beta(1+42j, 1-42j) - (pi / sinh(pi * 42))) < tolerance1
+        assert abs(beta(1+42j, 1-42j) - (pi / sinh(pi * 42))) < tolerance1
         assert (
             abs(beta(1/2 - pi*(1j), 1/2 + pi*(1j)) - (pi/cosh(pi * pi)))
             < tolerance1
@@ -77,5 +77,5 @@ class Test_beta:
         )
 
     def test_beta_with_singular_values(self) -> None:
-        assert isinf(beta(0, 0))
-        assert isinf(beta(-2, -7))
+        assert isnan(beta(0, 0))
+        assert isnan(beta(-2, -7))

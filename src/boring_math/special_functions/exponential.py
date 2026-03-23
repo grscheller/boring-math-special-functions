@@ -18,15 +18,12 @@ from cmath import inf, infj, isinf
 from math import ceil, floor, pi, nan
 from .trig import sin, cos
 
-__all__ = ['exp0', 'exp', 'cexp0', 'cexp', 'infinity']
+__all__ = ['exp0', 'exp', 'cexp0', 'cexp']
 
 two_pi = 2.0 * pi
 
 mindepth: int = 22
 """Minimum depth required to agree with stdlib exp implementations."""
-
-infinity = inf + infj
-"""Used to represent a single complex infinity."""
 
 
 def exp0(x: float, /, n: int = mindepth) -> float:
@@ -66,7 +63,7 @@ def exp(x: float, /, n: int = mindepth) -> float:
 
     :param x: Independent variable.
     :param n: Terms in expansion, must have ``n >= 2``.
-    :returns: Value of ``eˣ``.
+    :returns: Value of ``eˣ`` otherwise ``nan`` if ``x = nan``.
 
     """
     try:
@@ -75,7 +72,9 @@ def exp(x: float, /, n: int = mindepth) -> float:
         else:
             factor = e ** ceil(x)
     except OverflowError:
-        return inf if x >= 0.0 else 0.0
+        return inf if x == inf else 0.0
+    except ValueError:
+        return nan
     else:
         return exp0(shift0(x), n=n) * factor
 
@@ -111,17 +110,25 @@ def cexp(z: complex, /, n: int = mindepth) -> complex:
 
     :param z: independent variable
     :param n: terms in expansion, must have ``n >= 2``
-    :returns: Value of ``eᶻ`` where inf+infj is used to
-              represent a single complex infinity. Returns ``nan``
-              if given an infinte argument.
+    :returns: Value of ``eᶻ`` where inf is returned when ``re(z) = inf``.
+    :raises ValueError" When ``z`` is infinite but ``re(z)`` is not.
 
     """
     x = z.real
     y = z.imag
 
-    if isinf(z):
-        return nan
-    else:
+    if not isinf(z):
         y %= two_pi
+        return exp(x) * (cos(y) + 1j*sin(y))
 
-    return exp(x) * (cos(y) + 1j*sin(y))
+    if isinf(y):
+        if not isinf(x) or x == inf:
+            msg = 'boring_math.special_functions.exponential.cexp: domain error'
+            raise ValueError(msg)
+        return 0+0j
+    else:
+        if (cos_y := cos(y)) == 0.0:
+            return exp(x) * 1j*sin(y)
+        if (sin_y := sin(y)) == 0.0:
+            return exp(x) * cos(y)
+        return exp(x) * (cos_y + 1j*sin_y)

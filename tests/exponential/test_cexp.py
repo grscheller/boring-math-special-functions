@@ -12,26 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import exp as std_cexp, inf, infj, isnan
-from math import pi
-from boring_math.special_functions.exponential import cexp, infinity
+from cmath import exp as std_exp, inf, infj, isinf, pi
+from boring_math.special_functions.exponential import cexp
 from boring_math.special_functions.trig0 import sin0, cos0
 
-tolerance0 = 5.0e-16
-tolerance1 = 5.0e-15
-tolerance2 = 5.0e-14
-tolerance3 = 5.0e-13
-tolerance4 = 5.0e-12
-
-zero = complex(0, 0)
-one = complex(1, 0)
-neg_one = complex(-1, 0)
-eye = complex(0, 1)
-neg_eye = complex(0, -1)
-eye_pi_div_2 = complex(0, pi/2.0)
-neg_eye_pi_div_2 = complex(0, pi/(-2.0))
-eye_pi_div_4 = complex(0, pi/4.0)
-neg_eye_pi_div_4 = complex(0, pi/(-4.0))
 c1 = complex(0.831, -0.479)
 c2 = complex(0.411, 0.672)
 c3 = complex(cos0(0.613*pi), sin0(0.613*pi))
@@ -42,38 +26,45 @@ c7 = 0.4-0.5j
 c8 = -0.4+0.2j
 c9 = -42.0+2.0j
 
+tolerance0 = 5.0e-16
+tolerance1 = 5.0e-15
+tolerance2 = 5.0e-14
+tolerance3 = 5.0e-13
+tolerance4 = 5.0e-12
+
 
 class Test_cexp:
     def test_cexp(self) -> None:
-        assert abs(cexp(zero) - std_cexp(zero)) < tolerance0
-        assert abs(cexp(one) - std_cexp(one)) < tolerance0
-        assert abs(cexp(neg_one) - std_cexp(neg_one)) < tolerance0
-        assert abs(cexp(eye) - std_cexp(eye)) < tolerance0
-        assert abs(cexp(neg_eye) - std_cexp(neg_eye)) < tolerance1
-        assert abs(cexp(eye_pi_div_2) - std_cexp(eye_pi_div_2)) < tolerance0
-        assert abs(cexp(neg_eye_pi_div_2) - std_cexp(neg_eye_pi_div_2)) < tolerance1
-        assert abs(cexp(eye_pi_div_4) - std_cexp(eye_pi_div_4)) < tolerance0
-        assert abs(cexp(neg_eye_pi_div_4) - std_cexp(neg_eye_pi_div_4)) < tolerance1
-        assert abs(cexp(neg_eye_pi_div_4) - std_cexp(neg_eye_pi_div_4)) < tolerance1
-        assert abs(cexp(c1) - std_cexp(c1)) < tolerance1
-        assert abs(cexp(c2) - std_cexp(c2)) < tolerance0
-        assert abs(cexp(c3) - std_cexp(c3)) < tolerance0
-        assert abs(cexp(c4) - std_cexp(c4)) < tolerance1
-        assert abs(cexp(c5) - std_cexp(c5)) < tolerance3
-        assert abs(cexp(c5, n=23) - std_cexp(c5)) < tolerance0
-        assert abs(cexp(c6, n=34) - std_cexp(c6)) < tolerance4
-        assert abs(cexp(c7) - std_cexp(c7)) < tolerance2
-        assert abs(cexp(c8) - std_cexp(c8)) < tolerance0
-        assert abs(cexp(c9) - std_cexp(c9)) < tolerance0
+        assert abs(cexp(0.0) - std_exp(0.0)) < tolerance0
+        assert abs(cexp(1.0) - std_exp(1.0)) < tolerance0
+        assert abs(cexp(-1.0) - std_exp(-1.0)) < tolerance0
+        assert abs(cexp(0+1j) - std_exp(0+1j)) < tolerance0
+        assert abs(cexp(0-1j) - std_exp(0-1j)) < tolerance1
+        assert abs(cexp(1j*pi/2) - std_exp(1j*pi/2)) < tolerance0
+        assert abs(cexp(-1j*pi/2) - std_exp(-1j*pi/2)) < tolerance1
+        assert abs(cexp(1j*pi/4) - std_exp(1j*pi/4)) < tolerance0
+        assert abs(cexp(-1j*pi/4) - std_exp(-1j*pi/4)) < tolerance1
+        assert abs(cexp(1 - 1j*pi/6) - std_exp(1 - 1j*pi/6)) < tolerance2
+        assert abs(cexp(1/8 - 1j*pi/17) - std_exp(1/8 - 1j*pi/17)) < tolerance1
+        assert abs(cexp(c1) - std_exp(c1)) < tolerance1
+        assert abs(cexp(c2) - std_exp(c2)) < tolerance0
+        assert abs(cexp(c3) - std_exp(c3)) < tolerance0
+        assert abs(cexp(c4) - std_exp(c4)) < tolerance1
+        assert abs(cexp(c5) - std_exp(c5)) < tolerance3
+        assert abs(cexp(c5, n=23) - std_exp(c5)) < tolerance0
+        assert abs(cexp(c6, n=34) - std_exp(c6)) < tolerance4
+        assert abs(cexp(c6, n=80) - std_exp(c6)) < tolerance4
+        assert abs(cexp(c7) - std_exp(c7)) < tolerance2
+        assert abs(cexp(c8) - std_exp(c8)) < tolerance0
+        assert abs(cexp(c9) - std_exp(c9)) < tolerance0
 
     def test_infinity(self) -> None:
         assert cexp(0.0+0.0j) == 1.0
         assert cexp(0.0) == 1.0
-        assert isnan(cexp(inf))
-        assert isnan(cexp(inf + 0j))
-        assert isnan(cexp(infj))
-        assert isnan(cexp(inf+infj))
-        assert isnan(cexp(inf+infj))
-        assert isnan(cexp(42 + infj))
-        assert isnan(cexp(inf + 42j))
-        assert isnan(cexp(-inf + 0j))
+        assert isinf(cexp(inf))
+        assert isinf(cexp(inf + 0j))
+        assert isinf(cexp(inf + 42j))
+        assert cexp(-inf + 0j) == 0.0
+        assert cexp(-inf + 42j) == 0.0
+        assert cexp(-inf - 42j) == 0.0
+        assert cexp(-inf + infj) == 0.0

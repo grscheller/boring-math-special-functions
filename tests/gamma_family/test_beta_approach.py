@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import pi, isinf, isnan
+from cmath import pi, isnan
 from boring_math.special_functions.beta import beta
 
 tolerance1 = 1.0e-13
@@ -103,7 +103,7 @@ class Test_beta_neg2_neg7:
         assert abs(beta(-2 + 1/8, -7 + 1/8) - (448.66095912879820)) < tolerance4
         assert abs(beta(-2 + 1/16, -7 + 1/16) - (1030.97087443644088)) < tolerance6
         assert abs(beta(-2 + 1/256, -7 + 1/256) - (18318.72337057219)) < tolerance11
-        assert isinf(beta(-2, -7))
+        assert isnan(beta(-2, -7))
         assert abs(beta(-2 - 1/256, -7 - 1/256) - (-18544.08473524038)) < tolerance11
         assert abs(beta(-2 - 1/16, -7 - 1/16) - (-1253.7545201376397)) < tolerance6
         assert abs(beta(-2 - 1/8, -7 - 1/8) - (-663.5417040997620)) < tolerance5
@@ -118,7 +118,7 @@ class Test_beta_neg2_neg7:
         assert abs(beta(-2 + (1+1j)/8, -7 + (1+1j)/8) - (157.55893367001724-298.36213298053826j)) < tolerance1
         assert abs(beta(-2 + (1+1j)/16, -7 + (1+1j)/16) - (453.96247669782167-583.1615282660869j)) < tolerance1
         assert abs(beta(-2 + (1+1j)/256, -7 + (1+1j)/256) - (9102.718413120123-9216.585908309606j)) < tolerance1
-        assert isinf(beta(-2, -7))
+        assert isnan(beta(-2, -7))
         assert abs(beta(-2 - (1+1j)/256, -7 - (1+1j)/256) - (-9328.089842389212+9216.606035767285j)) < tolerance1
         assert abs(beta(-2 - (1+1j)/16, -7 - (1+1j)/16) - (-679.379617403794+588.3138413834292j)) < tolerance1
         assert abs(beta(-2 - (1+1j)/8, -7 - (1+1j)/8) - (-383.6611860983296+318.9524400831555j)) < tolerance1
@@ -135,7 +135,7 @@ class Test_beta_neg3_pos1:
         assert abs(beta(-3 - 1/20, 1 - 1/20) - (-0.7006018748883518)) < tolerance1
         assert abs(beta(-3 - 1/100, 1 - 1/100) - (-0.6742564516000351)) < tolerance1
         assert abs(beta(-3 - 1/256, 1 - 1/256) - (-0.6696764002044514)) < tolerance1
-    #   assert abs(beta(-3, 1) - (-1/3)) < tolerance1
+        assert abs(beta(-3, 1) - (-1/3)) < tolerance1
         assert abs(beta(-3 + 1/256, 1 + 1/256) - (-0.6636002949244252)) < tolerance1
         assert abs(beta(-3 + 1/100, 1 + 1/100) - (-0.6587056545925919)) < tolerance1
         assert abs(beta(-3 + 1/20, 1 + 1/20) - (-0.6234202673370612)) < tolerance1
@@ -150,7 +150,7 @@ class Test_beta_neg3_pos1:
         assert abs(beta(-3 - 1/20, 1) - (-0.32786885245901715)) < tolerance1
         assert abs(beta(-3 - 1/100, 1) - (-0.33222591362125625)) < tolerance1
         assert abs(beta(-3 - 1/256, 1) - (-0.3328998699610047)) < tolerance1
-    #   assert abs(beta(-3, 1) - (-1/3)) < tolerance1
+        assert abs(beta(-3, 1) - (-1/3)) < tolerance1
         assert abs(beta(-3 + 1/256, 1) - (-0.33376792698828256)) < tolerance1
         assert abs(beta(-3 + 1/100, 1) - (-0.334448160535111)) < tolerance1
         assert abs(beta(-3 + 1/20, 1) - (-0.3389830508474576)) < tolerance1
@@ -167,7 +167,7 @@ class Test_beta_neg3_pos1:
         assert abs(beta(-1/20, 1) - (-20)) < tolerance2
         assert abs(beta(-1/100, 1) - (-100)) < tolerance6
         assert abs(beta(-1/256, 1) - (-256)) < tolerance7
-        assert isinf(beta(0, 1))
+        assert isnan(beta(0, 1))
         assert abs(beta(1/256, 1) - (256)) < tolerance7
         assert abs(beta(1/100, 1) - (100)) < tolerance6
         assert abs(beta(1/20, 1) - (20)) < tolerance2
