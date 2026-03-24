@@ -14,16 +14,13 @@
 
 """Complex valued trig functions."""
 
-from cmath import inf, infj, pi
+from .constants import infinity, pi
 from .exponential import cexp
 
-__all__ = ['csin', 'ccos', 'ctan', 'infinity']
+__all__ = ['csin', 'ccos', 'ctan']
 
 depth = 22
-
 two_pi = 2.0*pi
-infinity = inf + infj
-"""Used to represent a single complex infinity."""
 
 
 def csin(z: complex, /, n: int = depth) -> complex:
@@ -57,7 +54,7 @@ def ctan(z: complex, /, n: int = depth) -> complex:
 
     :param z: Independent variable.
     :param n: Terms in expansion, must have 2 <= n <= 84.
-    :returns: Value of ``tangent(z)`` via ``sin(z)/cos(z)``.
+    :returns: Value of ``tangent(z)`` via ``sine(z)/cosine(z)``.
 
     """
     try:

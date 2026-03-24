@@ -1,8 +1,4 @@
-from _typeshed import Incomplete
-
-__all__ = ['exp0', 'exp', 'cexp0', 'cexp', 'infinity']
-
-infinity: Incomplete
+__all__ = ['exp0', 'exp', 'cexp0', 'cexp']
 
 def exp0(x: float, /, n: int = ...) -> float: ...
 def exp(x: float, /, n: int = ...) -> float: ...

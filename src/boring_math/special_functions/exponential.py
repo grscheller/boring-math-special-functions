@@ -14,13 +14,14 @@
 
 """Floating point special functions about a point."""
 
-from cmath import inf, infj, isinf
-from math import ceil, floor, pi, nan
+from cmath import inf, isinf
+from math import ceil, floor, nan
+from .constants import e, pi
 from .trig import sin, cos
 
 __all__ = ['exp0', 'exp', 'cexp0', 'cexp']
 
-two_pi = 2.0 * pi
+two_pi = 2.0*pi
 
 mindepth: int = 22
 """Minimum depth required to agree with stdlib exp implementations."""
@@ -45,9 +46,6 @@ def exp0(x: float, /, n: int = mindepth) -> float:
         accum = x / d * (1 + accum)
         d -= 1.0
     return 1.0 + accum
-
-
-e = exp0(1.0)
 
 
 def shift0(x: float) -> float:
@@ -105,13 +103,15 @@ def cexp(z: complex, /, n: int = mindepth) -> complex:
 
     .. note::
 
-        Complex exp(z) has an essential singularity at infinity,
-        so function returns ``nan`` if given an infinite argument.
-
+        Complex exp(z) has an essential singularity at infinity.
+        If given an infinite argument, phase information is given
+        in the returned possibly infinite value consistent the
+        Python stdlib cmath.exp function.
+ 
     :param z: independent variable
     :param n: terms in expansion, must have ``n >= 2``
     :returns: Value of ``eᶻ`` where inf is returned when ``re(z) = inf``.
-    :raises ValueError" When ``z`` is infinite but ``re(z)`` is not.
+    :raises ValueError: When ``z`` is infinite but ``re(z)`` is not.
 
     """
     x = z.real

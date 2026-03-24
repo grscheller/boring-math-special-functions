@@ -26,6 +26,22 @@ Added the beta function
   - in Python all are distinct values, there is no concept of
     a single valued complex infinity
   
+### PyPI Release 4.0.0 - 2026-03-24
+
+- completed beta function
+- added special_functions.constants module
+  - pi via a continued fraction
+  - e via factored taylor series about 0
+  - infinity = inf + infj
+    - represents a single valued complex infinity
+    - mostly a convention Python itself handles
+      - these values
+        - inf: float
+        - infj: complex
+        - inf + infj: complex
+        - 0.43 - infj: complex
+        - and the like as separate infinite values
+  
 ### PyPI Release 3.0.0 - 2026-03-03
 
 Breaking API changes.

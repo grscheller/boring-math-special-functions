@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Floating point special functions."""
+"""Floating point trigonometric functions."""
 
-from math import pi
+from .constants import pi
 from .trig0 import sin0, cos0, tan0
 
 __all__ = ['sin', 'cos', 'tan']
@@ -33,10 +33,10 @@ def shift0(θ: float) -> float:
 
 
 def sin(θ: float) -> float:
-    """Sine centered about θ = 0.
+    """Sine for all real ``θ = 0``.
 
     :param θ: Angle in radians.
-    :returns: Sine of angle θ.
+    :returns: Sine of angle ``θ``.
 
     """
     return sin0(shift0(θ), n=mindepth)
@@ -47,10 +47,10 @@ def shift1(θ: float) -> float:
 
 
 def cos(θ: float) -> float:
-    """Cosine centered about θ = 0.
+    """Cosine for all ``θ = 0``.
 
     :param θ: Angle in radians.
-    :returns: Cosine of angle θ.
+    :returns: Cosine of angle ``θ``.
 
     """
     return cos0(shift1(θ), n=mindepth)
@@ -64,10 +64,10 @@ def shift2(θ: float) -> float:
 
 
 def tan(θ: float) -> float:
-    """Tangent centered about θ = 0.
+    """Tangent for all real ``θ = 0``.
 
     :param θ: Angle in radians.
-    :returns: Tangent of angle θ.
+    :returns: Tangent of angle ``θ``.
 
     """
     return tan0(shift2(θ), n=mindepth)

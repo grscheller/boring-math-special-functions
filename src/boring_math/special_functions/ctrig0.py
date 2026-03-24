@@ -14,16 +14,13 @@
 
 """Complex valued special functions about a point."""
 
-from cmath import inf, infj
 from math import factorial
+from .constants import infinity
 
-__all__ = ['csin0', 'ccos0', 'ctan0', 'infinity']
+__all__ = ['csin0', 'ccos0', 'ctan0']
 
 depth = 20
 maxdepth = 84
-
-infinity = inf + infj
-"""Used to represent a single complex infinity."""
 
 sin_factors: list[complex] = list()
 cos_factors: list[complex] = list()
