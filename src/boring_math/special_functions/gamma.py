@@ -14,7 +14,8 @@
 
 """Gamma function."""
 
-from cmath import pi, inf, infj, isinf
+from cmath import inf, isinf
+from .constants import infinity, pi
 from .exponential import exp, cexp
 from .ctrig import csin
 from .trig import sin as rsin
@@ -69,7 +70,8 @@ def gamma(z: complex) -> complex:
             y += p[ii] / (z + ii)
         t = z + g7
         z += 0.5+0.0j
-        return comp_sqrt_two_pi * t**z * cexp(-t) * y
+        val = comp_sqrt_two_pi * t**z * cexp(-t) * y
+        return infinity if isinf(val) else val
 
 
 def gamma_real(x: float) -> float:

@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import isnan
+from cmath import isinf
 from math import pi, sinh, cosh
 from boring_math.special_functions.beta import beta
+from boring_math.special_functions.constants import infinity
 
 jay = 0.0 + 1.0j
 
@@ -33,6 +34,7 @@ class Test_beta:
         assert abs(beta(7, 3) - (1/252)) < tolerance1
         assert abs(beta(4, 4) - (1/140)) < tolerance1
         assert abs(beta(5, 4) - (1/280)) < tolerance1
+        assert abs(beta(11, 17) - (1/143416845)) < tolerance1
         assert abs(beta(1/2, 1/1) - (2)) < tolerance1
         assert abs(beta(3/2, 1/2) - (pi / 2)) < tolerance1
         assert abs(beta(5/2, 3/2) - (pi / 16)) < tolerance1
@@ -47,7 +49,7 @@ class Test_beta:
         assert abs(beta(1/6, 2) - (36 / 7)) < tolerance2
         assert abs(beta(42, 11) - (1 / 664441017240)) < tolerance1
         assert abs(beta(1, 1j) - (-1j)) < tolerance1
-        assert abs(beta(1+42j, 1-42j) - (pi / sinh(pi * 42))) < tolerance1
+        assert abs(beta(1+42j, 1-42j) - (pi/sinh(pi * 42))) < tolerance1
         assert (
             abs(beta(1/2 - pi*(1j), 1/2 + pi*(1j)) - (pi/cosh(pi * pi)))
             < tolerance1
@@ -55,6 +57,21 @@ class Test_beta:
         assert beta(1, -1) == -1.0
         assert beta(-3, 1) == -1/3
         assert beta(2, -3) == 1/6
+        assert beta(pi*(1j), -pi*(1j)) == 0.0
+        assert beta(0, -3)== infinity
+        assert beta(1, -3) == -1/3
+        assert beta(2, -3) == 1/6
+        assert beta(3, -3)== -1/3
+        assert beta(4, -3)== infinity
+        assert beta(-2, 0)== infinity
+        assert beta(-2, 1) == -1/2
+        assert beta(-2, 2) == 1/2
+        assert beta(-2, 3)== infinity
+        assert beta(-2, 1.5) == infinity
+        assert abs(beta(-2.5, 1) - (-2/5)) < tolerance1
+        assert beta(-2.5, 1.5) == 0.0
+        assert abs(beta(-2.5, 2) - (4/15)) < tolerance1
+
 
     def test_beta_with_approx_values(self) -> None:
         assert abs(beta(1.0023, 2.2123) - (0.4503795612154237)) < tolerance1
@@ -75,7 +92,20 @@ class Test_beta:
                 - (-2.018296926369466089-0.233998375204097255j)
             ) < tolerance2
         )
+        assert (
+            abs(
+                beta(pi*(1j), pi*(1j))
+                - (0.90246089380239786+1.7848149362215908j)
+            ) < tolerance2
+        )
 
     def test_beta_with_singular_values(self) -> None:
-        assert isnan(beta(0, 0))
-        assert isnan(beta(-2, -7))
+        assert beta(0, 0) == infinity
+        assert beta(-2, -7) == infinity
+        assert beta(0, 0) == infinity
+        assert beta(1, 0) == infinity
+        assert beta(0, 1) == infinity
+        assert beta(-1, 0) == infinity
+        assert beta(0, -1) == infinity
+        assert beta(-1, -pi/2) == infinity
+        assert beta(-1, pi/2) == infinity

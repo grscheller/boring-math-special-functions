@@ -14,7 +14,7 @@
 
 """Floating point special functions."""
 
-from math import pi
+from .constants import pi
 from .trig0 import sin0, cos0, tan0
 
 __all__ = ['sin', 'cos', 'tan']

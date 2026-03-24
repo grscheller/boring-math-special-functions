@@ -15,7 +15,8 @@
 """Beta function."""
 
 from math import factorial as fac
-from cmath import log as clog, isnan, nan
+from cmath import log as clog, isinf, isnan
+from .constants import infinity
 from .exponential import cexp
 from .gamma import gamma
 
@@ -42,28 +43,31 @@ def beta(u: complex, v: complex) -> complex:
 
     :param u: First argument to analytically continued beta function.
     :param v: Second argument to analytically continued beta function.
-    :returns: Value of ``beta(u,v)`` where ``inf + infj`` is used to
+    :returns: Value of ``beta(u,v)`` where ``inf+infj`` is returned to
               represent a single complex infinity.
 
     """
     if not isnan(naive := clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))):
-        return cexp(naive)
+        val = cexp(naive)
+        return infinity if isinf(cexp(naive)) else val
 
     ui, vi = int(u.real), int(v.real)
+
     umax = max(ui, vi)
     vmin = min(ui, vi)
 
     if vmin <= umax <= 0:
-        return nan
+        return infinity
 
     if umax > 0 >= vmin:
         if umax <= -vmin:
-            return (
+            val = (
                 ((-1.0)**(-vmin)/fac(-vmin))
                 / ((-1.0)**(-vmin - umax)/fac(-vmin - umax))
-                * (fac(umax-1))
+                * (fac(umax - 1))
             )
+            return infinity if isinf(val) else val
         else:
-            return nan
+            return 0.0
 
     assert False
