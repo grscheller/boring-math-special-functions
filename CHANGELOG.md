@@ -14,18 +14,18 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
-### PyPI Release 4.0.0 - TBD
+### PyPI Release 4.0.0 - 2026-03-24
 
-Added the beta function
+- added boring_math.special_functions.constants module
+- added boring_math.special_functions.beta.beta function
+  - implemented with gamma function
+  - correctly handles singularities and canceling poles
+  - using `inf + infj` to represent complex infinity
+    - in complex analysis all of these are the same: `inf+infj`,
+      `inf-infj`, `-inf+infj`, `-inf-infj`, `inf`, `-inf`
+    - in Python all are distinct values, there is no concept of
+      a single valued complex infinity
 
-- implemented with gamma function
-- correctly handles singularities and canceling poles
-- using `inf + infj` to represent complex infinity
-  - in complex analysis all of these are the same: `inf+infj`,
-    `inf-infj`, `-inf+infj`, `-inf-infj`, `inf`, `-inf`
-  - in Python all are distinct values, there is no concept of
-    a single valued complex infinity
-  
 ### PyPI Release 3.0.0 - 2026-03-03
 
 Breaking API changes.
