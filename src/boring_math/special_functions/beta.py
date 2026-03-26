@@ -39,7 +39,7 @@ def beta(u: complex, v: complex) -> complex:
 
     .. note::
 
-        Using natural logs for more numerical stability.
+        Using natural logs in calculation for more numerical stability.
 
     :param u: First argument to analytically continued beta function.
     :param v: Second argument to analytically continued beta function.
@@ -70,7 +70,7 @@ def beta(u: complex, v: complex) -> complex:
         else:
             return 0.0
 
-    assert False
+    assert False # should never happen
 
 
 def beta_real(x: float, y: float) -> float:

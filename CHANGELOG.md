@@ -17,6 +17,9 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 ### PyPI Release 4.0.0 - 2026-03-24
 
 - added boring_math.special_functions.constants module
+  - pi via a continued fraction
+  - e via factored taylor series about 0
+  - infinity = inf + infj
 - added boring_math.special_functions.beta.beta function
   - implemented with gamma function
   - correctly handles singularities and canceling poles

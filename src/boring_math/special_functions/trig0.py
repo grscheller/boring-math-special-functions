@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Floating point special functions about a point."""
+"""Floating point trigonometric functions about a point."""
 
 from math import factorial, inf
 

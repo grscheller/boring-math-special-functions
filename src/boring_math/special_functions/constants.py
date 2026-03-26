@@ -12,20 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""Mathematical constants."""
 """Gamma function."""
 
 from cmath import inf, infj
 
 __all__ = ['infinity', 'e', 'pi']
 
+# Complex infinity
+
 infinity: complex = inf + infj
 """Representative of a single complex infinity.
 
-Real valued functions will use +inf and -inf when a two-sided limits
+Real valued functions will use +inf and -inf when two-sided limits
 exist. The positive inf will be used for the case of distinct one-sided
 extended real valued infinities.
 
 """
+
+# Calculate base of the natural logarithms.
 
 def _exp0(x: float) -> float:
     d = 22.0
@@ -38,6 +43,8 @@ def _exp0(x: float) -> float:
 
 e: float = _exp0(1.0)
 """Base of the natural logarithms."""
+
+# Calculate π
 
 def _pi(n:int) -> float:
     odds = [float(k) for k in range(3, 2*n+2, 2)]
@@ -55,8 +62,8 @@ pi: float = _pi(21)
 Also, π can be defined as the smallest positive real
 value ``x`` where ``e²ˣⁱ = 1`` or ``sin(x/2) = 1``.
 
-This value for π is based on a continued fraction expansion due
-to Bill Gosper.
+This value for π is based on a continued fraction expansion
+due to Bill Gosper.
 
     π = 4/(1 + 1²/(3 + 2²/(5 + 3²/(7 + 4²/(9 + 5²/(11 + ...))))))
 

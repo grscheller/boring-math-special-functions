@@ -103,13 +103,15 @@ def cexp(z: complex, /, n: int = mindepth) -> complex:
 
     .. note::
 
-        Complex exp(z) has an essential singularity at infinity,
-        so function returns ``nan`` if given an infinite argument.
-
+        Complex exp(z) has an essential singularity at infinity.
+        If given an infinite argument, phase information is given
+        in the returned possibly infinite value consistent the
+        Python stdlib cmath.exp function.
+ 
     :param z: independent variable
     :param n: terms in expansion, must have ``n >= 2``
     :returns: Value of ``eᶻ`` where inf is returned when ``re(z) = inf``.
-    :raises ValueError" When ``z`` is infinite but ``re(z)`` is not.
+    :raises ValueError: When ``z`` is infinite but ``re(z)`` is not.
 
     """
     x = z.real

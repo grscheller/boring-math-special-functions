@@ -54,7 +54,7 @@ def ctan(z: complex, /, n: int = depth) -> complex:
 
     :param z: Independent variable.
     :param n: Terms in expansion, must have 2 <= n <= 84.
-    :returns: Value of ``tangent(z)`` via ``sin(z)/cos(z)``.
+    :returns: Value of ``tangent(z)`` via ``sine(z)/cosine(z)``.
 
     """
     try:
