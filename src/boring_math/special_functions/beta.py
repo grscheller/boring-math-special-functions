@@ -14,11 +14,11 @@
 
 """Beta function."""
 
-from math import factorial as fac
+from math import factorial as fac, exp, log
 from cmath import log as clog, isinf, isnan
 from .constants import infinity
 from .exponential import cexp
-from .gamma import gamma
+from .gamma import gamma, gamma_real
 
 __all__ = ['beta']
 
@@ -49,7 +49,7 @@ def beta(u: complex, v: complex) -> complex:
     """
     if not isnan(naive := clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))):
         val = cexp(naive)
-        return infinity if isinf(cexp(naive)) else val
+        return infinity if isinf(val) else val
 
     ui, vi = int(u.real), int(v.real)
 
@@ -71,3 +71,30 @@ def beta(u: complex, v: complex) -> complex:
             return 0.0
 
     assert False
+
+
+def beta_real(x: float, y: float) -> float:
+    """Beta function valid for all real values of x, y > 1.
+
+    .. note::
+
+        Not valid for extended value reals.
+
+
+    .. note::
+
+        Using natural logs for more numerical stability.
+
+    :param x: First argument to analytically continued beta function.
+    :param y: Second argument to analytically continued beta function.
+    :returns: Value of ``beta(x, y)`` where ``inf`` is returned.
+              to denote singular points.
+    :raises ValueError: If x <= 0 or y <= 0.
+
+    """
+    if x <= 0 or y <= 0 or isinf(x) or isinf(y):
+        msg1 = 'Domain error: '
+        msg2 = 'arguments to beta_real must be positive and finite'
+        raise ValueError(msg1 + msg2)
+
+    return exp(log(gamma_real(x)) + log(gamma_real(y)) - log(gamma_real(x + y)))
