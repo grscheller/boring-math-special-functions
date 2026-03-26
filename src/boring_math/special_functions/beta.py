@@ -20,7 +20,7 @@ from .constants import infinity
 from .exponential import cexp
 from .gamma import gamma, gamma_real
 
-__all__ = ['beta']
+__all__ = ['beta', 'beta_real']
 
 
 def beta(u: complex, v: complex) -> complex:
