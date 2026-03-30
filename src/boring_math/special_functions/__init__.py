@@ -12,7 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Mathematical special functions"""
+"""
+Mathematical special functions
+------------------------------
+
+.. admonition:: Special Functions for Mathematics and Physics
+
+Implementations of classical special functions.
+
+"""
 
 __author__ = 'Geoffrey R. Scheller'
 __copyright__ = 'Copyright (c) 2025-2026 Geoffrey R. Scheller'
