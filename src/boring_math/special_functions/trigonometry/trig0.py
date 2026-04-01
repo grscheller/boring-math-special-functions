@@ -26,8 +26,8 @@ s: list[float] = list()
 c: list[float] = list()
 
 for ii in range(maxdepth):
-    s.append(1 / factorial(2 * ii + 1))
-    c.append(1 / factorial(2 * (ii + 1)))
+    s.append(1.0/factorial(2 * ii + 1))
+    c.append(1.0/factorial(2 * (ii + 1)))
 
 
 def sin0(θ: float, /, n: int = depth) -> float:

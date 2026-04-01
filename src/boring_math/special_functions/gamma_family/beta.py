@@ -16,9 +16,9 @@
 
 from math import factorial as fac, exp, log
 from cmath import log as clog, isinf, isnan
-from .constants import infinity
-from .exponential import cexp
-from .gamma import gamma, gamma_real
+from ..constants import infinity
+from ..exponential.exp import cexp
+from ..gamma_family.gamma import gamma, gamma_real
 
 __all__ = ['beta', 'beta_real']
 

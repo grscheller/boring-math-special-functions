@@ -13,8 +13,8 @@
 # limitations under the License.
 
 from cmath import exp as std_exp, inf, infj, isinf, pi
-from boring_math.special_functions.exponential import cexp
-from boring_math.special_functions.trig0 import sin0, cos0
+from boring_math.special_functions.exponential.exp import cexp
+from boring_math.special_functions.trigonometry.trig0 import sin0, cos0
 
 c1 = complex(0.831, -0.479)
 c2 = complex(0.411, 0.672)

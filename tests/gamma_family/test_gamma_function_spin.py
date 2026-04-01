@@ -13,8 +13,8 @@
 # limitations under the License.
 
 from math import pi, inf
-from boring_math.special_functions.trig import cos, sin
-from boring_math.special_functions.gamma import gamma
+from boring_math.special_functions.trigonometry.trig import cos, sin
+from boring_math.special_functions.gamma_family.gamma import gamma
 
 jay = 0.0+1.0j
 infinity = inf + jay*inf

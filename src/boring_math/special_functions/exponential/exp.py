@@ -16,8 +16,8 @@
 
 from cmath import inf, isinf
 from math import ceil, floor, nan
-from .constants import e, pi
-from .trig import sin, cos
+from ..constants import e, pi
+from ..trigonometry.trig import sin, cos
 
 __all__ = ['exp0', 'exp', 'cexp0', 'cexp']
 

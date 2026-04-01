@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from math import pi
-from boring_math.special_functions.gamma import gamma, gamma_real
+from boring_math.special_functions.gamma_family.gamma import gamma, gamma_real
 
 sqrt_pi = pi**0.5
 euler = 0.57721566490153286060

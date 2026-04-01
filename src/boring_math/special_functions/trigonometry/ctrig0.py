@@ -15,7 +15,7 @@
 """Complex valued special functions about a point."""
 
 from math import factorial
-from .constants import infinity
+from ..constants import infinity
 
 __all__ = ['csin0', 'ccos0', 'ctan0']
 

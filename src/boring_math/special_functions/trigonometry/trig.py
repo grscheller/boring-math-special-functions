@@ -14,8 +14,8 @@
 
 """Floating point trigonometric functions."""
 
-from .constants import pi
-from .trig0 import sin0, cos0, tan0
+from ..constants import pi
+from ..trigonometry.trig0 import sin0, cos0, tan0
 
 __all__ = ['sin', 'cos', 'tan']
 

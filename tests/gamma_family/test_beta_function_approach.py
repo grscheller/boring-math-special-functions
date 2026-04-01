@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import pi, isinf
-from boring_math.special_functions.beta import beta
+from cmath import isinf
+from boring_math.special_functions.constants import pi
+from boring_math.special_functions.gamma_family.beta import beta
 
 tolerance1 = 1.0e-13
 tolerance2 = 5.0e-13

@@ -14,8 +14,8 @@
 
 from cmath import exp as std_exp
 from math import pi
-from boring_math.special_functions.exponential import cexp0
-from boring_math.special_functions.trig0 import sin0, cos0
+from boring_math.special_functions.exponential.exp import cexp0
+from boring_math.special_functions.trigonometry.trig0 import sin0, cos0
 
 c0 = 1+0j
 c1 = (3.0**(0.5))/2 + 1j/2

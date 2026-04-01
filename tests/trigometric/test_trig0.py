@@ -13,8 +13,9 @@
 # limitations under the License.
 
 import math
-from math import inf, pi
-from boring_math.special_functions.trig0 import sin0, cos0, tan0
+from math import inf
+from boring_math.special_functions.constants import pi
+from boring_math.special_functions.trigonometry.trig0 import sin0, cos0, tan0
 
 
 class Test_trig0:

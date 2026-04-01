@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from cmath import isinf
-from math import pi, sinh, cosh
-from boring_math.special_functions.beta import beta
+from math import sinh, cosh
+from boring_math.special_functions.constants import pi
+from boring_math.special_functions.gamma_family.beta import beta
 from boring_math.special_functions.constants import infinity
 
 jay = 0.0 + 1.0j

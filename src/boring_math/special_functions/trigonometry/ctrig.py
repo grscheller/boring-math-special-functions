@@ -14,8 +14,8 @@
 
 """Complex valued trig functions."""
 
-from .constants import infinity, pi
-from .exponential import cexp
+from ..constants import infinity, pi
+from ..exponential.exp import cexp
 
 __all__ = ['csin', 'ccos', 'ctan']
 

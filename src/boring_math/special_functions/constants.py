@@ -13,7 +13,6 @@
 # limitations under the License.
 
 """Mathematical constants."""
-"""Gamma function."""
 
 from cmath import inf, infj
 

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import math
-from boring_math.special_functions.exponential import exp0
+from boring_math.special_functions.exponential.exp import exp0
 
 tolerance0 = 5.0e-16
 tolerance1 = 5.0e-15

@@ -13,8 +13,8 @@
 # limitations under the License.
 
 import cmath
-from math import pi
-from boring_math.special_functions.ctrig import csin, ccos, ctan
+from boring_math.special_functions.constants import pi
+from boring_math.special_functions.trigonometry.ctrig import csin, ccos, ctan
 
 tolerance0 = 5.0e-16
 tolerance1 = 5.0e-15

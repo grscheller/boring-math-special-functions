@@ -14,7 +14,7 @@
 
 import math
 from math import inf, pi
-from boring_math.special_functions.trig import sin, cos, tan
+from boring_math.special_functions.trigonometry.trig import sin, cos, tan
 
 tolerance0 = 5.0e-16
 tolerance1 = 5.0e-15

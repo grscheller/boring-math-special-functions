@@ -15,10 +15,10 @@
 """Gamma function."""
 
 from cmath import inf, isinf
-from .constants import infinity, pi
-from .exponential import exp, cexp
-from .ctrig import csin
-from .trig import sin as rsin
+from ..constants import infinity, pi
+from ..exponential.exp import exp, cexp
+from ..trigonometry.ctrig import csin
+from ..trigonometry.trig import sin as rsin
 
 __all__ = ['gamma', 'gamma_real']
 
