@@ -12,7 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Floating point trigonometric functions about a point."""
+"""
+.. admonition:: Floating point sine, cosine, tangent about ``θ = 0``
+
+    The named only argument ``n`` must be at least ``22``
+    to agree with the ones from stdlib math.
+
+    .. tip::
+
+        For ``0 ≤ |z| < 1`` you can get away with smaller ``n``
+        values to reduce the number of computations.
+
+"""
 
 from math import factorial, inf
 
@@ -31,21 +42,25 @@ for ii in range(maxdepth):
 
 
 def sin0(θ: float, /, n: int = depth) -> float:
-    """Partially factored Taylor expansion of sine centered at ``x = 0``.
+    """
+    .. admonition:: Sine centered at ``x = 0``.
 
-    .. note::
+        Partially factored Taylor series expansion of sine
+        centered at ``x = 0``.
 
-        Best n to use
+        .. note::
 
-        - ``n >= 20`` when ``-2π <= θ <= 2π``
-        - ``n >= 15`` when ``-π <= θ <= π``
-        - ``n >= 12`` when ``-π/2 <= θ <= π/2``
+            Best n to use
 
-        The default is ``n=20``.
+            - ``n >= 20`` when ``-2π <= θ <= 2π``
+            - ``n >= 15`` when ``-π <= θ <= π``
+            - ``n >= 12`` when ``-π/2 <= θ <= π/2``
 
-    :param x: angle in radians
+            The default is ``n=20``.
+
+    :param θ: angle in radians
     :param n: terms in expansion, must have ``2 <= n <= 84``
-    :returns: Taylor series expansion of sine(x) centered at ``θ = 0``
+    :returns: Taylor series expansion of sine(θ) centered at ``θ = 0``
 
     """
     θ_sqr = θ * θ
@@ -59,19 +74,23 @@ def sin0(θ: float, /, n: int = depth) -> float:
 
 
 def cos0(θ: float, /, n: int = depth) -> float:
-    """Partially factored Taylor expansion of cosine centered at ``x = 0``.
+    """
+    .. admonition:: Cosine centered at ``x = 0``.
 
-    .. note::
+        Partially factored Taylor series expansion of cosine
+        centered at ``x = 0``.
 
-        Best n to use
+        .. note::
 
-        - ``n >= 20`` when ``-2π <= θ <= 2π``
-        - ``n >= 15`` when ``-π <= θ <= π``
-        - ``n >= 12`` when ``-π/2 <= θ <= π/2``
+            Best n to use
 
-        The default is ``n=20``.
+            - ``n >= 20`` when ``-2π <= θ <= 2π``
+            - ``n >= 15`` when ``-π <= θ <= π``
+            - ``n >= 12`` when ``-π/2 <= θ <= π/2``
 
-    :param x: angle in radians
+            The default is ``n=20``.
+
+    :param θ: angle in radians
     :param n: terms in expansion, must have ``2 <= n <= 84``
     :returns: Taylor series expansion of ``cosine(θ)`` centered at ``θ = 0``
 
@@ -87,17 +106,23 @@ def cos0(θ: float, /, n: int = depth) -> float:
 
 
 def tan0(θ: float, /, n: int = depth) -> float:
-    """Tangent centered about ``x = 0``.
+    """
+    .. admonition:: Tangent centered at ``θ = 0``.
 
-    .. note::
+        Partially factored Taylor series expansion of tangent
+        centered at ``θ = 0``.
 
-        Best n to use
+        .. note::
 
-        - ``n >= 20`` when ``-2π <= θ <= 2π``
-        - ``n >= 15`` when ``-π <= θ <= π``
-        - ``n >= 12`` when ``-π/2 <= θ <= π/2``
+            Best n to use
 
-    :param x: angle in radians
+            - ``n >= 20`` when ``-2π <= θ <= 2π``
+            - ``n >= 15`` when ``-π <= θ <= π``
+            - ``n >= 12`` when ``-π/2 <= θ <= π/2``
+
+            The default is ``n=20``.
+
+    :param θ: angle in radians
     :param n: terms in expansion, must have ``2 <= n <= 84``
     :returns: ``sin0(θ)/cos0(θ)``
 

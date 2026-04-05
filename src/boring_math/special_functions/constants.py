@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Mathematical constants."""
+"""
+Mathematical constants.
+
+"""
 
 from cmath import inf, infj
 
@@ -21,11 +24,23 @@ __all__ = ['infinity', 'e', 'pi']
 # Complex infinity
 
 infinity: complex = inf + infj
-"""Representative of a single complex infinity.
+"""Used to represent of a single complex infinity.
+.. admonition:: Single complex infinity
 
-Real valued functions will use +inf and -inf when two-sided limits
-exist. The positive inf will be used for the case of distinct one-sided
-extended real valued infinities.
+    Used as a sentinel value to represent of a single complex infinity.
+
+    .. note::
+
+        Complex infinity is a mathematical concept. Python does not
+        natively support ``inf + infj`` for this.
+
+        Use the ``cmath.isinf`` function to test for infinite values.
+
+    .. note::
+
+        Real valued functions will use +inf and -inf when two-sided
+        limits exist. The positive inf will be used for the case when
+        two distinct one-sided extended real valued limits exist.
 
 """
 
@@ -41,7 +56,12 @@ def _exp0(x: float) -> float:
     return 1.0 + accum
 
 e: float = _exp0(1.0)
-"""Base of the natural logarithms."""
+"""
+.. admonition:: Base of the natural logarithms.
+
+    Also the limit of ``(1 + 1/n)ⁿ`` as ``n → ∞``
+
+"""
 
 # Calculate π
 
@@ -56,14 +76,17 @@ def _pi(n:int) -> float:
     return 4/(1 + accum)
 
 pi: float = _pi(21)
-"""Ratio of a circle's circumference to its diameter.
+"""
+.. admonition:: Ratio circle's circumference to diameter.
 
-Also, π can be defined as the smallest positive real
-value ``x`` where ``e²ˣⁱ = 1`` or ``sin(x/2) = 1``.
+    π can also be defined as the smallest positive real
+    value ``x`` where ``e²ˣⁱ = 1`` or ``sin(x/2) = 1``.
 
-This value for π is based on a continued fraction expansion
-due to Bill Gosper.
+    .. note::
 
-    π = 4/(1 + 1²/(3 + 2²/(5 + 3²/(7 + 4²/(9 + 5²/(11 + ...))))))
+        This value for π is based on a continued fraction
+        expansion due to Bill Gosper.
+
+        ``π = 4/(1 + 1²/(3 + 2²/(5 + 3²/(7 + 4²/(9 + 5²/(11 + ...))))))``
 
 """

@@ -12,7 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Complex valued special functions about a point."""
+"""
+.. admonition:: Real valued sine, cosine, tangent about ``z = 0``
+
+    The named only argument ``n`` must be at least ``20``
+    to totally agree with stdlib cmath for ``0 ≤ |z| < 1``.
+
+    .. tip::
+
+        For small ``|z|`` you can get away with smaller ``n``
+        values to reduce the number of computations.
+
+"""
 
 from math import factorial
 from ..constants import infinity
@@ -35,10 +46,13 @@ def csin0(z: complex, /, n: int = depth) -> complex:
 
     .. note::
 
-        Best if ``|z| <= 2π`` and ``n >= 20``.
+        Best if
+
+        - ``|z| ≤ 1`` and ``n ≥ 20``.
+        - ``|z| ≤ π`` and ``n ≥ 22``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have ``2 <= n <= 84``
+    :param n: terms in expansion, must have ``2 ≤ n ≤ 84``
     :returns: Taylor series expansion of sine(x) centered at ``z = 0``.
 
     """
@@ -57,10 +71,13 @@ def ccos0(z: complex, /, n: int = depth) -> complex:
 
     .. note::
 
-        Best if ``|z| <= 2π`` and ``n >= 22``.
+        Best if
+
+        - ``|z| ≤ 1`` and ``n ≥ 20``.
+        - ``|z| ≤ π`` and ``n ≥ 22``.
 
     :param z: independent variable
-    :param n: terms in expansion, must have ``2 <= n <= 84``
+    :param n: terms in expansion, must have ``2 ≤ n ≤ 84``
     :returns: Taylor series expansion of cosine(z) centered at ``z = 0``
 
     """
@@ -79,10 +96,13 @@ def ctan0(z: complex, /, n: int = depth) -> complex:
 
     .. note::
 
-        Best if ``|z| <= π`` and ``n >= 20``.
+        Best if
+
+        - ``|z| ≤ 1`` and ``n ≥ 20``.
+        - ``|z| ≤ π`` and ``n ≥ 22``.
 
     :param z: Independent variable.
-    :param n: Terms in expansion, must have ``2 <= n <= 84``.
+    :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.
     :returns: The value ``csin0(z)/ccos0(z)``.
 
     """

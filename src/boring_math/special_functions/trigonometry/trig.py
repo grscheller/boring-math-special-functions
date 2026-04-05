@@ -12,7 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Floating point trigonometric functions."""
+"""
+.. admonition:: Floating point trigonometric functions.
+
+    Valid for all extended real value ``θ``.
+
+"""
 
 from ..constants import pi
 from ..trigonometry.trig0 import sin0, cos0, tan0

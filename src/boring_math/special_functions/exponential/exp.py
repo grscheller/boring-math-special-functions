@@ -12,7 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Floating point special functions about a point."""
+"""
+.. admonition:: Exponential function
+
+    Complex and real valued implementations of the exponential function.
+
+"""
 
 from cmath import inf, isinf
 from math import ceil, floor, nan
@@ -23,14 +28,13 @@ __all__ = ['exp0', 'exp', 'cexp0', 'cexp']
 
 two_pi = 2.0*pi
 
+# Minimum depth required to agree with stdlib exp implementations.
 mindepth: int = 22
-"""Minimum depth required to agree with stdlib exp implementations."""
 
 
 def exp0(x: float, /, n: int = mindepth) -> float:
-    """Partially factored Taylor expansion of exp about ``x = 0``.
-
-    .. note::
+    """
+    .. admonition:: Real exponential function about ``x = 0``
 
         Best if ``-1 <= x <= 1`` for ``n >= 22``.
 
@@ -57,7 +61,10 @@ def shift0(x: float) -> float:
 
 
 def exp(x: float, /, n: int = mindepth) -> float:
-    """Exponential function good for all floating point x.
+    """
+    .. admonition:: Real exponential function about ``x = 0``.
+
+        Valid for extended value floating point arguments.
 
     :param x: Independent variable.
     :param n: Terms in expansion, must have ``n >= 2``.
@@ -78,9 +85,8 @@ def exp(x: float, /, n: int = mindepth) -> float:
 
 
 def cexp0(z: complex, /, n: int = mindepth) -> complex:
-    """Partially factored Taylor expansion of exp about z = 0.
-
-    .. note::
+    """
+    .. admonition:: Complex exponential function about ``z = 0``.
 
         Best if ``|z| <= 1`` and ``n >= 22``.
 
@@ -99,13 +105,12 @@ def cexp0(z: complex, /, n: int = mindepth) -> complex:
 
 
 def cexp(z: complex, /, n: int = mindepth) -> complex:
-    """Exponential function good for all complex z.
-
-    .. note::
+    """
+    .. admonition:: Exponential function good for all complex ``z``.
 
         Complex exp(z) has an essential singularity at infinity.
         If given an infinite argument, phase information is given
-        in the returned possibly infinite value consistent the
+        in the returned, possibly infinite, value consistent the
         Python stdlib cmath.exp function.
  
     :param z: independent variable

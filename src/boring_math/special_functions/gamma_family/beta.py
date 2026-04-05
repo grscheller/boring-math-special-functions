@@ -12,7 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Beta function."""
+"""
+.. admonition:: Beta functions for real and complex values.
+
+    Defined via the analytic continuation of the Gamma function.
+
+"""
 
 from math import factorial as fac, exp, log
 from cmath import log as clog, isinf, isnan
@@ -24,22 +29,23 @@ __all__ = ['beta', 'beta_real']
 
 
 def beta(u: complex, v: complex) -> complex:
-    """Beta function valid for all complex values of z.
+    """
+    .. admonition:: Beta function for all complex ``u`` and ``v``.
 
-    .. note::
+        .. note::
 
-        For all u, v ∈ ℂ and m, n ∈ ℕ, we have
+            For all u, v ∈ ℂ and m, n ∈ ℕ, we have
 
-        - B(u, v) = B(v, u)
-        - B(0, v) = Γ(0) = ∞
-        - B(m, -n) = ∞ when m > n > 0
-        - B(m, -n) = Γ(m) * (Res[Γ, -n]/Res[Γ, m-n]) when m <= n
+            - B(u, v) = B(v, u)
+            - B(0, v) = Γ(0) = ∞
+            - B(m, -n) = ∞ when m > n > 0
+            - B(m, -n) = Γ(m) * (Res[Γ, -n]/Res[Γ, m-n]) when m <= n
 
-          - where ∀(n>=0) Res[Γ(z), z = -n] = (-1)ⁿ/(n!)
+            - where ∀(n>=0) Res[Γ(z), z = -n] = (-1)ⁿ/(n!)
 
-    .. note::
+        .. note::
 
-        Using natural logs in calculation for more numerical stability.
+            Using natural logs in calculation for more numerical stability.
 
     :param u: First argument to analytically continued beta function.
     :param v: Second argument to analytically continued beta function.

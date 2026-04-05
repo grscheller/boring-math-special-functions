@@ -12,52 +12,71 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Complex valued trig functions."""
+"""
+.. admonition:: Complex valued sine, cosine, tangent
 
-from ..constants import infinity, pi
+    The named only argument ``n`` must be at least ``22``
+    to agree with the ones from stdlib cmath.
+
+    .. tip::
+
+        For ``0 ≤ |z| < 1`` you can get away with smaller ``n``
+        values to reduce the number of computations.
+
+"""
+
+from ..constants import infinity
 from ..exponential.exp import cexp
 
 __all__ = ['csin', 'ccos', 'ctan']
 
 depth = 22
-two_pi = 2.0*pi
 
 
 def csin(z: complex, /, n: int = depth) -> complex:
-    """Complex sine valid for all ``z∈ℂ``.
+    """
+    .. admonition:: Complex tangent
+
+        Complex sine valid for all ``z∈ℂ``.
 
     :param z: Independent variable.
-    :param n: Terms in expansion, must have 2 <= n <= 84.
+    :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.
     :returns: Value of ``sine(z)``.
 
     """
     x = z.real
     y = z.imag
-    return (cexp(-y+(1j)*x) - cexp(y-(1j)*x))/2j
+    return (cexp(-y+(1j)*x, n=depth) - cexp(y-(1j)*x, n=depth))/2j
 
 
 def ccos(z: complex, /, n: int = depth) -> complex:
-    """Complex cosine valid for all ``z∈ℂ``.
+    """
+    .. admonition:: Complex cosine
+
+        Complex cosine valid for all ``z∈ℂ``.
 
     :param z: Independent variable.
-    :param n: Terms in expansion, must have 2 <= n <= 84.
+    :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.
     :returns: Value of ``cosine(z)``.
 
     """
     x = z.real
     y = z.imag
-    return (cexp(-y+(1j)*x) + cexp(y-(1j)*x))/2
+    return (cexp(-y+(1j)*x, n=depth) + cexp(y-(1j)*x, n=depth))/2
 
 
 def ctan(z: complex, /, n: int = depth) -> complex:
-    """Complex tangent valid for all ``z∈ℂ``.
+    """
+    .. admonition:: Complex tangent
+
+        Complex tangent valid for all ``z∈ℂ``.
 
     :param z: Independent variable.
-    :param n: Terms in expansion, must have 2 <= n <= 84.
+    :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.
     :returns: Value of ``tangent(z)`` via ``sine(z)/cosine(z)``.
 
     """
     try:
-        return csin(z)/ccos(z)
+        return csin(z, n=depth)/ccos(z, n=depth)
     except ZeroDivisionError:
         return infinity

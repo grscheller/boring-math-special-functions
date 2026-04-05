@@ -12,7 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Gamma function."""
+"""
+.. admonition:: Gamma functions for real and complex values.
+
+    Defined via the analytic continuation of the Gamma function.
+
+"""
 
 from cmath import inf, isinf
 from ..constants import infinity, pi
@@ -28,16 +33,19 @@ comp_sqrt_two_pi = complex(sqrt_two_pi)
 
 
 def gamma(z: complex) -> complex:
-    """Gamma function valid for all complex values of z.
+    """
+    .. admonition:: Gamma function
 
-    .. note::
+        Valid for all complex values of ``z``.
 
-        Lanczos approximation of Gamma using ``g = 7`` with ``n = 9``
-        terms. The values of g and n were chosen to balance accuracy
-        with speed. Typically accurate to 13 correct decimal places.
+        .. note::
 
-        Code modified from the `Wikipedia Lanczos appoximation article
-        <https://en.wikipedia.org/wiki/Lanczos_approximation>`_.
+            Lanczos approximation of Gamma using ``g = 7`` with ``n = 9``
+            terms. The values of g and n were chosen to balance accuracy
+            with speed. Typically accurate to 13 correct decimal places.
+
+            Code modified from the `Wikipedia Lanczos approximate article
+            <https://en.wikipedia.org/wiki/Lanczos_approximation>`_.
 
     :param z: Complex argument.
     :returns: Value of the analytic continuation of ``gamma(z)``. Uses
