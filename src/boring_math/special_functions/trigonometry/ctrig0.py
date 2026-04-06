@@ -43,9 +43,7 @@ for ii in range(maxdepth):
 
 def csin0(z: complex, /, n: int = depth) -> complex:
     """
-    .. admonition::
-
-        Partially factored Taylor expansion of sine about ``z = 0``.
+    .. admonition:: Partially factored Taylor expansion of sine about ``z = 0``.
 
         .. tip::
 
@@ -71,9 +69,7 @@ def csin0(z: complex, /, n: int = depth) -> complex:
 
 def ccos0(z: complex, /, n: int = depth) -> complex:
     """
-    .. admonition::
-
-        Partially factored Taylor expansion of cosine about ``z = 0``.
+    .. admonition:: Partially factored Taylor expansion of cosine about ``z = 0``.
 
         .. tip::
 
@@ -99,9 +95,7 @@ def ccos0(z: complex, /, n: int = depth) -> complex:
 
 def ctan0(z: complex, /, n: int = depth) -> complex:
     """
-    .. admonition::
-
-        Tangent centered about ``z = 0``.
+    .. admonition:: Tangent centered about ``z = 0``.
 
         .. tip::
 
