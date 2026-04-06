@@ -1,4 +1,4 @@
-# Copyright 2016-2025 Geoffrey R. Scheller
+# Copyright 2025-2026 Geoffrey R. Scheller
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -38,7 +38,10 @@ def shift0(θ: float) -> float:
 
 
 def sin(θ: float) -> float:
-    """Sine for all real ``θ = 0``.
+    """
+    .. admonition:: Sine centered at ``θ = 0``.
+
+        Sine for all real ``θ``.
 
     :param θ: Angle in radians.
     :returns: Sine of angle ``θ``.
@@ -52,7 +55,10 @@ def shift1(θ: float) -> float:
 
 
 def cos(θ: float) -> float:
-    """Cosine for all ``θ = 0``.
+    """
+    .. admonition:: Cosine centered at ``θ = 0``.
+
+        Cosine for all real ``θ``.
 
     :param θ: Angle in radians.
     :returns: Cosine of angle ``θ``.
@@ -69,7 +75,10 @@ def shift2(θ: float) -> float:
 
 
 def tan(θ: float) -> float:
-    """Tangent for all real ``θ = 0``.
+    """
+    .. admonition:: Tangent centered at ``θ = 0``.
+
+        Tangent for all real ``θ``.
 
     :param θ: Angle in radians.
     :returns: Tangent of angle ``θ``.

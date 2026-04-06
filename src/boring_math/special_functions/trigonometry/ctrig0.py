@@ -1,4 +1,4 @@
-# Copyright 2016-2025 Geoffrey R. Scheller
+# Copyright 2025-2026 Geoffrey R. Scheller
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,14 +42,17 @@ for ii in range(maxdepth):
 
 
 def csin0(z: complex, /, n: int = depth) -> complex:
-    """Partially factored Taylor expansion of sine about ``z = 0``.
+    """
+    .. admonition::
 
-    .. note::
+        Partially factored Taylor expansion of sine about ``z = 0``.
 
-        Best if
+        .. tip::
 
-        - ``|z| ≤ 1`` and ``n ≥ 20``.
-        - ``|z| ≤ π`` and ``n ≥ 22``.
+            Best if
+
+            - ``|z| ≤ 1`` and ``n ≥ 20``.
+            - ``|z| ≤ π`` and ``n ≥ 22``.
 
     :param z: independent variable
     :param n: terms in expansion, must have ``2 ≤ n ≤ 84``
@@ -67,14 +70,17 @@ def csin0(z: complex, /, n: int = depth) -> complex:
 
 
 def ccos0(z: complex, /, n: int = depth) -> complex:
-    """Partially factored Taylor expansion of cosine about ``z = 0``.
+    """
+    .. admonition::
 
-    .. note::
+        Partially factored Taylor expansion of cosine about ``z = 0``.
 
-        Best if
+        .. tip::
 
-        - ``|z| ≤ 1`` and ``n ≥ 20``.
-        - ``|z| ≤ π`` and ``n ≥ 22``.
+            Best if
+
+            - ``|z| ≤ 1`` and ``n ≥ 20``.
+            - ``|z| ≤ π`` and ``n ≥ 22``.
 
     :param z: independent variable
     :param n: terms in expansion, must have ``2 ≤ n ≤ 84``
@@ -92,14 +98,17 @@ def ccos0(z: complex, /, n: int = depth) -> complex:
 
 
 def ctan0(z: complex, /, n: int = depth) -> complex:
-    """Tangent centered about ``z = 0``.
+    """
+    .. admonition::
 
-    .. note::
+        Tangent centered about ``z = 0``.
 
-        Best if
+        .. tip::
 
-        - ``|z| ≤ 1`` and ``n ≥ 20``.
-        - ``|z| ≤ π`` and ``n ≥ 22``.
+            Best if
+
+            - ``|z| ≤ 1`` and ``n ≥ 20``.
+            - ``|z| ≤ π`` and ``n ≥ 22``.
 
     :param z: Independent variable.
     :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.

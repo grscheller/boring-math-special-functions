@@ -13,7 +13,17 @@
 # limitations under the License.
 
 """
-Mathematical constants.
+Mathematical constants
+----------------------
+
+.. admonition:: Mathematical constants
+
+    All values derived internally by the
+    boring_math.special_functions.constants module itself.
+
+    - infinity
+    - e
+    - pi
 
 """
 
@@ -24,7 +34,7 @@ __all__ = ['infinity', 'e', 'pi']
 # Complex infinity
 
 infinity: complex = inf + infj
-"""Used to represent of a single complex infinity.
+"""
 .. admonition:: Single complex infinity
 
     Used as a sentinel value to represent of a single complex infinity.
@@ -34,13 +44,16 @@ infinity: complex = inf + infj
         Complex infinity is a mathematical concept. Python does not
         natively support ``inf + infj`` for this.
 
-        Use the ``cmath.isinf`` function to test for infinite values.
+        .. tip::
 
-    .. note::
+            Use the ``cmath.isinf`` function to test for
+            infinite values.
 
-        Real valued functions will use +inf and -inf when two-sided
-        limits exist. The positive inf will be used for the case when
-        two distinct one-sided extended real valued limits exist.
+        .. note::
+
+            Real valued functions will use +inf and -inf when a distinct
+            two-sided infinity exists. Positive inf will be used when
+            distinct one-sided infinite limits exist.
 
 """
 

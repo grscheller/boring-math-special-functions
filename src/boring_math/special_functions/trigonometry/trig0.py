@@ -1,4 +1,4 @@
-# Copyright 2016-2025 Geoffrey R. Scheller
+# Copyright 2025-2026 Geoffrey R. Scheller
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ def sin0(θ: float, /, n: int = depth) -> float:
         Partially factored Taylor series expansion of sine
         centered at ``x = 0``.
 
-        .. note::
+        .. tip::
 
             Best n to use
 
@@ -80,7 +80,7 @@ def cos0(θ: float, /, n: int = depth) -> float:
         Partially factored Taylor series expansion of cosine
         centered at ``x = 0``.
 
-        .. note::
+        .. tip::
 
             Best n to use
 
@@ -112,7 +112,7 @@ def tan0(θ: float, /, n: int = depth) -> float:
         Partially factored Taylor series expansion of tangent
         centered at ``θ = 0``.
 
-        .. note::
+        .. tip::
 
             Best n to use
 
