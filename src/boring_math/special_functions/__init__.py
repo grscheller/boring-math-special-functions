@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Mathematical special functions
+Mathematical Special Functions
 ------------------------------
 
 .. admonition:: Special functions for mathematics and physics

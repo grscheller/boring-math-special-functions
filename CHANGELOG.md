@@ -14,6 +14,10 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
+### PyPI Release 5.0.0 - 2026-04-20
+
+First release after restructured boring_math.special_functions package.
+
 ### PyPI Release 4.0.0 - 2026-03-24
 
 - added boring_math.special_functions.constants module

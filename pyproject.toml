@@ -1,9 +1,12 @@
+[build-system]
+requires = ["flit_core>=3.12,<4"]
+build-backend = "flit_core.buildapi"
+
 [project]
 name = "boring-math-special-functions"
 version = "5.0.0"
 readme = "README.rst"
 requires-python = ">=3.13"
-license = { file = "LICENSE" }
 authors = [{ name = "Geoffrey R. Scheller", email = "geoffrey@scheller.com" }]
 keywords = [
   "special functions",
@@ -37,10 +40,6 @@ test = [
   "pytest>=8.4.1",
 ]
 
-[build-system]
-requires = ["flit_core>=3.12,<4"]
-build-backend = "flit_core.buildapi"
-
 [tool.flit.module]
 name = "boring_math.special_functions"
 
@@ -59,8 +58,10 @@ dmypy = false
 strict = true
 report_progress = true
 
-[tool.pytest.ini_options]
-addopts = "-ra"
+[tool.pytest]
+addopts = [
+  "-ra",
+]
 consider_namespace_packages = true
 testpaths = ["tests/"]
 
