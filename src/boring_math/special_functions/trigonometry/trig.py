@@ -39,12 +39,10 @@ def shift0(θ: float) -> float:
 
 def sin(θ: float) -> float:
     """
-    .. admonition:: Sine centered at ``θ = 0``.
+    .. admonition:: Sine for all real θ
 
-        Sine for all real ``θ``.
-
-    :param θ: Angle in radians.
-    :returns: Sine of angle ``θ``.
+        :param θ: Angle in radians.
+        :returns: Sine of angle θ.
 
     """
     return sin0(shift0(θ), n=mindepth)
@@ -56,12 +54,10 @@ def shift1(θ: float) -> float:
 
 def cos(θ: float) -> float:
     """
-    .. admonition:: Cosine centered at ``θ = 0``.
+    .. admonition:: Cosine for all real ``θ``
 
-        Cosine for all real ``θ``.
-
-    :param θ: Angle in radians.
-    :returns: Cosine of angle ``θ``.
+        :param θ: Angle in radians.
+        :returns: Cosine of angle θ.
 
     """
     return cos0(shift1(θ), n=mindepth)
@@ -76,12 +72,10 @@ def shift2(θ: float) -> float:
 
 def tan(θ: float) -> float:
     """
-    .. admonition:: Tangent centered at ``θ = 0``.
+    .. admonition:: Tangent for all real ``θ``
 
-        Tangent for all real ``θ``.
-
-    :param θ: Angle in radians.
-    :returns: Tangent of angle ``θ``.
+        :param θ: Angle in radians.
+        :returns: Tangent of angle θ.
 
     """
     return tan0(shift2(θ), n=mindepth)

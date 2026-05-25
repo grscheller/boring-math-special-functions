@@ -42,18 +42,17 @@ infinity: complex = inf + infj
     .. note::
 
         Complex infinity is a mathematical concept. Python does not
-        natively support ``inf + infj`` for this.
+        natively support inf+infj for this.
+
+        - Complex functions will return positive inf to represent
+          complex infinity.
+
+        - Functions returning Float will use +inf and -inf when
+          one and two sided infinite limits exist.
 
         .. tip::
 
-            Use the ``cmath.isinf`` function to test for
-            infinite values.
-
-        .. note::
-
-            Real valued functions will use +inf and -inf when a distinct
-            two-sided infinity exists. Positive inf will be used when
-            distinct one-sided infinite limits exist.
+            Use the cmath.isinf function to test for infinite values.
 
 """
 
@@ -70,9 +69,9 @@ def _exp0(x: float) -> float:
 
 e: float = _exp0(1.0)
 """
-.. admonition:: Base of the natural logarithms.
+.. admonition:: Base of the natural logarithms
 
-    Also the limit of ``(1 + 1/n)ⁿ`` as ``n → ∞``
+    Also the limit of ``(1 + 1/n)ⁿ`` as ``n → ∞``.
 
 """
 
@@ -92,13 +91,16 @@ pi: float = _pi(21)
 """
 .. admonition:: Ratio circle's circumference to diameter.
 
-    π can also be defined as the smallest positive real
-    value ``x`` where ``e²ˣⁱ = 1`` or ``sin(x/2) = 1``.
+    π can also be defined as the smallest positive real value x
+    where either
+
+    - e²ˣⁱ = 1
+    - sin(x/2) = 1
 
     .. note::
 
-        This value for π is based on a continued fraction
-        expansion due to Bill Gosper.
+        This value for π is based on a continued fraction expansion
+        due to Bill Gosper.
 
         ``π = 4/(1 + 1²/(3 + 2²/(5 + 3²/(7 + 4²/(9 + 5²/(11 + ...))))))``
 

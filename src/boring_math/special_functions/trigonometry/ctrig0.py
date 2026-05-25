@@ -13,15 +13,15 @@
 # limitations under the License.
 
 """
-.. admonition:: Real valued sine, cosine, tangent about ``z = 0``
+.. admonition:: Real valued sine, cosine, tangent about z = 0
 
-    The named only argument ``n`` must be at least ``20``
-    to totally agree with stdlib cmath for ``0 ≤ |z| < 1``.
+    The named only argument n must be at least 20
+    to agree with Python's stdlib cmath for ``0 ≤ |z| < 1``.
 
     .. tip::
 
-        For small ``|z|`` you can get away with smaller ``n``
-        values to reduce the number of computations.
+        For small |z| you can get away with smaller values of n
+        to reduce the number of computations.
 
 """
 
@@ -43,18 +43,18 @@ for ii in range(maxdepth):
 
 def csin0(z: complex, /, n: int = depth) -> complex:
     """
-    .. admonition:: Partially factored Taylor expansion of sine about ``z = 0``.
+    .. admonition:: Taylor expansion of sine about z = 0
+
+        :param z: Independent variable.
+        :param n: Terms in expansion, must have 2 ≤ n ≤ 84.
+        :returns: The value of sine(x) centered at z = 0.
 
         .. tip::
 
             Best if
 
-            - ``|z| ≤ 1`` and ``n ≥ 20``.
-            - ``|z| ≤ π`` and ``n ≥ 22``.
-
-    :param z: independent variable
-    :param n: terms in expansion, must have ``2 ≤ n ≤ 84``
-    :returns: Taylor series expansion of sine(x) centered at ``z = 0``.
+            - n ≥ 20 when |z| ≤ 1
+            - n ≥ 22 when |z| ≤ π
 
     """
     zsqr = z * z
@@ -69,18 +69,18 @@ def csin0(z: complex, /, n: int = depth) -> complex:
 
 def ccos0(z: complex, /, n: int = depth) -> complex:
     """
-    .. admonition:: Partially factored Taylor expansion of cosine about ``z = 0``.
+    .. admonition:: Taylor expansion of cosine about z = 0
+
+        :param z: Independent variable.
+        :param n: Terms in expansion, must have 2 ≤ n ≤ 84.
+        :returns: The value of cosine(z) centered at z = 0.
 
         .. tip::
 
             Best if
 
-            - ``|z| ≤ 1`` and ``n ≥ 20``.
-            - ``|z| ≤ π`` and ``n ≥ 22``.
-
-    :param z: independent variable
-    :param n: terms in expansion, must have ``2 ≤ n ≤ 84``
-    :returns: Taylor series expansion of cosine(z) centered at ``z = 0``
+            - n ≥ 20 when |z| ≤ 1
+            - n ≥ 22 when |z| ≤ π
 
     """
     zsqr = z * z
@@ -95,18 +95,18 @@ def ccos0(z: complex, /, n: int = depth) -> complex:
 
 def ctan0(z: complex, /, n: int = depth) -> complex:
     """
-    .. admonition:: Tangent centered about ``z = 0``.
+    .. admonition:: Tangent centered about z = 0
+
+        :param z: Independent variable.
+        :param n: Terms in expansion, must have 2 ≤ n ≤ 84.
+        :returns: The value csin0(z)/ccos0(z) centered at z = 0.
 
         .. tip::
 
             Best if
 
-            - ``|z| ≤ 1`` and ``n ≥ 20``.
-            - ``|z| ≤ π`` and ``n ≥ 22``.
-
-    :param z: Independent variable.
-    :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.
-    :returns: The value ``csin0(z)/ccos0(z)``.
+            - n ≥ 20 when |z| ≤ 1
+            - n ≥ 22 when |z| ≤ π
 
     """
     try:

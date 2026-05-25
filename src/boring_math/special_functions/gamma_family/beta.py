@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-.. admonition:: Beta functions for real and complex values.
+.. admonition:: Beta functions for real and complex values
 
     Defined via the analytic continuation of the Gamma function.
 
@@ -30,7 +30,12 @@ __all__ = ['beta', 'beta_real']
 
 def beta(u: complex, v: complex) -> complex:
     """
-    .. admonition:: Beta function for all complex ``u`` and ``v``.
+    .. admonition:: Beta function for all complex u and v.
+
+        :param u: First argument to analytically continued beta function.
+        :param v: Second argument to analytically continued beta function.
+        :returns: Value of beta(u,v) where inf+infj is returned to
+                  represent a single complex infinity.
 
         .. note::
 
@@ -46,11 +51,6 @@ def beta(u: complex, v: complex) -> complex:
         .. note::
 
             Using natural logs in calculation for more numerical stability.
-
-    :param u: First argument to analytically continued beta function.
-    :param v: Second argument to analytically continued beta function.
-    :returns: Value of ``beta(u,v)`` where ``inf+infj`` is returned to
-              represent a single complex infinity.
 
     """
     if not isnan(naive := clog(gamma(u)) + clog(gamma(v)) - clog(gamma(u + v))):
@@ -80,22 +80,21 @@ def beta(u: complex, v: complex) -> complex:
 
 
 def beta_real(x: float, y: float) -> float:
-    """Beta function valid for all real values of x, y > 1.
+    """
+    .. admonition:: Beta function valid for all real values x, y > 1.
 
-    .. note::
+        :param x: First argument to analytically continued beta function.
+        :param y: Second argument to analytically continued beta function.
+        :returns: Value of beta(x, y) where inf is returned to denote singular points.
+        :raises ValueError: If x <= 0 or y <= 0.
 
-        Not valid for extended value reals.
+        .. note::
 
+            Using natural logs for more numerical stability.
 
-    .. note::
+        .. warning::
 
-        Using natural logs for more numerical stability.
-
-    :param x: First argument to analytically continued beta function.
-    :param y: Second argument to analytically continued beta function.
-    :returns: Value of ``beta(x, y)`` where ``inf`` is returned.
-              to denote singular points.
-    :raises ValueError: If x <= 0 or y <= 0.
+            Not valid for extended value reals.
 
     """
     if x <= 0 or y <= 0 or isinf(x) or isinf(y):

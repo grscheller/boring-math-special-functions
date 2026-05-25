@@ -20,7 +20,7 @@
 
     .. tip::
 
-        For ``0 ≤ |z| < 1`` you can get away with smaller ``n``
+        For 0 ≤ |z| < 1 you can get away with smaller n
         values to reduce the number of computations.
 
 """
@@ -37,11 +37,11 @@ def csin(z: complex, /, n: int = depth) -> complex:
     """
     .. admonition:: Complex tangent
 
-        Complex sine valid for all ``z∈ℂ``.
+        Complex sine valid for all z ∈ ℂ.
 
-    :param z: Independent variable.
-    :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.
-    :returns: Value of ``sine(z)``.
+        :param z: Independent variable.
+        :param n: Terms in expansion, must have 2 ≤ n ≤ 84.
+        :returns: Value of sine(z).
 
     """
     x = z.real
@@ -53,11 +53,11 @@ def ccos(z: complex, /, n: int = depth) -> complex:
     """
     .. admonition:: Complex cosine
 
-        Complex cosine valid for all ``z∈ℂ``.
+        Complex cosine valid for all z ∈ ℂ.
 
-    :param z: Independent variable.
-    :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.
-    :returns: Value of ``cosine(z)``.
+        :param z: Independent variable.
+        :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.
+        :returns: Value of ``cosine(z)``.
 
     """
     x = z.real
@@ -69,11 +69,11 @@ def ctan(z: complex, /, n: int = depth) -> complex:
     """
     .. admonition:: Complex tangent
 
-        Complex tangent valid for all ``z∈ℂ``.
+        Complex tangent valid for all z ∈ ℂ.
 
-    :param z: Independent variable.
-    :param n: Terms in expansion, must have ``2 ≤ n ≤ 84``.
-    :returns: Value of ``tangent(z)`` via ``sine(z)/cosine(z)``.
+        :param z: Independent variable.
+        :param n: Terms in expansion, must have 2 ≤ n ≤ 84.
+        :returns: Value of tangent(z) via sine(z)/cosine(z).
 
     """
     try:

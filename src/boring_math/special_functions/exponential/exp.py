@@ -29,18 +29,18 @@ __all__ = ['exp0', 'exp', 'cexp0', 'cexp']
 two_pi = 2.0*pi
 
 # Minimum depth required to agree with stdlib exp implementations.
-mindepth: int = 22
+min_depth: int = 22
 
 
-def exp0(x: float, /, n: int = mindepth) -> float:
+def exp0(x: float, /, n: int = min_depth) -> float:
     """
-    .. admonition:: Real exponential function about ``x = 0``
+    .. admonition:: Real exponential function about x = 0
 
-        Best if ``-1 <= x <= 1`` for ``n >= 22``.
+        Best if -1 <= x <= 1 for n >= 22.
 
-    :param x: Independent variable.
-    :param n: Terms in expansion, must have ``n >= 2``.
-    :returns: Taylor series expansion of ``eˣ`` centered at ``x = 0``.
+        :param x: Independent variable.
+        :param n: Terms in expansion, must have n >= 2.
+        :returns: Value of eˣ expanded about x = 0.
 
     """
     d = float(n)
@@ -60,15 +60,15 @@ def shift0(x: float) -> float:
     return shifted
 
 
-def exp(x: float, /, n: int = mindepth) -> float:
+def exp(x: float, /, n: int = min_depth) -> float:
     """
-    .. admonition:: Real exponential function about ``x = 0``.
+    .. admonition:: Real exponential function about x = 0.
 
         Valid for extended value floating point arguments.
 
-    :param x: Independent variable.
-    :param n: Terms in expansion, must have ``n >= 2``.
-    :returns: Value of ``eˣ`` otherwise ``nan`` if ``x = nan``.
+        :param x: Independent variable.
+        :param n: Terms in expansion, must have n >= 2.
+        :returns: Value of eˣ otherwise nan if x = nan.
 
     """
     try:
@@ -84,15 +84,17 @@ def exp(x: float, /, n: int = mindepth) -> float:
         return exp0(shift0(x), n=n) * factor
 
 
-def cexp0(z: complex, /, n: int = mindepth) -> complex:
+def cexp0(z: complex, /, n: int = min_depth) -> complex:
     """
-    .. admonition:: Complex exponential function about ``z = 0``.
+    .. admonition:: Complex exponential function about z = 0
 
-        Best if ``|z| <= 1`` and ``n >= 22``.
+        :param z: Independent variable.
+        :param n: Terms in expansion, must have n >= 2.
+        :returns: Value of eᶻ centered at z = 0
 
-    :param z: independent variable
-    :param n: terms in expansion, must have ``n >= 2``
-    :returns: Taylor series expansion of eᶻ centered at z = 0
+        .. tip::
+
+            Best if |z| <= 1 and n >= 22.
 
     """
     d = float(n)
@@ -104,19 +106,22 @@ def cexp0(z: complex, /, n: int = mindepth) -> complex:
     return 1.0 + accum
 
 
-def cexp(z: complex, /, n: int = mindepth) -> complex:
+def cexp(z: complex, /, n: int = min_depth) -> complex:
     """
-    .. admonition:: Exponential function good for all complex ``z``.
+    .. admonition:: Exponential function for all complex z.
 
-        Complex exp(z) has an essential singularity at infinity.
-        If given an infinite argument, phase information is given
-        in the returned, possibly infinite, value consistent the
-        Python stdlib cmath.exp function.
- 
-    :param z: independent variable
-    :param n: terms in expansion, must have ``n >= 2``
-    :returns: Value of ``eᶻ`` where inf is returned when ``re(z) = inf``.
-    :raises ValueError: When ``z`` is infinite but ``re(z)`` is not.
+        :param z: Independent variable.
+        :param n: Terms in expansion, must have n >= 2.
+        :returns: Value of eᶻ.
+        :raises ValueError: When z is infinite but re(z) is not.
+
+        .. note::
+
+            Complex exp(z) has an essential singularity at infinity.
+
+            If given an infinite argument, phase information is given
+            in the returned, possibly infinite, value consistent with
+            Python's stdlib cmath.exp implementation.
 
     """
     x = z.real

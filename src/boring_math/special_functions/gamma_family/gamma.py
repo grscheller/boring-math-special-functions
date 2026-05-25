@@ -40,16 +40,17 @@ def gamma(z: complex) -> complex:
 
         .. note::
 
-            Lanczos approximation of Gamma using ``g = 7`` with ``n = 9``
-            terms. The values of g and n were chosen to balance accuracy
+            Lanczos approximation of Gamma using g = 7 with n = 9 terms.
+
+            The values of g and n were chosen to balance accuracy
             with speed. Typically accurate to 13 correct decimal places.
 
             Code modified from the `Wikipedia Lanczos approximate article
             <https://en.wikipedia.org/wiki/Lanczos_approximation>`_.
 
-    :param z: Complex argument.
-    :returns: Value of the analytic continuation of ``gamma(z)``. Uses
-              ``inf + infj`` to represent a single complex infinity.
+        :param z: Complex argument.
+        :returns: Value of the analytic continuation of gamma(z). Uses
+                  inf + infj to represent a single complex infinity.
 
     """
     g7 = 7.5 + 0.0j
@@ -83,10 +84,13 @@ def gamma(z: complex) -> complex:
 
 
 def gamma_real(x: float) -> float:
-    """Gamma function valid for all real values of x.
+    """
+    .. admonition:: Gamma function
 
-    :param x: Floating point argument.
-    :returns: Value of ``gamma(x)``.
+        Valid for all finite real values of x.
+
+        :param x: Floating point argument.
+        :returns: Value of gamma(x).
 
     """
     g7 = 7.5
