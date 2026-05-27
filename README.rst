@@ -5,11 +5,8 @@ PyPI project
 `boring-math-special-functions
 <https://pypi.org/project/boring-math-special-functions>`_.
 
-The purpose of this project is to compute special functions
-of mathematics and Physics.
-
-Initially these will be done in pure Python, but eventually I
-would like to implement these in something like C, Zig or Rust.
+Special functions of mathematics and Physics. All defined from
+first principles.
 
 This pypi project is part of the
 `boring math
