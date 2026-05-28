@@ -1,5 +1,5 @@
 boring-math-special-functions
------------------------------
+=============================
 
 Project
 `boring-math-special-functions <https://pypi.org/project/boring-math-special-functions/>`_
@@ -7,7 +7,7 @@ one of the
 `Boring Math <https://grscheller.github.io/boring-math/>`_
 PyPI projects.
 
-**PyPI 5.0.0 release**
+|RELEASE_STRING|
 
 .. toctree::
     :caption: Overview
@@ -27,4 +27,4 @@ PyPI projects.
     :caption: API Documentation
     :maxdepth: 1
 
-    docs/index
+    api/index
