@@ -5,7 +5,6 @@ first principles.
 
 PyPI project
 [boring-math-special-functions](https://pypi.org/project/boring-math-special-functions).
-
 This pypi project is part of the
 [boring math](https://grscheller.github.io/boring-math) projects.
 
