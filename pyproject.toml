@@ -33,6 +33,7 @@ description = "Special functions for Mathematics and Physics."
 
 [project.urls]
 Changelog = "https://github.com/grscheller/boring-math-special-functions/blob/main/CHANGELOG.md"
+Documentation ="https://grscheller.github.io/boring-math-special-functions/release/html/"
 Homepage = "https://grscheller.github.io/boring-math/homepage/build/html/"
 Source = "https://github.com/grscheller/boring-math-special-functions"
 
